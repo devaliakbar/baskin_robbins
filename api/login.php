@@ -2,11 +2,13 @@
 require 'db/db.php';
 require 'db/table/user.php';
 require 'jwt/jwt_helper.php';
+require 'utility/mysql_escape.php';
 
 //GETTING BODY VARIABLES
-$body = json_decode(file_get_contents('php://input'), true);
-$username = $body['username'];
-$password = $body['password'];
+$body = new MySqlEscape(json_decode(file_get_contents('php://input'), true), $conn);
+
+$username = $body->getValue('username');
+$password = $body->getValue('password');
 
 //CREATING RESPONCE FORMAT
 $response = array();
