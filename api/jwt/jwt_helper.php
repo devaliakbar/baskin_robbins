@@ -5,22 +5,84 @@ class JWTHelper
 
     public static function createToken($userId)
     {
-        require_once 'jwt.php';
+        require_once 'jwt/jwt.php';
         $payloadArray = array();
+        $payloadArray['created_on'] = time();
         $payloadArray['userId'] = $userId;
         $token = JWT::encode($payloadArray, self::$SERVER_KEY);
-        return $token;
+
+        $isSavedToken = self::saveToken($userId, $token);
+
+        if ($isSavedToken) {
+            return $token;
+        }
+        return null;
+    }
+
+    public static function saveToken($userId, $token)
+    {
+        require 'db/db.php';
+        require_once 'db/table/jwt_token.php';
+
+        $TokenSaveQuery = "INSERT INTO " . JWTToken::$TABLE_NAME . "(
+            " . JWTToken::$COLUMN_USER_ID . " ,
+            " . JWTToken::$COLUMN_TOKEN . "
+        )
+        VALUES('" . $userId . "' , '" . $token . "')";
+
+        if (mysqli_query($conn, $TokenSaveQuery)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static function validateToken($token)
     {
-        require_once 'jwt.php';
+        require_once 'jwt/jwt.php';
         try {
             $payload = JWT::decode($token, self::$SERVER_KEY, array('HS256'));
             $userId = $payload->userId;
+
+            $user = self::getUser($userId);
+            if ($user == null) {
+                return null;
+            }
+            return $user;
         } catch (Exception $e) {
-            $userId = null;
+            return null;
         }
-        return $userId;
+    }
+
+    public static function getUser($userId)
+    {
+        require 'db/db.php';
+        require_once 'db/table/user.php';
+
+        $UserQuery = "SELECT
+        " . User::$ID . " ,
+        " . User::$COLUMN_NAME . " ,
+        " . User::$COLUMN_USERNAME . " ,
+        " . User::$COLUMN_TYPE . "
+        FROM
+        " . User::$TABLE_NAME . "
+        WHERE
+        " . User::$ID . " = '" . $userId . "'";
+
+        $userResult = mysqli_query($conn, $UserQuery);
+
+        if (mysqli_num_rows($userResult) > 0) {
+            $userInfo = mysqli_fetch_assoc($userResult);
+
+            $user = array();
+            $user['userId'] = $userInfo[User::$ID];
+            $user['name'] = $userInfo[User::$COLUMN_NAME];
+            $user['username'] = $userInfo[User::$COLUMN_USERNAME];
+            $user['type'] = $userInfo[User::$COLUMN_TYPE];
+
+            return $user;
+        } else {
+            return null;
+        }
     }
 }

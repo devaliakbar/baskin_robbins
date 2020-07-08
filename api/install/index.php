@@ -1,8 +1,8 @@
 <?php
-include '../common/common.php';
-include '../table/user.php';
-include '../table/jwt_token.php';
-include '../jwt/jwt_helper.php';
+require '../db/db.php';
+require '../db/table/user.php';
+require '../db/table/jwt_token.php';
+require '../jwt/jwt_helper.php';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CHECKING ALREADY INSTALLED
