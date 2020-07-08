@@ -44,10 +44,15 @@ class JWTHelper
             $payload = JWT::decode($token, self::$SERVER_KEY, array('HS256'));
             $userId = $payload->userId;
 
+            if (!self::checkTokenExist($token)) {
+                return null;
+            }
+
             $user = self::getUser($userId);
             if ($user == null) {
                 return null;
             }
+            $user['token'] = $token;
             return $user;
         } catch (Exception $e) {
             return null;
@@ -83,6 +88,27 @@ class JWTHelper
             return $user;
         } else {
             return null;
+        }
+    }
+
+    public static function checkTokenExist($token)
+    {
+        require 'db/db.php';
+        require_once 'db/table/jwt_token.php';
+
+        $TokenCheckQuery = "SELECT
+        " . JWTToken::$ID . "
+        FROM
+        " . JWTToken::$TABLE_NAME . "
+        WHERE
+        " . JWTToken::$COLUMN_TOKEN . " = '" . $token . "'";
+
+        $tokenCheckResult = mysqli_query($conn, $TokenCheckQuery);
+
+        if (mysqli_num_rows($tokenCheckResult) > 0) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
