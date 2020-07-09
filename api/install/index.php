@@ -2,6 +2,11 @@
 require '../db/db.php';
 require '../db/table/user.php';
 require '../db/table/jwt_token.php';
+require '../db/table/camera_details.php';
+require '../db/table/dvr_details.php';
+require '../db/table/network_cable_details.php';
+require '../db/table/tv_details.php';
+require '../db/table/vistited_details.php';
 require '../jwt/jwt_helper.php';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -47,6 +52,116 @@ if (mysqli_query($conn, $JWTTokenTableCreateQuery)) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CREATING CAMERA DETAILS TABLE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$CameraDetailsTableCreateQuery = "CREATE TABLE IF NOT EXISTS " . CameraDetails::$TABLE_NAME . " (
+    " . CameraDetails::$ID . " BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
+    " . CameraDetails::$COLUMN_VISITED_ID . " BIGINT UNSIGNED ,
+
+    " . CameraDetails::$COLUMN_TYPE . " VARCHAR(50),
+    " . CameraDetails::$COLUMN_BRAND . " VARCHAR(50),
+    " . CameraDetails::$COLUMN_COUNT . " INT ,
+    " . CameraDetails::$COLUMN_STATUS . " VARCHAR(50),
+    " . CameraDetails::$COLUMN_REMARK . " VARCHAR(250),
+    " . CameraDetails::$COLUMN_IP_DETAIL . " VARCHAR(250),
+    " . CameraDetails::$COLUMN_SUGGESTION . " VARCHAR(250)
+)ENGINE = INNODB;";
+
+if (mysqli_query($conn, $CameraDetailsTableCreateQuery)) {
+    echo "<br>Table 'CAMERA_DETAILS' created successfully<br>";
+} else {
+    echo "<br>Error creating table 'CAMERA_DETAILS' : " . mysqli_error($conn) . "<br>";
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CREATING DVR DETAILS TABLE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$DVRDetailsTableCreateQuery = "CREATE TABLE IF NOT EXISTS " . DVRDetails::$TABLE_NAME . " (
+    " . DVRDetails::$ID . " BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
+    " . DVRDetails::$COLUMN_VISITED_ID . " BIGINT UNSIGNED ,
+
+    " . DVRDetails::$COLUMN_NO_CHANNELS . " INT,
+    " . DVRDetails::$COLUMN_BRAND . " VARCHAR(50),
+    " . DVRDetails::$COLUMN_RECORDING_AVAILABILITY . " VARCHAR(50) ,
+    " . DVRDetails::$COLUMN_HDD_CAPACITY . " VARCHAR(50),
+    " . DVRDetails::$COLUMN_REMARK . " VARCHAR(250),
+    " . DVRDetails::$COLUMN_SUGGESTION . " VARCHAR(250)
+)ENGINE = INNODB;";
+
+if (mysqli_query($conn, $DVRDetailsTableCreateQuery)) {
+    echo "<br>Table 'DVR_DETAILS' created successfully<br>";
+} else {
+    echo "<br>Error creating table 'DVR_DETAILS' : " . mysqli_error($conn) . "<br>";
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CREATING NETWORK CABLE DETAILS TABLE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$NetworkCableDetailsTableCreateQuery = "CREATE TABLE IF NOT EXISTS " . NetworkCableDetails::$TABLE_NAME . " (
+    " . NetworkCableDetails::$ID . " BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
+    " . NetworkCableDetails::$COLUMN_VISITED_ID . " BIGINT UNSIGNED ,
+
+    " . NetworkCableDetails::$COLUMN_NETWORK_POINT . " VARCHAR(50),
+    " . NetworkCableDetails::$COLUMN_STATUS . " VARCHAR(50),
+    " . NetworkCableDetails::$COLUMN_SUGGESTION . " VARCHAR(250)
+)ENGINE = INNODB;";
+
+if (mysqli_query($conn, $NetworkCableDetailsTableCreateQuery)) {
+    echo "<br>Table 'NETWORK_CABLE_DETAILS' created successfully<br>";
+} else {
+    echo "<br>Error creating table 'NETWORK_CABLE_DETAILS' : " . mysqli_error($conn) . "<br>";
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CREATING TV DETAILS TABLE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$TVDetailsTableCreateQuery = "CREATE TABLE IF NOT EXISTS " . TVDetails::$TABLE_NAME . " (
+    " . TVDetails::$ID . " BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
+    " . TVDetails::$COLUMN_VISITED_ID . " BIGINT UNSIGNED ,
+
+    " . TVDetails::$COLUMN_NETWORK_POINT . " VARCHAR(50),
+    " . TVDetails::$COLUMN_STATUS . " VARCHAR(50),
+    " . TVDetails::$COLUMN_REMARK . " VARCHAR(250),
+    " . TVDetails::$COLUMN_SUGGESTION . " VARCHAR(250)
+)ENGINE = INNODB;";
+
+if (mysqli_query($conn, $TVDetailsTableCreateQuery)) {
+    echo "<br>Table 'TV_DETAILS' created successfully<br>";
+} else {
+    echo "<br>Error creating table 'TV_DETAILS' : " . mysqli_error($conn) . "<br>";
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CREATING VISITED DETAILS TABLE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$VisitedDetailsTableCreateQuery = "CREATE TABLE IF NOT EXISTS " . VisitedDetails::$TABLE_NAME . " (
+    " . VisitedDetails::$ID . " BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
+    " . VisitedDetails::$COLUMN_DATE . " VARCHAR(50),
+    " . VisitedDetails::$COLUMN_REGION . " VARCHAR(50),
+    " . VisitedDetails::$COLUMN_LOCATION . " VARCHAR(50),
+    " . VisitedDetails::$COLUMN_PARLOUR . " VARCHAR(50),
+    " . VisitedDetails::$COLUMN_TIME . " VARCHAR(50),
+    " . VisitedDetails::$COLUMN_COMMENT . " VARCHAR(250),
+
+    " . VisitedDetails::$COLUMN_VERIFIED_BY . " VARCHAR(50),
+    " . VisitedDetails::$COLUMN_VERIFIED_DATE . " VARCHAR(50),
+
+    " . VisitedDetails::$COLUMN_CHECKED_BY . " VARCHAR(50),
+    " . VisitedDetails::$COLUMN_CHECKED_DATE . " VARCHAR(50),
+
+    " . VisitedDetails::$COLUMN_APPROVED_BY . " VARCHAR(50),
+    " . VisitedDetails::$COLUMN_APPROVED_DATE . " VARCHAR(50)
+)ENGINE = INNODB;";
+
+if (mysqli_query($conn, $VisitedDetailsTableCreateQuery)) {
+    echo "<br>Table 'VISITED_DETAILS' created successfully<br>";
+} else {
+    echo "<br>Error creating table 'VISITED_DETAILS' : " . mysqli_error($conn) . "<br>";
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CREATING USERS
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -91,6 +206,4 @@ if (mysqli_query($conn, $GuestCreateQuery)) {
 } else {
     echo "<br>Failed To Create 'Guest' : " . mysqli_error($conn) . "<br>";
 }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
