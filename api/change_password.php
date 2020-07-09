@@ -12,6 +12,7 @@ $response = array();
 $response["success"] = false;
 $response["status"] = "INVALID";
 
+//IF USER IS NOT ADMIN KILL REQUEST
 if ($user['type'] != 0) {
     $response["status"] = "ACCESS";
     echo json_encode($response);
@@ -27,9 +28,9 @@ $password = $body->getValue('password');
 $UpdatePasswordQuery = "UPDATE
 " . User::$TABLE_NAME . "
 SET
-" . User::$COLUMN_PASSWORD . " =  MD5('" . $password . "')
+" . User::$COLUMN_PASSWORD . " =  MD5('" . $body->passForSafeSql($password) . "')
 WHERE
-" . User::$COLUMN_USERNAME . " = '" . $username . "'";
+" . User::$COLUMN_USERNAME . " = '" . $body->passForSafeSql($username) . "'";
 
 if (mysqli_query($conn, $UpdatePasswordQuery)) {
 //DELETING ALL PREVIOUS TOKEN OF THIS USER
@@ -40,7 +41,7 @@ if (mysqli_query($conn, $UpdatePasswordQuery)) {
     FROM
     " . User::$TABLE_NAME . "
     WHERE
-    " . User::$COLUMN_USERNAME . " = '" . $username . "'";
+    " . User::$COLUMN_USERNAME . " = '" . $body->passForSafeSql($username) . "'";
 
     $userResult = mysqli_query($conn, $GetUserIdQuery);
 

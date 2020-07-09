@@ -20,7 +20,11 @@ class MySqlEscape
             echo json_encode($this->failMsg);
             die();
         }
+        return $this->body[$key];
+    }
 
-        return mysqli_real_escape_string($this->conn, $this->body[$key]);
+    public function passForSafeSql($string)
+    {
+        return mysqli_real_escape_string($this->conn, $string);
     }
 }

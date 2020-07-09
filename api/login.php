@@ -20,7 +20,7 @@ $validateUserQuery = "SELECT
 FROM
 " . User::$TABLE_NAME . "
 WHERE
-" . User::$COLUMN_USERNAME . " = '" . $username . "' AND " . User::$COLUMN_PASSWORD . " = MD5('" . $password . "')";
+" . User::$COLUMN_USERNAME . " = '" . $body->passForSafeSql($username) . "' AND " . User::$COLUMN_PASSWORD . " = MD5('" . $body->passForSafeSql($password) . "')";
 
 $validateUserResult = mysqli_query($conn, $validateUserQuery);
 

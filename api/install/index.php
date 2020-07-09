@@ -136,7 +136,7 @@ if (mysqli_query($conn, $TVDetailsTableCreateQuery)) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $VisitedDetailsTableCreateQuery = "CREATE TABLE IF NOT EXISTS " . VisitedDetails::$TABLE_NAME . " (
     " . VisitedDetails::$ID . " BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
-    " . VisitedDetails::$COLUMN_DATE . " VARCHAR(50),
+    " . VisitedDetails::$COLUMN_DATE . " DATE ,
     " . VisitedDetails::$COLUMN_REGION . " VARCHAR(50),
     " . VisitedDetails::$COLUMN_LOCATION . " VARCHAR(50),
     " . VisitedDetails::$COLUMN_PARLOUR . " VARCHAR(50),
@@ -144,13 +144,13 @@ $VisitedDetailsTableCreateQuery = "CREATE TABLE IF NOT EXISTS " . VisitedDetails
     " . VisitedDetails::$COLUMN_COMMENT . " VARCHAR(250),
 
     " . VisitedDetails::$COLUMN_VERIFIED_BY . " VARCHAR(50),
-    " . VisitedDetails::$COLUMN_VERIFIED_DATE . " VARCHAR(50),
+    " . VisitedDetails::$COLUMN_VERIFIED_DATE . " DATE ,
 
     " . VisitedDetails::$COLUMN_CHECKED_BY . " VARCHAR(50),
-    " . VisitedDetails::$COLUMN_CHECKED_DATE . " VARCHAR(50),
+    " . VisitedDetails::$COLUMN_CHECKED_DATE . " DATE ,
 
     " . VisitedDetails::$COLUMN_APPROVED_BY . " VARCHAR(50),
-    " . VisitedDetails::$COLUMN_APPROVED_DATE . " VARCHAR(50)
+    " . VisitedDetails::$COLUMN_APPROVED_DATE . " DATE
 )ENGINE = INNODB;";
 
 if (mysqli_query($conn, $VisitedDetailsTableCreateQuery)) {
