@@ -48,8 +48,8 @@ if (isset($_GET['location'])) {
     $GetVisitQuery = $GetVisitQuery . " AND " . VisitedDetails::$COLUMN_LOCATION . " = '" . $_GET['location'] . "'";
 }
 
-if (isset($_GET['parlour'])) {
-    $GetVisitQuery = $GetVisitQuery . " AND " . VisitedDetails::$COLUMN_PARLOUR . " = '" . $_GET['parlour'] . "'";
+if (isset($_GET['parlor'])) {
+    $GetVisitQuery = $GetVisitQuery . " AND " . VisitedDetails::$COLUMN_PARLOUR . " = '" . $_GET['parlor'] . "'";
 }
 
 //////////////////////////
