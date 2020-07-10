@@ -7,6 +7,7 @@ require '../db/table/dvr_details.php';
 require '../db/table/network_cable_details.php';
 require '../db/table/tv_details.php';
 require '../db/table/vistited_details.php';
+require '../db/table/typehead_help.php';
 require '../jwt/jwt_helper.php';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -157,6 +158,22 @@ if (mysqli_query($conn, $VisitedDetailsTableCreateQuery)) {
     echo "<br>Table 'VISITED_DETAILS' created successfully<br>";
 } else {
     echo "<br>Error creating table 'VISITED_DETAILS' : " . mysqli_error($conn) . "<br>";
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CREATING TYPEHEAD HELPER TABLE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$TypeheadHelperTableCreateQuery = "CREATE TABLE IF NOT EXISTS " . TypeheadHelper::$TABLE_NAME . " (
+    " . TypeheadHelper::$ID . " BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
+    " . TypeheadHelper::$COLUMN_REGION . " VARCHAR(50) ,
+    " . TypeheadHelper::$COLUMN_LOCATION . " VARCHAR(50) ,
+    " . TypeheadHelper::$COLUMN_PARLOR . " VARCHAR(50)
+)ENGINE = INNODB;";
+
+if (mysqli_query($conn, $TypeheadHelperTableCreateQuery)) {
+    echo "<br>Table 'TYPEHEAD_HELPER' created successfully<br>";
+} else {
+    echo "<br>Error creating table 'TYPEHEAD_HELPER' : " . mysqli_error($conn) . "<br>";
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

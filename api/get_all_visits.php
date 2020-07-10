@@ -1,7 +1,6 @@
 <?php
 require 'db/db.php';
 require 'middleware/middleware.php';
-require 'utility/mysql_escape.php';
 require 'db/table/vistited_details.php';
 require 'db/table/camera_details.php';
 require 'db/table/dvr_details.php';
