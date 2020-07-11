@@ -8,6 +8,7 @@ require '../db/table/network_cable_details.php';
 require '../db/table/tv_details.php';
 require '../db/table/vistited_details.php';
 require '../db/table/typehead_help.php';
+require '../db/table/expense.php';
 require '../jwt/jwt_helper.php';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -174,6 +175,23 @@ if (mysqli_query($conn, $TypeheadHelperTableCreateQuery)) {
     echo "<br>Table 'TYPEHEAD_HELPER' created successfully<br>";
 } else {
     echo "<br>Error creating table 'TYPEHEAD_HELPER' : " . mysqli_error($conn) . "<br>";
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CREATING EXPENSE TABLE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$ExpenseTableCreateQuery = "CREATE TABLE IF NOT EXISTS " . Expense::$TABLE_NAME . " (
+    " . Expense::$ID . " BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
+    " . Expense::$COLUMN_DATE . " DATE ,
+    " . Expense::$COLUMN_NAME . " VARCHAR(50) ,
+    " . Expense::$COLUMN_AMOUNT . " DECIMAL ,
+    " . Expense::$COLUMN_DESCRIPTION . " VARCHAR(500)
+)ENGINE = INNODB;";
+
+if (mysqli_query($conn, $ExpenseTableCreateQuery)) {
+    echo "<br>Table 'EXPENSE' created successfully<br>";
+} else {
+    echo "<br>Error creating table 'EXPENSE' : " . mysqli_error($conn) . "<br>";
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -16,6 +16,7 @@ $response["status"] = "INVALID";
 
 //GETTING ALL VISITS
 $GetVisitQuery = "SELECT
+" . VisitedDetails::$ID . " ,
 " . VisitedDetails::$COLUMN_DATE . " ,
 " . VisitedDetails::$COLUMN_TIME . " ,
 " . VisitedDetails::$COLUMN_PARLOUR . " ,
@@ -61,6 +62,7 @@ if (mysqli_num_rows($GetVisitresult) > 0) {
     $cursorArray = array();
 
     while ($row = mysqli_fetch_assoc($GetVisitresult)) {
+        $temp['id'] = $row[VisitedDetails::$ID];
         $temp['date'] = $row[VisitedDetails::$COLUMN_DATE];
         $temp['visitedTime'] = $row[VisitedDetails::$COLUMN_TIME];
         $temp['parlor'] = $row[VisitedDetails::$COLUMN_PARLOUR];
