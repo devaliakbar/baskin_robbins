@@ -29,11 +29,11 @@ $id = $body->getValue('id');
 $date = $body->getValue('date');
 $region = $body->getValue('region');
 $location = $body->getValue('location');
-$parlour = $body->getValue('parlour');
+$parlor = $body->getValue('parlor');
 $visitedTime = $body->getValue('visitedTime');
 
 //IF THESE VARIABLES ARE EMPTY KILL THE REQUEST
-if ($id == "" || $date == "" || $region == "" || $location == "" || $parlour == "" || $visitedTime == "") {
+if ($id == "" || $date == "" || $region == "" || $location == "" || $parlor == "" || $visitedTime == "") {
     $response["status"] = "FIELD";
     echo json_encode($response);
     die();
@@ -58,7 +58,7 @@ SET
 " . VisitedDetails::$COLUMN_DATE . " = '" . $date . "' ,
 " . VisitedDetails::$COLUMN_REGION . " = '" . $body->passForSafeSql($region) . "' ,
 " . VisitedDetails::$COLUMN_LOCATION . " = '" . $body->passForSafeSql($location) . "' ,
-" . VisitedDetails::$COLUMN_PARLOUR . " = '" . $body->passForSafeSql($parlour) . "' ,
+" . VisitedDetails::$COLUMN_PARLOUR . " = '" . $body->passForSafeSql($parlor) . "' ,
 " . VisitedDetails::$COLUMN_TIME . " = '" . $body->passForSafeSql($visitedTime) . "' ,
 " . VisitedDetails::$COLUMN_COMMENT . " = '" . $body->passForSafeSql($comment) . "' ,
 " . VisitedDetails::$COLUMN_VERIFIED_BY . " = '" . $body->passForSafeSql($verifiedBy) . "' ,

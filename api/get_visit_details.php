@@ -35,7 +35,7 @@ if (mysqli_num_rows($GetVisitresult) > 0) {
     $resultArray['date'] = $visitDetails[VisitedDetails::$COLUMN_DATE];
     $resultArray['region'] = $visitDetails[VisitedDetails::$COLUMN_REGION];
     $resultArray['location'] = $visitDetails[VisitedDetails::$COLUMN_LOCATION];
-    $resultArray['parlour'] = $visitDetails[VisitedDetails::$COLUMN_PARLOUR];
+    $resultArray['parlor'] = $visitDetails[VisitedDetails::$COLUMN_PARLOUR];
     $resultArray['visitedTime'] = $visitDetails[VisitedDetails::$COLUMN_TIME];
     $resultArray['comment'] = $visitDetails[VisitedDetails::$COLUMN_COMMENT];
     $resultArray['verifiedBy'] = $visitDetails[VisitedDetails::$COLUMN_VERIFIED_BY];

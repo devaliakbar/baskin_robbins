@@ -54,8 +54,8 @@ $CheckAlreadyExist = "SELECT " . VisitedDetails::$ID
 . "' AND " . VisitedDetails::$COLUMN_TIME . " = '" . $visitedTime
 . "' AND " . VisitedDetails::$COLUMN_PARLOUR . " = '" . $parlor . "'";
 
-if (isset($_GET['ID'])) {
-    $id = $_GET['ID'];
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
     $CheckAlreadyExist = $CheckAlreadyExist . " AND " . VisitedDetails::$ID . " <> '" . $id . "'";
 }
 

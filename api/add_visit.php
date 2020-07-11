@@ -28,11 +28,11 @@ $body = new MySqlEscape(json_decode(file_get_contents('php://input'), true), $co
 $date = $body->getValue('date');
 $region = $body->getValue('region');
 $location = $body->getValue('location');
-$parlour = $body->getValue('parlour');
+$parlor = $body->getValue('parlor');
 $visitedTime = $body->getValue('visitedTime');
 
 //IF THESE VARIABLES ARE EMPTY KILL THE REQUEST
-if ($date == "" || $region == "" || $location == "" || $parlour == "" || $visitedTime == "") {
+if ($date == "" || $region == "" || $location == "" || $parlor == "" || $visitedTime == "") {
     $response["status"] = "FIELD";
     echo json_encode($response);
     die();
@@ -69,7 +69,7 @@ VALUES(
 '" . $date . "',
 '" . $body->passForSafeSql($region) . "',
 '" . $body->passForSafeSql($location) . "',
-'" . $body->passForSafeSql($parlour) . "',
+'" . $body->passForSafeSql($parlor) . "',
 '" . $body->passForSafeSql($visitedTime) . "',
 '" . $body->passForSafeSql($comment) . "',
 '" . $body->passForSafeSql($verifiedBy) . "',

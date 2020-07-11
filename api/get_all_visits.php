@@ -63,7 +63,7 @@ if (mysqli_num_rows($GetVisitresult) > 0) {
     while ($row = mysqli_fetch_assoc($GetVisitresult)) {
         $temp['date'] = $row[VisitedDetails::$COLUMN_DATE];
         $temp['visitedTime'] = $row[VisitedDetails::$COLUMN_TIME];
-        $temp['parlour'] = $row[VisitedDetails::$COLUMN_PARLOUR];
+        $temp['parlor'] = $row[VisitedDetails::$COLUMN_PARLOUR];
         $temp['location'] = $row[VisitedDetails::$COLUMN_LOCATION];
         $temp['region'] = $row[VisitedDetails::$COLUMN_REGION];
         $temp['verifiedBy'] = $row[VisitedDetails::$COLUMN_VERIFIED_BY];
