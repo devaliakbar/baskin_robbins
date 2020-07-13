@@ -22,10 +22,12 @@ if ($user['type'] != 0) {
 //GETTING BODY VARIABLES
 $body = new MySqlEscape(json_decode(file_get_contents('php://input'), true), $conn);
 
+$fullName = $body->getValue('fullName');
 $username = $body->getValue('username');
 $password = $body->getValue('password');
+$type = $body->getValue('type');
 
-if ($username == "") {
+if ($fullName == "" || $username == "") {
     $response["status"] = "FIELD";
     echo json_encode($response);
     die();
@@ -37,44 +39,37 @@ if (strlen($password) < 6 || strlen($password) > 50) {
     die();
 }
 
-$UpdatePasswordQuery = "UPDATE
+if (!is_numeric($type) || $type > 2 || $type < 0) {
+    $response["status"] = "ACCOUNT_TYPE";
+    echo json_encode($response);
+    die();
+}
+
+$CheckUsernameExist = "SELECT
+" . User::$ID . "
+FROM
 " . User::$TABLE_NAME . "
-SET
-" . User::$COLUMN_PASSWORD . " =  MD5('" . $body->passForSafeSql($password) . "')
 WHERE
 " . User::$COLUMN_USERNAME . " = '" . $body->passForSafeSql($username) . "'";
 
-if (mysqli_query($conn, $UpdatePasswordQuery)) {
-//DELETING ALL PREVIOUS TOKEN OF THIS USER
+$checkUsernameExistResult = mysqli_query($conn, $CheckUsernameExist);
 
-//GETTING USER ID
-    $GetUserIdQuery = "SELECT
-    " . User::$ID . "
-    FROM
-    " . User::$TABLE_NAME . "
-    WHERE
-    " . User::$COLUMN_USERNAME . " = '" . $body->passForSafeSql($username) . "'";
+if (mysqli_num_rows($checkUsernameExistResult) > 0) {
+    $response["status"] = "EXIST";
+    echo json_encode($response);
+    die();
+}
 
-    $userResult = mysqli_query($conn, $GetUserIdQuery);
+$UserCreateQuery = "INSERT INTO " . User::$TABLE_NAME . "(
+    " . User::$COLUMN_NAME . " ,
+    " . User::$COLUMN_USERNAME . " ,
+    " . User::$COLUMN_PASSWORD . " ,
+    " . User::$COLUMN_TYPE . "
+)
+VALUES('" . $body->passForSafeSql($fullName) . "' , '" . $body->passForSafeSql($username) . "' , MD5('" . $body->passForSafeSql($password) . "') , " . $type . ")";
 
-    if (mysqli_num_rows($userResult) > 0) {
-        $userInfo = mysqli_fetch_assoc($userResult);
-        $userId = $userInfo[User::$ID];
-        $response["success"] = true;
-
-        //DELETING ALL TOKEN
-        $DeleteTokenQuery = "DELETE
-        FROM
-        " . JWTToken::$TABLE_NAME . "
-        WHERE
-        " . JWTToken::$COLUMN_USER_ID . " = '" . $userId . "'";
-        mysqli_query($conn, $DeleteTokenQuery);
-
-    } else {
-        $response["status"] = "NON_USER";
-    }
-} else {
-    $response["status"] = "FAILED";
+if (mysqli_query($conn, $UserCreateQuery)) {
+    $response["success"] = true;
 }
 
 echo json_encode($response);

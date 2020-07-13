@@ -23,7 +23,7 @@ if ($user['type'] != 0) {
 $body = new MySqlEscape(json_decode(file_get_contents('php://input'), true), $conn);
 
 $username = $body->getValue('username');
-$password = $body->getValue('password');
+$type = $body->getValue('type');
 
 if ($username == "") {
     $response["status"] = "FIELD";
@@ -31,20 +31,20 @@ if ($username == "") {
     die();
 }
 
-if (strlen($password) < 6 || strlen($password) > 50) {
-    $response["status"] = "PASSWORD_LENGTH";
+if (!is_numeric($type) || $type > 2 || $type < 0) {
+    $response["status"] = "ACCOUNT_TYPE";
     echo json_encode($response);
     die();
 }
 
-$UpdatePasswordQuery = "UPDATE
+$UpdatePrivilegeQuery = "UPDATE
 " . User::$TABLE_NAME . "
 SET
-" . User::$COLUMN_PASSWORD . " =  MD5('" . $body->passForSafeSql($password) . "')
+" . User::$COLUMN_TYPE . " =  '" . $type . "'
 WHERE
 " . User::$COLUMN_USERNAME . " = '" . $body->passForSafeSql($username) . "'";
 
-if (mysqli_query($conn, $UpdatePasswordQuery)) {
+if (mysqli_query($conn, $UpdatePrivilegeQuery)) {
 //DELETING ALL PREVIOUS TOKEN OF THIS USER
 
 //GETTING USER ID

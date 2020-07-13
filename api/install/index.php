@@ -214,31 +214,31 @@ if (mysqli_query($conn, $AdminCreateQuery)) {
     echo "<br>Failed To Create 'Admin' : " . mysqli_error($conn) . "<br>";
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-$UserCreateQuery = "INSERT INTO " . User::$TABLE_NAME . "(
-    " . User::$COLUMN_NAME . " ,
-    " . User::$COLUMN_USERNAME . " ,
-    " . User::$COLUMN_PASSWORD . " ,
-    " . User::$COLUMN_TYPE . "
-)
-VALUES('User' , 'user' , MD5('password') , 1)";
+// $UserCreateQuery = "INSERT INTO " . User::$TABLE_NAME . "(
+//     " . User::$COLUMN_NAME . " ,
+//     " . User::$COLUMN_USERNAME . " ,
+//     " . User::$COLUMN_PASSWORD . " ,
+//     " . User::$COLUMN_TYPE . "
+// )
+// VALUES('User' , 'user' , MD5('password') , 1)";
 
-if (mysqli_query($conn, $UserCreateQuery)) {
-    echo "<br>Successfully Created 'User'<br>";
-} else {
-    echo "<br>Failed To Create 'User' : " . mysqli_error($conn) . "<br>";
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-$GuestCreateQuery = "INSERT INTO " . User::$TABLE_NAME . "(
-    " . User::$COLUMN_NAME . " ,
-    " . User::$COLUMN_USERNAME . " ,
-    " . User::$COLUMN_PASSWORD . " ,
-    " . User::$COLUMN_TYPE . "
-)
-VALUES('Guest' , 'guest' , MD5('password') , 2)";
+// if (mysqli_query($conn, $UserCreateQuery)) {
+//     echo "<br>Successfully Created 'User'<br>";
+// } else {
+//     echo "<br>Failed To Create 'User' : " . mysqli_error($conn) . "<br>";
+// }
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// $GuestCreateQuery = "INSERT INTO " . User::$TABLE_NAME . "(
+//     " . User::$COLUMN_NAME . " ,
+//     " . User::$COLUMN_USERNAME . " ,
+//     " . User::$COLUMN_PASSWORD . " ,
+//     " . User::$COLUMN_TYPE . "
+// )
+// VALUES('Guest' , 'guest' , MD5('password') , 2)";
 
-if (mysqli_query($conn, $GuestCreateQuery)) {
-    echo "<br>Successfully Created 'Guest'<br>";
-} else {
-    echo "<br>Failed To Create 'Guest' : " . mysqli_error($conn) . "<br>";
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// if (mysqli_query($conn, $GuestCreateQuery)) {
+//     echo "<br>Successfully Created 'Guest'<br>";
+// } else {
+//     echo "<br>Failed To Create 'Guest' : " . mysqli_error($conn) . "<br>";
+// }
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
