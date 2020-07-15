@@ -20,4 +20,6 @@ class VisitedDetails
 
     public static $COLUMN_APPROVED_BY = "col_approved_by";
     public static $COLUMN_APPROVED_DATE = "col_approved_date";
+
+    public static $COLUMN_DOCUMENT_PATH = "col_document_path";
 }

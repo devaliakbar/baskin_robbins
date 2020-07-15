@@ -50,6 +50,7 @@ $checkedBy = $body->getValue('checkedBy');
 $checkedDate = $body->getValue('checkedDate') == "" ? "0000-00-00" : $body->getValue('checkedDate');
 $approvedBy = $body->getValue('approvedBy');
 $approvedDate = $body->getValue('approvedDate') == "" ? "0000-00-00" : $body->getValue('approvedDate');
+$documentPath = $body->getValue('documentPath');
 
 $InsertVisitedDetailsQuery = "INSERT INTO " . VisitedDetails::$TABLE_NAME . "(
     " . VisitedDetails::$COLUMN_DATE . " ,
@@ -63,7 +64,8 @@ $InsertVisitedDetailsQuery = "INSERT INTO " . VisitedDetails::$TABLE_NAME . "(
     " . VisitedDetails::$COLUMN_CHECKED_BY . " ,
     " . VisitedDetails::$COLUMN_CHECKED_DATE . " ,
     " . VisitedDetails::$COLUMN_APPROVED_BY . " ,
-    " . VisitedDetails::$COLUMN_APPROVED_DATE . "
+    " . VisitedDetails::$COLUMN_APPROVED_DATE . " ,
+    " . VisitedDetails::$COLUMN_DOCUMENT_PATH . "
 )
 VALUES(
 '" . $date . "',
@@ -77,7 +79,8 @@ VALUES(
 '" . $body->passForSafeSql($checkedBy) . "',
 '" . $checkedDate . "',
 '" . $body->passForSafeSql($approvedBy) . "',
-'" . $approvedDate . "'
+'" . $approvedDate . "',
+'" . $documentPath . "'
 )";
 
 //IF FAIL TO INSERT ROLL BACK AND KILL REQUEST

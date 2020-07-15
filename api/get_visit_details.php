@@ -44,6 +44,7 @@ if (mysqli_num_rows($GetVisitresult) > 0) {
     $resultArray['checkedDate'] = $visitDetails[VisitedDetails::$COLUMN_CHECKED_DATE];
     $resultArray['approvedBy'] = $visitDetails[VisitedDetails::$COLUMN_APPROVED_BY];
     $resultArray['approvedDate'] = $visitDetails[VisitedDetails::$COLUMN_APPROVED_DATE];
+    $resultArray['documentPath'] = $visitDetails[VisitedDetails::$COLUMN_DOCUMENT_PATH];
 
     //GETTING CAMERA DETALS OF THIS VISIT
     $GetCameraDetailsQuery = "SELECT * FROM " . CameraDetails::$TABLE_NAME . " WHERE " . CameraDetails::$COLUMN_VISITED_ID . " = '" . $visitId . "'";

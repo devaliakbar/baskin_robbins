@@ -51,6 +51,7 @@ $checkedBy = $body->getValue('checkedBy');
 $checkedDate = $body->getValue('checkedDate') == "" ? "0000-00-00" : $body->getValue('checkedDate');
 $approvedBy = $body->getValue('approvedBy');
 $approvedDate = $body->getValue('approvedDate') == "" ? "0000-00-00" : $body->getValue('approvedDate');
+$documentPath = $body->getValue('documentPath');
 
 $UpdateVisitedDetailsQuery = "UPDATE
 " . VisitedDetails::$TABLE_NAME . "
@@ -66,7 +67,8 @@ SET
 " . VisitedDetails::$COLUMN_CHECKED_BY . " = '" . $body->passForSafeSql($checkedBy) . "' ,
 " . VisitedDetails::$COLUMN_CHECKED_DATE . " = '" . $body->passForSafeSql($checkedDate) . "' ,
 " . VisitedDetails::$COLUMN_APPROVED_BY . " = '" . $body->passForSafeSql($approvedBy) . "' ,
-" . VisitedDetails::$COLUMN_APPROVED_DATE . " = '" . $body->passForSafeSql($approvedDate) . "'
+" . VisitedDetails::$COLUMN_APPROVED_DATE . " = '" . $body->passForSafeSql($approvedDate) . "' ,
+" . VisitedDetails::$COLUMN_DOCUMENT_PATH . " = '" . $documentPath . "'
 WHERE
 " . VisitedDetails::$ID . " = '" . $body->passForSafeSql($id) . "'";
 

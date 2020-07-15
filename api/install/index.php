@@ -152,7 +152,8 @@ $VisitedDetailsTableCreateQuery = "CREATE TABLE IF NOT EXISTS " . VisitedDetails
     " . VisitedDetails::$COLUMN_CHECKED_DATE . " DATE ,
 
     " . VisitedDetails::$COLUMN_APPROVED_BY . " VARCHAR(50),
-    " . VisitedDetails::$COLUMN_APPROVED_DATE . " DATE
+    " . VisitedDetails::$COLUMN_APPROVED_DATE . " DATE ,
+    " . VisitedDetails::$COLUMN_DOCUMENT_PATH . " VARCHAR(500)
 )ENGINE = INNODB;";
 
 if (mysqli_query($conn, $VisitedDetailsTableCreateQuery)) {
