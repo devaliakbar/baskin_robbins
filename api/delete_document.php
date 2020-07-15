@@ -28,7 +28,15 @@ if ($fileName == "") {
     die();
 }
 
-if (!unlink("../uploads/" . $fileName)) {
+$filePath = "../uploads/" . $fileName;
+
+if (!file_exists($filePath)) {
+    $response["status"] = "NOT_EXIST";
+    echo json_encode($response);
+    die();
+}
+
+if (!unlink($filePath)) {
     $response["status"] = "FAILED";
 } else {
     $response["success"] = true;
