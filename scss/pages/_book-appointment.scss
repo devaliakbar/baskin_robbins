@@ -1,0 +1,22 @@
+.book-appointment{
+    .mail-or-phone{
+        .phone{
+            display: none;
+
+            .code{
+                width: 80px;
+                margin-right: 20px;
+            }
+        }
+
+        &.mobileOnly{
+            .phone{
+                display: flex;
+            }
+
+            .mail{
+                display: none;
+            }
+        }
+    }
+}

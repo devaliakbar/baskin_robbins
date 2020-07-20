@@ -1,0 +1,36 @@
+
+input {
+
+    @include placeholder {
+        color: lighten($dark-grey, 30%) !important; 
+    }
+}
+
+select {
+    width: 50px;
+    height: 40px;
+    border: none;
+
+    option:disabled {
+        display:none;
+    }
+}
+
+.btn {
+    border-radius: 0;
+    padding: 10px 15px;
+
+    &.btn-trans {
+        border: 1px solid $dark-grey;
+    }
+
+    &.btn-add{
+        min-width: 150px;
+    }
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

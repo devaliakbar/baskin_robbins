@@ -1,0 +1,42 @@
+.settings-page{
+
+    .wrapper{
+        display: flex;
+    }
+
+    h5{
+        margin: 0;
+        font-size: 17px;
+        color: $dark-grey;
+    }
+    .nav-tabs{
+        margin: auto 0;
+        border: none;
+        flex-direction: column;
+        border: 1px solid lighten($dark-grey, 30);
+        border-width: 1px 0;
+        .nav-link{
+            color: $dark-grey;
+            padding: 20px;
+            border: none;
+            border-left: 1px solid lighten($dark-grey, 30);
+            border-radius: 0;
+            &.active{
+                background: $light-grey;
+                border-left: 1px solid $dark-grey;
+                h5{
+                    color: darken($dark-grey, 30);
+                }
+            }
+            &:hover{
+
+                background: $light-grey;
+            }
+        }
+    }
+
+    .tab-content{
+        padding:  20px 20px 20px 50px;
+        background: $light-grey;
+    }
+}
