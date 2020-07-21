@@ -8,21 +8,18 @@ $("#login").click(function async() {
 });
 
 var login = async (username, password) => {
-  showLoader();
   const response = await fetch("api/login.php", {
     method: "POST",
     body: JSON.stringify({ username, password }),
   });
-  hideLoader();
+
   if (response.status == 200) {
     var jsonResponce = await response.json();
     if (jsonResponce["success"]) {
-      //SETTING ACCOUNT TYPE
-
+      //SAVE TOKEN
+      setCookie("token", jsonResponce["token"], 365);
       setCookie("type", jsonResponce["type"], 365);
-
-      // document.cookie = "type=" + jsonResponce["type"] + ";";
-      $("form").submit();
+      location.replace("index.php");
     } else {
       alert("Invalid Username or Password");
     }

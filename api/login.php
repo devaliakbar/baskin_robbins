@@ -16,7 +16,8 @@ $response["success"] = false;
 $response["status"] = "INVALID";
 
 $validateUserQuery = "SELECT
-" . User::$ID . "
+" . User::$ID . " ,
+" . User::$COLUMN_TYPE . "
 FROM
 " . User::$TABLE_NAME . "
 WHERE
@@ -32,6 +33,7 @@ if (mysqli_num_rows($validateUserResult) > 0) {
 
     if ($jwtToken != null) {
         $response["token"] = $jwtToken;
+        $response["type"] = $userInfo[User::$COLUMN_TYPE];
         $response["success"] = true;
     } else {
         $response["status"] = "FAILED";

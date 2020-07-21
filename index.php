@@ -1,10 +1,16 @@
-<?php include 'header.php'; ?>
+<script src="js/main/common.js"></script>
+<script>
+if(getCookie("token") == ""){
+    location.replace("login.php");
+}
+</script>
+<?php include 'header.php';?>
 
 <!-- Right side header -->
 <div class="header">
     <h2>Dashboard</h2>
     <a href="#" class="hidden-xs"><img src="images/user.jpg" class="header-img"></a>
-    <a class="header-logout hidden-xs" href="#"><i class="fa fa-sign-out"></i><br>Logout</a>
+    <a class="header-logout hidden-xs" onclick="logOut()" href="#"><i class="fa fa-sign-out"></i><br>Logout</a>
 </div>
 <!-- End right side header -->
 
@@ -26,10 +32,10 @@
                             <form class="form-inline date-range">
                                 <label for="" class="mr-3">Date:</label>
                                 <div class='input-group date mr-5'>
-                                    <input type='text' class="form-control startDate" placeholder="From" />
+                                    <input id="from_date" type='text' class="form-control startDate" placeholder="From" />
                                 </div>
                                 <div class='input-group'>
-                                    <input type='text' class="form-control endDate" placeholder="To" />
+                                    <input id="to_date" type='text' class="form-control endDate" placeholder="To" />
                                 </div>
                             </form>
 
@@ -48,28 +54,46 @@
                             <div class="col-md-9 pr-0">
 
                                 <div class="row">
-                                    <div class="col-sm-3">
+                                    <!-- <div class="col-sm-3">
                                         <div class="frm-con-tag my-2 my-lg-0">
                                             <input class="frm-con effect-3" type="text" placeholder="Parlor Code">
                                             <span class="focus-border"></span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-sm-3">
                                         <div class="frm-con-tag my-2 my-lg-0">
-                                            <input class="frm-con effect-3" type="text" placeholder="Parlor Name">
-                                            <span class="focus-border"></span>
+                                        <label for="choose_region">Select Region</label>
+                                        <select id="region" name="refrence" aria-required="true"  aria-invalid="false" class="frm-con effect-3" required="">
+                                            <option value="" selected="" disabled=""></option>
+                                            <option value="Kochi">Kochi</option>
+                                            <option value="MM Radha">MM Radha</option>
+                                            <option value="P Paul">P Paul</option>
+                                            <option value="Alexander">Alexander</option>
+                                        </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="frm-con-tag my-2 my-lg-0">
-                                            <input class="frm-con effect-3" type="text" placeholder="Location">
-                                            <span class="focus-border"></span>
+                                        <label for="choose_location">Select Location</label>
+                                        <select id="location" name="refrence" aria-required="true"  aria-invalid="false" class="frm-con effect-3" required="">
+                                            <option value="" selected="" disabled=""></option>
+                                            <option value="1">Anil Kumar</option>
+                                            <option value="1">MM Radha</option>
+                                            <option value="1">P Paul</option>
+                                            <option value="1">Alexander</option>
+                                        </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="frm-con-tag my-2 my-lg-0">
-                                            <input class="frm-con effect-3" type="text" placeholder="Region">
-                                            <span class="focus-border"></span>
+                                        <label for="choose_doctor">Select Parlor</label>
+                                        <select id="parlor" name="refrence" aria-required="true"  aria-invalid="false" class="frm-con effect-3" required="">
+                                            <option value="" selected="" disabled=""></option>
+                                            <option value="1">Anil Kumar</option>
+                                            <option value="1">MM Radha</option>
+                                            <option value="1">P Paul</option>
+                                            <option value="1">Alexander</option>
+                                        </select>
                                         </div>
                                     </div>
                                 </div>
@@ -112,51 +136,8 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>01/07/2020</td>
-                                        <td>Visit 1 2020</td>
-                                        <td>Bolghatty</td>
-                                        <td>Ernakulam</td>
-                                        <td>Kerala</td>
-                                        <td>Radhu </td>
-                                        <td>Mohan</td>
-                                        <td>Rafeeq</td>
-                                        <td><i class="fa fa-eye" aria-hidden="true"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td>01/07/2020</td>
-                                        <td>Visit 1 2020</td>
-                                        <td>Bolghatty</td>
-                                        <td>Ernakulam</td>
-                                        <td>Kerala</td>
-                                        <td>Radhu </td>
-                                        <td>Mohan</td>
-                                        <td>Rafeeq</td>
-                                        <td><i class="fa fa-eye" aria-hidden="true"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td>01/07/2020</td>
-                                        <td>Visit 1 2020</td>
-                                        <td>Bolghatty</td>
-                                        <td>Ernakulam</td>
-                                        <td>Kerala</td>
-                                        <td>Radhu </td>
-                                        <td>Mohan</td>
-                                        <td>Rafeeq</td>
-                                        <td><i class="fa fa-eye" aria-hidden="true"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td>01/07/2020</td>
-                                        <td>Visit 1 2020</td>
-                                        <td>Bolghatty</td>
-                                        <td>Ernakulam</td>
-                                        <td>Kerala</td>
-                                        <td>Radhu </td>
-                                        <td>Mohan</td>
-                                        <td>Rafeeq</td>
-                                        <td><i class="fa fa-eye" aria-hidden="true"></i></td>
-                                    </tr>
+                                <tbody class="visits-table">
+
 
                                 </tbody>
                             </table>
@@ -167,7 +148,7 @@
                 <div class="col-12">
                     <div class="footer-pager-panel">
                         <div class="nav-btns">
-                            <a href="" class="btn btn-trans">Load More</a>
+                            <a href="#" onclick="fetchAllVisits()" class="btn btn-trans">Load More</a>
                         </div>
                     </div>
                 </div>
@@ -179,4 +160,5 @@
 
 
 
-<?php include 'footer.php'; ?>
+<?php include 'footer.php';?>
+<script src="js/main/home.js"></script>

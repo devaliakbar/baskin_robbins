@@ -1,3 +1,10 @@
+<script src="js/main/common.js"></script>
+<script>
+if(getCookie("token") != ""){
+    location.replace("index.php");
+}
+</script>
+
 <?php include 'header.php';?>
 
 <main class="login">
@@ -11,22 +18,22 @@
                     </div>
 
                     <div class="login-form mt-3">
-                        <form action="/examples/actions/confirmation.php" method="post">
-                            <h2 class="text-center mb-2">Log in</h2>
+
+                            <h2 class="text-center mb-2">Log In</h2>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Username" required="required">
+                                <input id="username" type="text" class="form-control" placeholder="Username" required="required">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password" required="required">
+                                <input id="password" type="password" class="form-control" placeholder="Password" required="required">
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-trans btn-block">Log in</button>
+                                <button id="login" type="submit" class="btn btn-trans btn-block">Log in</button>
                             </div>
                             <!-- <div class="clearfix">
                                 <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
                                 <a href="#" class="float-right">Forgot Password?</a>
                             </div> -->
-                        </form>
+
                     </div>
 
                 </div>
@@ -36,4 +43,4 @@
 </main>
 
 <?php include 'footer.php';?>
-<script src="js/login/login.js"></script>
+<script src="js/main/login.js"></script>
