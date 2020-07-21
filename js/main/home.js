@@ -1,17 +1,43 @@
+var page = 0;
+
 $(document).ready(function () {
-  fetchAllVisits();
+  //GETTING ALL REGIONS FOR FILTER
+  getAllRegions();
+  //AFTER FETCHING REGION, FETCHING REGIONS
+  fetchVisits();
+
+  $("#from_date").change(async function () {
+    setUpFilterAndGetVisits();
+  });
+
+  $("#to_date").change(async function () {
+    setUpFilterAndGetVisits();
+  });
+
+  $("#region").change(async function () {
+    await getLocations();
+    setUpFilterAndGetVisits();
+  });
+
+  $("#location").change(async function () {
+    await getParlors();
+    setUpFilterAndGetVisits();
+  });
+
+  $("#parlor").change(function () {
+    setUpFilterAndGetVisits();
+  });
 });
 
-var fetchAllVisits = async () => {
+var setUpFilterAndGetVisits = () => {
   var filter = "?page=1";
-
   var fromDate = $("#from_date").val().trim();
   if (fromDate != "") {
-    filter += "&from_date=" + fromDate;
+    filter += "&from_date=" + formatDate(fromDate);
 
     var toDate = $("#to_date").val().trim();
     if (toDate != "") {
-      filter += "&to_date=" + toDate;
+      filter += "&to_date=" + formatDate(toDate);
     }
   }
 
@@ -29,7 +55,10 @@ var fetchAllVisits = async () => {
       }
     }
   }
+  fetchVisits(filter);
+};
 
+var fetchVisits = async (filter = "?page=1") => {
   var visits = await getResponce("api/get_all_visits.php" + filter);
 
   if (visits == undefined) {
@@ -38,11 +67,12 @@ var fetchAllVisits = async () => {
 
   if (!visits.success) {
     if (visits.status == "EMPTY") {
-      return alert("Empty");
+      return showEmpty();
     }
     return alert("FAILED");
   }
-
+  page = visits.page;
+  console.log(page);
   fillVisitTable(visits.visits);
 };
 
@@ -61,4 +91,8 @@ var fillVisitTable = (visits) => {
     appendRaw += "<td><i class='fa fa-eye' aria-hidden='true'></i></td></tr>";
     jQuery(".visits-table").append(appendRaw);
   }
+};
+
+var showEmpty = () => {
+  jQuery(".visits-table").empty();
 };

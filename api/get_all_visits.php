@@ -14,6 +14,17 @@ $response = array();
 $response["success"] = false;
 $response["status"] = "INVALID";
 
+if (!isset($_GET['page'])) {
+    $response["status"] = "PAGE";
+    echo json_encode($response);
+    die();
+}
+if (!is_numeric($_GET['page'])) {
+    $response["status"] = "PAGE_NO";
+    echo json_encode($response);
+    die();
+}
+
 //GETTING ALL VISITS
 $GetVisitQuery = "SELECT
 " . VisitedDetails::$ID . " ,
@@ -53,11 +64,17 @@ if (isset($_GET['parlor'])) {
     $GetVisitQuery = $GetVisitQuery . " AND " . VisitedDetails::$COLUMN_PARLOUR . " = '" . $_GET['parlor'] . "'";
 }
 
-//////////////////////////
+///////////SETTING PAGNATION///////////////
+$page = $_GET['page'];
+$limit = 15;
+$skip = $limit * ($page - 1);
+$GetVisitQuery = $GetVisitQuery . " LIMIT " . $skip . " , " . $limit;
+///////////////////////////////////////////
 
 $GetVisitresult = mysqli_query($conn, $GetVisitQuery);
 if (mysqli_num_rows($GetVisitresult) > 0) {
     $response["success"] = true;
+    $response["page"] = $page;
     $temp = array();
     $cursorArray = array();
 

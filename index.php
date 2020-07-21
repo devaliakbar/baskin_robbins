@@ -64,11 +64,11 @@ if(getCookie("token") == ""){
                                         <div class="frm-con-tag my-2 my-lg-0">
                                         <label for="choose_region">Select Region</label>
                                         <select id="region" name="refrence" aria-required="true"  aria-invalid="false" class="frm-con effect-3" required="">
-                                            <option value="" selected="" disabled=""></option>
-                                            <option value="Kochi">Kochi</option>
+                                             <option value="" selected="" disabled></option>
+                                           <!-- <option value="Kochi">Kochi</option>
                                             <option value="MM Radha">MM Radha</option>
                                             <option value="P Paul">P Paul</option>
-                                            <option value="Alexander">Alexander</option>
+                                            <option value="Alexander">Alexander</option> -->
                                         </select>
                                         </div>
                                     </div>
@@ -77,10 +77,10 @@ if(getCookie("token") == ""){
                                         <label for="choose_location">Select Location</label>
                                         <select id="location" name="refrence" aria-required="true"  aria-invalid="false" class="frm-con effect-3" required="">
                                             <option value="" selected="" disabled=""></option>
-                                            <option value="1">Anil Kumar</option>
+                                            <!-- <option value="1">Anil Kumar</option>
                                             <option value="1">MM Radha</option>
                                             <option value="1">P Paul</option>
-                                            <option value="1">Alexander</option>
+                                            <option value="1">Alexander</option> -->
                                         </select>
                                         </div>
                                     </div>
@@ -89,10 +89,10 @@ if(getCookie("token") == ""){
                                         <label for="choose_doctor">Select Parlor</label>
                                         <select id="parlor" name="refrence" aria-required="true"  aria-invalid="false" class="frm-con effect-3" required="">
                                             <option value="" selected="" disabled=""></option>
-                                            <option value="1">Anil Kumar</option>
+                                           <!-- <option value="1">Anil Kumar</option>
                                             <option value="1">MM Radha</option>
                                             <option value="1">P Paul</option>
-                                            <option value="1">Alexander</option>
+                                            <option value="1">Alexander</option> -->
                                         </select>
                                         </div>
                                     </div>
