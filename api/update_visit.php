@@ -30,10 +30,9 @@ $date = $body->getValue('date');
 $region = $body->getValue('region');
 $location = $body->getValue('location');
 $parlor = $body->getValue('parlor');
-$visitedTime = $body->getValue('visitedTime');
 
 //IF THESE VARIABLES ARE EMPTY KILL THE REQUEST
-if ($id == "" || $date == "" || $region == "" || $location == "" || $parlor == "" || $visitedTime == "") {
+if ($id == "" || $date == "" || $region == "" || $location == "" || $parlor == "") {
     $response["status"] = "FIELD";
     echo json_encode($response);
     die();
@@ -43,6 +42,8 @@ if ($id == "" || $date == "" || $region == "" || $location == "" || $parlor == "
 //TRANSACTION BEGIN
 mysqli_autocommit($conn, false);
 ///////////////////
+
+$visitedTime = ""; // $body->getValue('visitedTime'); //TRASH
 
 $comment = $body->getValue('comment');
 $verifiedBy = $body->getValue('verifiedBy');

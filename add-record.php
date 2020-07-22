@@ -1,10 +1,23 @@
-<?php include 'header.php'; ?>
+<?php
+if (isset($_COOKIE['token'])) {
+    if ($_COOKIE['token'] == '') {
+        header("Location: login.php");
+        exit();
+    }
+} else {
+    header("Location: login.php");
+    exit();
+}
+
+include 'header.php';
+
+?>
 
 <!-- Right side header -->
 <div class="header">
-    <h2>Add New Record</h2>
-    <a href="#" class="hidden-xs"><img src="images/user.jpg" class="header-img"></a>
-    <a class="header-logout hidden-xs" href="#"><i class="fa fa-sign-out"></i><br>Logout</a>
+    <h2 id="heading"></h2>
+    <a href="#" class="btn btn-trans header-img">Save</a>
+    <a class="header-logout hidden-xs" onclick="logOut()" href="#"><i class="fa fa-sign-out"></i><br>Logout</a>
 </div>
 <!-- End right side header -->
 
@@ -20,16 +33,16 @@
             <div class="col-12">
                 <ul class="nav nav-tabs row no-gutters" id="myTab" role="tablist">
                     <li class="nav-item col">
-                        <a class="nav-link active" id="first-tab" data-toggle="tab" href="#first" role="tab" aria-controls="first" aria-selected="true">first</a>
+                        <a class="nav-link active" id="first-tab" data-toggle="tab" href="#first" role="tab" aria-controls="first" aria-selected="true">Details</a>
                     </li>
                     <li class="nav-item col">
-                        <a class="nav-link" id="second-tab" data-toggle="tab" href="#second" role="tab" aria-controls="second" aria-selected="false">second</a>
+                        <a class="nav-link" id="second-tab" data-toggle="tab" href="#second" role="tab" aria-controls="second" aria-selected="false">DVR Details</a>
                     </li>
                     <li class="nav-item col">
-                        <a class="nav-link" id="third-tab" data-toggle="tab" href="#third" role="tab" aria-controls="third" aria-selected="false">third</a>
+                        <a class="nav-link" id="third-tab" data-toggle="tab" href="#third" role="tab" aria-controls="third" aria-selected="false">Network Cable Details</a>
                     </li>
                     <li class="nav-item col">
-                        <a class="nav-link" id="fourth-tab" data-toggle="tab" href="#fourth" role="tab" aria-controls="fourth" aria-selected="false">fourth</a>
+                        <a class="nav-link" id="fourth-tab" data-toggle="tab" href="#fourth" role="tab" aria-controls="fourth" aria-selected="false">Camera Details</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
@@ -40,16 +53,29 @@
 
 
                             <div class="row">
+
+                            <div class="col">
+                                    <div class="date-wrap ml-auto">
+
+
+                                        <div class="input-group">
+                                            <input id="date" type="text" class="form-control endDate frm-con" placeholder="Date">
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
                                 <div class="col">
 
                                     <div class="frm-con-tag  mb-0">
                                         <label for="choose_region">Select Region</label>
-                                        <select name="refrence" aria-required="true" id="choose_region" aria-invalid="false" class="frm-con effect-3" required="">
+                                        <select id="region" name="refrence" aria-required="true" id="choose_region" aria-invalid="false" class="frm-con effect-3" required="">
                                             <option value="" selected="" disabled=""></option>
-                                            <option value="1">Kochi</option>
+                                            <!-- <option value="1">Kochi</option>
                                             <option value="1">MM Radha</option>
                                             <option value="1">P Paul</option>
-                                            <option value="1">Alexander</option>
+                                            <option value="1">Alexander</option> -->
                                         </select>
                                     </div>
                                 </div>
@@ -57,12 +83,12 @@
 
                                     <div class="frm-con-tag  mb-0">
                                         <label for="choose_location">Select Location</label>
-                                        <select name="refrence" aria-required="true" id="choose_location" aria-invalid="false" class="frm-con effect-3" required="">
+                                        <select id="location" name="refrence" aria-required="true" id="choose_location" aria-invalid="false" class="frm-con effect-3" required="">
                                             <option value="" selected="" disabled=""></option>
-                                            <option value="1">Anil Kumar</option>
+                                            <!-- <option value="1">Anil Kumar</option>
                                             <option value="1">MM Radha</option>
                                             <option value="1">P Paul</option>
-                                            <option value="1">Alexander</option>
+                                            <option value="1">Alexander</option> -->
                                         </select>
                                     </div>
                                 </div>
@@ -71,17 +97,17 @@
 
                                     <div class="frm-con-tag  mb-0">
                                         <label for="choose_doctor">Select Parlor</label>
-                                        <select name="refrence" aria-required="true" id="choose_doctor" aria-invalid="false" class="frm-con effect-3" required="">
+                                        <select id="parlor" name="refrence" aria-required="true" id="choose_doctor" aria-invalid="false" class="frm-con effect-3" required="">
                                             <option value="" selected="" disabled=""></option>
-                                            <option value="1">Anil Kumar</option>
+                                            <!-- <option value="1">Anil Kumar</option>
                                             <option value="1">MM Radha</option>
                                             <option value="1">P Paul</option>
-                                            <option value="1">Alexander</option>
+                                            <option value="1">Alexander</option> -->
                                         </select>
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <!-- <div class="col">
 
                                     <div class="frm-con-tag  mb-0">
                                         <label for="choose_doctor">Visited Time</label>
@@ -93,19 +119,9 @@
                                             <option value="1">Alexander</option>
                                         </select>
                                     </div>
-                                </div>
-
-                                <div class="col">
-                                    <div class="date-wrap ml-auto">
+                                </div> -->
 
 
-                                        <div class="input-group">
-                                            <input type="text" class="form-control endDate frm-con" placeholder="To">
-                                        </div>
-
-
-                                    </div>
-                                </div>
 
                             </div>
                             <div class="table-contents">
@@ -130,14 +146,14 @@
                                                 <h6>Verified By</h6>
 
                                                 <div class="frm-con-tag input-group">
-                                                    <label for="ver_by">Name</label>
-                                                    <input class="frm-con effect-3" type="text" id="ver_by" required="">
+                                                    <label for="verified_by">Name</label>
+                                                    <input class="frm-con effect-3" type="text" id="verified_by" required="">
                                                     <span class="focus-border"></span>
                                                 </div>
 
                                                 <div class="date-wrap frm-con-tag">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control frm-con endDate" placeholder="To">
+                                                        <input id="verified_date" type="text" class="form-control frm-con endDate" placeholder="Date">
                                                         <span class="focus-border"></span>
                                                     </div>
 
@@ -148,14 +164,14 @@
                                                 <h6>Checked By</h6>
 
                                                 <div class="frm-con-tag input-group">
-                                                    <label for="chk_by">Name</label>
-                                                    <input class="frm-con effect-3" type="text" id="chk_by" required="">
+                                                    <label for="checked_by">Name</label>
+                                                    <input class="frm-con effect-3" type="text" id="checked_by" required="">
                                                     <span class="focus-border"></span>
                                                 </div>
 
                                                 <div class="date-wrap ml-auto frm-con-tag">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control frm-con endDate" placeholder="To">
+                                                        <input  id="checked_date" type="text" class="form-control frm-con endDate" placeholder="Date">
                                                         <span class="focus-border"></span>
                                                     </div>
 
@@ -166,14 +182,14 @@
                                                 <h6>Approved By</h6>
 
                                                 <div class="frm-con-tag input-group">
-                                                    <label for="appr_by">Name</label>
-                                                    <input class="frm-con effect-3" type="text" id="appr_by" required="">
+                                                    <label for="approved_by">Name</label>
+                                                    <input class="frm-con effect-3" type="text" id="approved_by" required="">
                                                     <span class="focus-border"></span>
                                                 </div>
 
                                                 <div class="date-wrap ml-auto">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control frm-con endDate" placeholder="To">
+                                                        <input id="approved_date" type="text" class="form-control frm-con endDate" placeholder="Date">
                                                         <span class="focus-border"></span>
                                                     </div>
 
@@ -194,59 +210,58 @@
                             <div class="row">
 
                                 <div class="frm-con-tag input-group col">
-                                    <label for="two_type">No Of Channels</label>
-                                    <input class="frm-con effect-3" type="text" id="two_type" required="">
+                                    <label for="no_of_channels">No Of Channels</label>
+                                    <input class="frm-con effect-3" type="number" id="no_of_channels" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
                                 <div class="frm-con-tag input-group col">
-                                    <label for="two_brand">Brand</label>
-                                    <input class="frm-con effect-3" type="text" id="two_brand" required="">
+                                    <label for="dvr_brand">Brand</label>
+                                    <input class="frm-con effect-3" type="text" id="dvr_brand" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
                                 <div class="frm-con-tag input-group col">
                                     <div class="frm-con-tag  mb-0">
-                                        <label for="rec_avail">Recording Availability</label>
-                                        <select name="refrence" aria-required="true" id="rec_avail" aria-invalid="false" class="frm-con effect-3" required="">
-                                            <option value="" selected="" disabled=""></option>
-                                            <option value="1">Anil Kumar</option>
-                                            <option value="1">MM Radha</option>
-                                            <option value="1">P Paul</option>
-                                            <option value="1">Alexander</option>
+                                        <label for="record_availability">Recording Availability</label>
+                                        <select name="refrence" aria-required="true" id="record_availability" aria-invalid="false" class="frm-con effect-3" required="">
+                                            <option value="" selected="" ></option>
+                                            <option value="Available">Available</option>
+                                            <option value="Not Available">Not Available</option>
+
                                         </select>
                                         <span class="focus-border"></span>
                                     </div>
                                 </div>
 
                                 <div class="frm-con-tag input-group col">
-                                    <label for="two_remark">Remark</label>
-                                    <input class="frm-con effect-3" type="text" id="two_remark" required="">
+                                    <label for="hdd_capacity">HDD Capaciity</label>
+                                    <input class="frm-con effect-3" type="text" id="hdd_capacity" required="">
                                     <span class="focus-border"></span>
                                 </div>
                             </div>
                             <div class="row">
 
                                 <div class="frm-con-tag input-group col">
-                                    <label for="two_remark">Remark</label>
-                                    <input class="frm-con effect-3" type="text" id="two_remark" required="">
+                                    <label for="dvr_remark">Remark</label>
+                                    <input class="frm-con effect-3" type="text" id="dvr_remark" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
 
-                                <div class="frm-con-tag input-group col">
+                                <!-- <div class="frm-con-tag input-group col">
                                     <label for="two_ip">IP Detail</label>
                                     <input class="frm-con effect-3" type="text" id="two_ip" required="">
                                     <span class="focus-border"></span>
-                                </div>
+                                </div> -->
 
                                 <div class="frm-con-tag input-group col">
-                                    <label for="two_suggestion">Suggestion</label>
-                                    <input class="frm-con effect-3" type="text" id="two_suggestion" required="">
+                                    <label for="dvr_suggestion">Suggestion</label>
+                                    <input class="frm-con effect-3" type="text" id="dvr_suggestion" required="">
                                     <span class="focus-border"></span>
                                 </div>
                                 <div class="col">
-                                    <button class="btn btn-trans btn-add">ADD</button>
+                                    <button onclick="addDvr()" class="btn btn-trans btn-add">ADD</button>
                                 </div>
                             </div>
                         </div>
@@ -261,123 +276,34 @@
                                                 <thead>
                                                     <tr>
                                                         <th>
-                                                            <div class="wrap">ID</div>
+                                                            <div class="wrap">Sn No.</div>
                                                         </th>
                                                         <th>
-                                                            <div class="wrap">Doctor Name</div>
+                                                            <div class="wrap">No. of channels</div>
                                                         </th>
                                                         <th>
-                                                            <div class="wrap">Patient Name</div>
+                                                            <div class="wrap">Brand</div>
                                                         </th>
                                                         <th>
-                                                            <div class="wrap">Date & Time</div>
+                                                            <div class="wrap">Record Availability</div>
                                                         </th>
                                                         <th>
-                                                            <div class="wrap">Fees</div>
+                                                            <div class="wrap">HDD Capacity</div>
                                                         </th>
                                                         <th>
-                                                            <div class="wrap">Payment ID</div>
+                                                            <div class="wrap">Remark</div>
                                                         </th>
                                                         <th>
-                                                            <div class="wrap">Appt Status</div>
+                                                            <div class="wrap">Suggestions</div>
                                                         </th>
                                                         <th>
-                                                            <div class="wrap">Doctor Status &<br>Screen Status</div>
+                                                            <div class="wrap"></div>
                                                         </th>
-                                                        <th>
-                                                            <div class="wrap">Patient Status &<br>Screen Status</div>
-                                                        </th>
+
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
+                                                <tbody class="dvr-table">
+
 
                                                 </tbody>
                                             </table>
@@ -385,7 +311,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <!-- <div class="col-12">
                                     <div class="table-nav footer-pager-panel">
                                         <span class="entries-count">
                                             Showing 0 to 0 of 0 entries
@@ -395,7 +321,7 @@
                                             <a href="" class="btn btn-trans">Next</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -406,30 +332,33 @@
 
 
                                 <div class="frm-con-tag input-group col">
-                                    <label for="three_Network">Network Point</label>
-                                    <input class="frm-con effect-3" type="text" id="three_Network" required="">
+                                    <label for="network_point">Network Point</label>
+                                    <input class="frm-con effect-3" type="text" id="network_point" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
                                 <div class="frm-con-tag input-group col">
                                     <div class="frm-con-tag  mb-0">
-                                        <label for="three_status">Status</label>
-                                        <select name="refrence" aria-required="true" id="three_status" aria-invalid="false" class="frm-con effect-3" required="">
-                                            <option value="" selected="" disabled=""></option>
-                                            <option value="1">Anil Kumar</option>
-                                            <option value="1">MM Radha</option>
-                                            <option value="1">P Paul</option>
-                                            <option value="1">Alexander</option>
+                                        <label for="network_status">Status</label>
+                                        <select name="refrence" aria-required="true" id="network_status" aria-invalid="false" class="frm-con effect-3" required="">
+                                            <option value="" selected></option>
+                                            <option value="OK">OK</option>
+                                            <option value="Not OK">Not OK</option>
+
                                         </select>
                                         <span class="focus-border"></span>
                                     </div>
                                 </div>
 
                                 <div class="frm-con-tag input-group col">
-                                    <label for="three_suggestion">Suggestion</label>
-                                    <input class="frm-con effect-3" type="text" id="three_suggestion" required="">
+                                    <label for="network_suggestions">Suggestion</label>
+                                    <input class="frm-con effect-3" type="text" id="network_suggestions" required="">
                                     <span class="focus-border"></span>
                                 </div>
+                                <div class="col">
+                                    <button onclick="addNetworkCabel()" class="btn btn-trans btn-add">ADD</button>
+                                </div>
+
                             </div>
                         </div>
                         <div class="table-contents">
@@ -442,123 +371,27 @@
                                                 <thead>
                                                     <tr>
                                                         <th>
-                                                            <div class="wrap">ID</div>
+                                                            <div class="wrap">Sn No.</div>
                                                         </th>
                                                         <th>
-                                                            <div class="wrap">Doctor Name</div>
+                                                            <div class="wrap">Network Point</div>
                                                         </th>
                                                         <th>
-                                                            <div class="wrap">Patient Name</div>
+                                                            <div class="wrap">Status</div>
                                                         </th>
+
                                                         <th>
-                                                            <div class="wrap">Date & Time</div>
+                                                            <div class="wrap">Suggestions</div>
                                                         </th>
+
                                                         <th>
-                                                            <div class="wrap">Fees</div>
+                                                        <div class="wrap"></div>
                                                         </th>
-                                                        <th>
-                                                            <div class="wrap">Payment ID</div>
-                                                        </th>
-                                                        <th>
-                                                            <div class="wrap">Appt Status</div>
-                                                        </th>
-                                                        <th>
-                                                            <div class="wrap">Doctor Status &<br>Screen Status</div>
-                                                        </th>
-                                                        <th>
-                                                            <div class="wrap">Patient Status &<br>Screen Status</div>
-                                                        </th>
+
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
+                                                <tbody class="network-cabel-table">
+
 
                                                 </tbody>
                                             </table>
@@ -566,7 +399,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <!-- <div class="col-12">
                                     <div class="table-nav footer-pager-panel">
                                         <span class="entries-count">
                                             Showing 0 to 0 of 0 entries
@@ -576,7 +409,7 @@
                                             <a href="" class="btn btn-trans">Next</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -585,40 +418,66 @@
                             <div class="row">
 
                                 <div class="frm-con-tag input-group col">
-                                    <label for="one_type">Type</label>
-                                    <input class="frm-con effect-3" type="text" id="one_type" required="">
+                                    <label for="camera_type">Type</label>
+                                    <input class="frm-con effect-3" type="text" id="camera_type" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
                                 <div class="frm-con-tag input-group col">
-                                    <label for="one_brand">Brand</label>
-                                    <input class="frm-con effect-3" type="text" id="one_brand" required="">
+                                    <label for="camera_brand">Brand</label>
+                                    <input class="frm-con effect-3" type="text" id="camera_brand" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
                                 <div class="frm-con-tag input-group col">
-                                    <label for="one_count">Count</label>
-                                    <input class="frm-con effect-3" type="text" id="one_count" required="">
+                                    <label for="camera_count">Count</label>
+                                    <input class="frm-con effect-3" type="number" id="camera_count" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
                                 <div class="frm-con-tag input-group col">
-                                    <label for="one_remark">Remark</label>
-                                    <input class="frm-con effect-3" type="text" id="one_remark" required="">
+
+
+
+
+                                <label for="camera_status">Status</label>
+                                        <select name="refrence" aria-required="true" id="camera_status" aria-invalid="false" class="frm-con effect-3" required="">
+                                            <option value="" selected></option>
+                                            <option value="OK">OK</option>
+                                            <option value="Not OK">Not OK</option>
+
+                                        </select>
+                                        <span class="focus-border"></span>
+
+
+<!--
+                                    <label for="camera_status">Status</label>
+                                    <input class="frm-con effect-3" type="text" id="camera_status" required="">
+                                    <span class="focus-border"></span> -->
+                                </div>
+
+                                <div class="frm-con-tag input-group col">
+                                    <label for="camera_remark">Remark</label>
+                                    <input class="frm-con effect-3" type="text" id="camera_remark" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
                                 <div class="frm-con-tag input-group col">
-                                    <label for="one_ip">IP Detail</label>
-                                    <input class="frm-con effect-3" type="text" id="one_ip" required="">
+                                    <label for="camera_ip">IP Detail</label>
+                                    <input class="frm-con effect-3" type="text" id="camera_ip" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
                                 <div class="frm-con-tag input-group col">
-                                    <label for="one_suggestion">Suggestion</label>
-                                    <input class="frm-con effect-3" type="text" id="one_suggestion" required="">
+                                    <label for="camera_suggestion">Suggestion</label>
+                                    <input class="frm-con effect-3" type="text" id="camera_suggestion" required="">
                                     <span class="focus-border"></span>
                                 </div>
+
+                                <div class="col">
+                                    <button onclick="addCamera()" class="btn btn-trans btn-add">ADD</button>
+                                </div>
+
                             </div>
                         </div>
                         <div class="table-contents">
@@ -631,123 +490,47 @@
                                                 <thead>
                                                     <tr>
                                                         <th>
-                                                            <div class="wrap">ID</div>
+                                                            <div class="wrap">Sn No.</div>
                                                         </th>
                                                         <th>
-                                                            <div class="wrap">Doctor Name</div>
+                                                            <div class="wrap">Type</div>
                                                         </th>
                                                         <th>
-                                                            <div class="wrap">Patient Name</div>
+                                                            <div class="wrap">Brand</div>
                                                         </th>
                                                         <th>
-                                                            <div class="wrap">Date & Time</div>
+                                                            <div class="wrap">Count</div>
                                                         </th>
                                                         <th>
-                                                            <div class="wrap">Fees</div>
+                                                            <div class="wrap">Status</div>
                                                         </th>
                                                         <th>
-                                                            <div class="wrap">Payment ID</div>
+                                                            <div class="wrap">Remark</div>
                                                         </th>
                                                         <th>
-                                                            <div class="wrap">Appt Status</div>
+                                                            <div class="wrap">IP Details</div>
                                                         </th>
                                                         <th>
-                                                            <div class="wrap">Doctor Status &<br>Screen Status</div>
+                                                            <div class="wrap">Suggestion</div>
                                                         </th>
                                                         <th>
-                                                            <div class="wrap">Patient Status &<br>Screen Status</div>
+                                                            <div class="wrap"></div>
                                                         </th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <tr>
+                                                <tbody  class="camera-table">
+                                                    <!-- <tr>
                                                         <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Radhu</td>
-                                                        <td>Jahar</td>
-                                                        <td>24/02/20</td>
-                                                        <td>2500</td>
-                                                        <td>56
-                                                        <td>
-                                                        <td>Active</td>
-                                                        <td>On</td>
-                                                    </tr>
+                                                        <td>2</td>
+                                                        <td>3</td>
+                                                        <td>4</td>
+                                                        <td>5</td>
+                                                        <td>6</td>
+                                                        <td>7</td>
+                                                        <td>8</td>
+                                                        <td>9</td>
+                                                    </tr> -->
+
 
                                                 </tbody>
                                             </table>
@@ -755,7 +538,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <!-- <div class="col-12">
                                     <div class="table-nav footer-pager-panel">
                                         <span class="entries-count">
                                             Showing 0 to 0 of 0 entries
@@ -765,7 +548,7 @@
                                             <a href="" class="btn btn-trans">Next</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -777,6 +560,6 @@
     <!-- end invite patient content -->
 </main>
 
-
-
-<?php include 'footer.php'; ?>
+<?php include 'footer.php';?>
+<script src="js/main/common.js"></script>
+<script src="js/main/add-record.js"></script>
