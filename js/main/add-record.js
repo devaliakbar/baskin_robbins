@@ -1,6 +1,7 @@
 var dvrDetails = [];
 var networkCabelDetails = [];
 var cameraDetails = [];
+var tvDetails = [];
 
 $(document).ready(function () {
   $("#heading").html("Add Record");
@@ -15,6 +16,62 @@ $(document).ready(function () {
     getParlors();
   });
 });
+
+var saveVisit = async () => {
+  var date = $("#date").val().trim();
+  var region = $("#region").val().trim();
+  var location = $("#location").val().trim();
+  var parlor = $("#parlor").val().trim();
+  var comment = $("#comment").val().trim();
+
+  var verifiedBy = $("#verified_by").val().trim();
+  var verifiedDate = $("#verified_date").val().trim();
+
+  var checkedBy = $("#checked_by").val().trim();
+  var checkedDate = $("#checked_date").val().trim();
+
+  var approvedBy = $("#approved_by").val().trim();
+  var approvedDate = $("#approved_date").val().trim();
+
+  if (date == "" || region == "" || location == "" || parlor == "") {
+    return alert("Please select 'date','region','location' and 'parlor'");
+  }
+
+  var visitBody = {
+    date: formatDate(date),
+    region: region,
+    location: location,
+    parlor: parlor,
+    comment: comment,
+    verifiedBy: verifiedBy,
+    verifiedDate: verifiedDate,
+    checkedBy: checkedBy,
+    checkedDate: checkedDate,
+    approvedBy: approvedBy,
+    approvedDate: approvedDate,
+    documentPath: "Josepeee",
+    cameraDetailsList: cameraDetails,
+    dvrDetailsList: dvrDetails,
+    networkCabelDetailsList: networkCabelDetails,
+    tvDetailsList: tvDetails,
+  };
+
+  var addVisitStatus = await getResponce(
+    "api/add_visit.php",
+    "POST",
+    visitBody
+  );
+
+  if (addVisitStatus == undefined) {
+    return;
+  }
+
+  if (!addVisitStatus.success) {
+    return alert("Failed to save");
+  }
+  alert("Success");
+  window.location = "index.php";
+};
 
 var addDvr = () => {
   var noOfChannels = $("#no_of_channels").val().trim();
@@ -154,13 +211,13 @@ var addCamera = () => {
     suggestions: suggestions,
   });
 
-  // $("#camera_type").val("");
-  // $("#camera_brand").val("");
-  // $("#camera_count").val("");
-  // $("#camera_status").val("");
-  // $("#camera_remark").val("");
-  // $("#camera_ip").val("");
-  // $("#camera_suggestion").val("");
+  $("#camera_type").val("");
+  $("#camera_brand").val("");
+  $("#camera_count").val("");
+  $("#camera_status").val("");
+  $("#camera_remark").val("");
+  $("#camera_ip").val("");
+  $("#camera_suggestion").val("");
 
   fillCameraTable();
 };
@@ -196,4 +253,59 @@ var fillCameraTable = () => {
 var removeCameraRow = (index) => {
   cameraDetails.splice(index, 1);
   fillCameraTable();
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+var addTV = () => {
+  var networkPoint = $("#tv_point").val().trim();
+  var status = $("#tv_status").val().trim();
+  var remark = $("#tv_remark").val().trim();
+  var suggestions = $("#tv_suggestions").val().trim();
+  if (networkPoint == "" || status == "") {
+    return alert("Please enter 'Network point' and 'status'");
+  }
+
+  tvDetails.push({
+    networkPoint: networkPoint,
+    status: status,
+    remark: remark,
+    suggestions: suggestions,
+  });
+
+  $("#tv_point").val("");
+  $("#tv_status").val("");
+  $("#tv_remark").val("");
+  $("#tv_suggestions").val("");
+
+  fillTVTable();
+};
+
+var fillTVTable = () => {
+  jQuery(".tv-table").empty();
+  for (var i = 0; i < tvDetails.length; i++) {
+    var appendRow =
+      " <tr><td>" +
+      (i + 1) +
+      "</td> <td>" +
+      tvDetails[i].networkPoint +
+      "</td><td>" +
+      tvDetails[i].status +
+      "</td><td>" +
+      tvDetails[i].remark +
+      "</td><td>" +
+      tvDetails[i].suggestions +
+      "</td><td><i onclick='removeTVRow(" +
+      i +
+      ")' class='fa fa-trash' aria-hidden='true'></i></td></tr>";
+
+    jQuery(".tv-table").append(appendRow);
+  }
+};
+
+var removeTVRow = (index) => {
+  tvDetails.splice(index, 1);
+  fillTVTable();
 };

@@ -16,7 +16,7 @@ include 'header.php';
 <!-- Right side header -->
 <div class="header">
     <h2 id="heading"></h2>
-    <a href="#" class="btn btn-trans header-img">Save</a>
+    <a onclick="saveVisit()" href="#" class="btn btn-trans header-img">Save</a>
     <a class="header-logout hidden-xs" onclick="logOut()" href="#"><i class="fa fa-sign-out"></i><br>Logout</a>
 </div>
 <!-- End right side header -->
@@ -36,14 +36,19 @@ include 'header.php';
                         <a class="nav-link active" id="first-tab" data-toggle="tab" href="#first" role="tab" aria-controls="first" aria-selected="true">Details</a>
                     </li>
                     <li class="nav-item col">
+                        <a class="nav-link" id="fourth-tab" data-toggle="tab" href="#fourth" role="tab" aria-controls="fourth" aria-selected="false">Camera Details</a>
+                    </li>
+                    <li class="nav-item col">
                         <a class="nav-link" id="second-tab" data-toggle="tab" href="#second" role="tab" aria-controls="second" aria-selected="false">DVR Details</a>
                     </li>
                     <li class="nav-item col">
                         <a class="nav-link" id="third-tab" data-toggle="tab" href="#third" role="tab" aria-controls="third" aria-selected="false">Network Cable Details</a>
                     </li>
+
                     <li class="nav-item col">
-                        <a class="nav-link" id="fourth-tab" data-toggle="tab" href="#fourth" role="tab" aria-controls="fourth" aria-selected="false">Camera Details</a>
+                        <a class="nav-link" id="fifth-tab" data-toggle="tab" href="#fifth" role="tab" aria-controls="fifth" aria-selected="false">TV Details</a>
                     </li>
+
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="first" role="tabpanel" aria-labelledby="first-tab">
@@ -69,9 +74,9 @@ include 'header.php';
                                 <div class="col">
 
                                     <div class="frm-con-tag  mb-0">
-                                        <label for="choose_region">Select Region</label>
-                                        <select id="region" name="refrence" aria-required="true" id="choose_region" aria-invalid="false" class="frm-con effect-3" required="">
-                                            <option value="" selected="" disabled=""></option>
+                                        <label for="region">Select Region</label>
+                                        <select id="region" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
+                                            <option value="" selected="" ></option>
                                             <!-- <option value="1">Kochi</option>
                                             <option value="1">MM Radha</option>
                                             <option value="1">P Paul</option>
@@ -82,9 +87,9 @@ include 'header.php';
                                 <div class="col">
 
                                     <div class="frm-con-tag  mb-0">
-                                        <label for="choose_location">Select Location</label>
-                                        <select id="location" name="refrence" aria-required="true" id="choose_location" aria-invalid="false" class="frm-con effect-3" required="">
-                                            <option value="" selected="" disabled=""></option>
+                                        <label for="location">Select Location</label>
+                                        <select id="location" name="refrence" aria-required="true"  aria-invalid="false" class="frm-con effect-3" required="">
+                                            <option value="" selected="" ></option>
                                             <!-- <option value="1">Anil Kumar</option>
                                             <option value="1">MM Radha</option>
                                             <option value="1">P Paul</option>
@@ -96,9 +101,9 @@ include 'header.php';
                                 <div class="col">
 
                                     <div class="frm-con-tag  mb-0">
-                                        <label for="choose_doctor">Select Parlor</label>
-                                        <select id="parlor" name="refrence" aria-required="true" id="choose_doctor" aria-invalid="false" class="frm-con effect-3" required="">
-                                            <option value="" selected="" disabled=""></option>
+                                        <label for="parlor">Select Parlor</label>
+                                        <select id="parlor" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
+                                            <option value="" selected="" ></option>
                                             <!-- <option value="1">Anil Kumar</option>
                                             <option value="1">MM Radha</option>
                                             <option value="1">P Paul</option>
@@ -413,6 +418,134 @@ include 'header.php';
                             </div>
                         </div>
                     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="tab-pane fade" id="fifth" role="tabpanel" aria-labelledby="fifth-tab">
+
+<div class="top-inputs col-12 mt-4">
+    <div class="row">
+
+
+        <div class="frm-con-tag input-group col">
+            <label for="tv_point">Network Point</label>
+            <input class="frm-con effect-3" type="text" id="tv_point" required="">
+            <span class="focus-border"></span>
+        </div>
+
+        <div class="frm-con-tag input-group col">
+            <div class="frm-con-tag  mb-0">
+                <label for="tv_status">Status</label>
+                <select name="refrence" aria-required="true" id="tv_status" aria-invalid="false" class="frm-con effect-3" required="">
+                    <option value="" selected></option>
+                    <option value="OK">OK</option>
+                    <option value="Not OK">Not OK</option>
+
+                </select>
+                <span class="focus-border"></span>
+            </div>
+        </div>
+
+        <div class="frm-con-tag input-group col">
+            <label for="tv_remark">Remark</label>
+            <input class="frm-con effect-3" type="text" id="tv_remark" required="">
+            <span class="focus-border"></span>
+        </div>
+
+        <div class="frm-con-tag input-group col">
+            <label for="tv_suggestions">Suggestion</label>
+            <input class="frm-con effect-3" type="text" id="tv_suggestions" required="">
+            <span class="focus-border"></span>
+        </div>
+        <div class="col">
+            <button onclick="addTV()" class="btn btn-trans btn-add">ADD</button>
+        </div>
+
+    </div>
+</div>
+<div class="table-contents">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="table-wrapper">
+                <div class="table-responsive">
+                    <table class="table table2excel table2excel_with_colors">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div class="wrap">Sn No.</div>
+                                </th>
+                                <th>
+                                    <div class="wrap">Network Point</div>
+                                </th>
+                                <th>
+                                    <div class="wrap">Status</div>
+                                </th>
+                                <th>
+                                    <div class="wrap">Remark</div>
+                                </th>
+                                <th>
+                                    <div class="wrap">Suggestions</div>
+                                </th>
+
+                                <th>
+                                <div class="wrap"></div>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="tv-table">
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-12">
+            <div class="table-nav footer-pager-panel">
+                <span class="entries-count">
+                    Showing 0 to 0 of 0 entries
+                </span>
+                <div class="nav-btns">
+                    <a href="" class="btn btn-trans">Previous</a>
+                    <a href="" class="btn btn-trans">Next</a>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <div class="tab-pane fade" id="fourth" role="tabpanel" aria-labelledby="fourth-tab">
                         <div class="top-inputs col-12 mt-4">
                             <div class="row">

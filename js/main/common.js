@@ -6,7 +6,7 @@ var getResponce = async (path, passedMethod, passedBody) => {
       headers: {
         token: getCookie("token"),
       },
-      body: JSON.stringify({ passedBody }),
+      body: JSON.stringify(passedBody),
     });
   } else {
     response = await fetch(path, {
@@ -20,9 +20,9 @@ var getResponce = async (path, passedMethod, passedBody) => {
   if (response.status != 200) {
     return { status: "FAILED", success: false };
   }
-
+  var responceText = await response.text();
   try {
-    var jsonResponce = JSON.parse(await response.text());
+    var jsonResponce = JSON.parse(responceText);
   } catch (err) {
     console.log(err);
     return { status: "FAILED", success: false };
