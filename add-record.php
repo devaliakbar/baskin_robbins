@@ -696,3 +696,4 @@ include 'header.php';
 <?php include 'footer.php';?>
 <script src="js/main/common.js"></script>
 <script src="js/main/add-record.js"></script>
+<script src="js/main/update-record.js"></script>

@@ -1,12 +1,21 @@
+var query;
 var dvrDetails = [];
 var networkCabelDetails = [];
 var cameraDetails = [];
 var tvDetails = [];
 
-$(document).ready(function () {
-  $("#heading").html("Add Record");
+$(document).ready(async function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  query = urlParams.get("q");
 
-  getAllRegions();
+  await getAllRegions();
+
+  if (query != null && query != "") {
+    $("#heading").html("Update Record");
+    loadPrevious(query);
+  } else {
+    $("#heading").html("Add Record");
+  }
 
   $("#region").change(function () {
     getLocations();
@@ -56,18 +65,25 @@ var saveVisit = async () => {
     tvDetailsList: tvDetails,
   };
 
-  var addVisitStatus = await getResponce(
-    "api/add_visit.php",
-    "POST",
-    visitBody
-  );
+  var addVisitStatus;
+
+  if (query != null && query != "") {
+    visitBody.id = query;
+    addVisitStatus = await getResponce(
+      "api/update_visit.php",
+      "POST",
+      visitBody
+    );
+  } else {
+    addVisitStatus = await getResponce("api/add_visit.php", "POST", visitBody);
+  }
 
   if (addVisitStatus == undefined) {
     return;
   }
 
   if (!addVisitStatus.success) {
-    return alert("Failed to save");
+    return alert("Failed To Save");
   }
   alert("Success");
   window.location = "index.php";

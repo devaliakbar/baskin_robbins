@@ -191,3 +191,8 @@ var formatDate = (date) => {
   var dateSplit = date.split("/");
   return dateSplit[0] + "-" + dateSplit[1] + "-" + dateSplit[2];
 };
+
+var format2Date = (date) => {
+  var dateSplit = date.split("-");
+  return dateSplit[0] + "/" + dateSplit[1] + "/" + dateSplit[2];
+};
