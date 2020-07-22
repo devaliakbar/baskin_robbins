@@ -101,11 +101,18 @@ var fillVisitTable = (visits) => {
     appendRaw += "<td>" + visits[i].verifiedBy + "</td>";
     appendRaw += "<td>" + visits[i].checkedBy + "</td>";
     appendRaw += "<td>" + visits[i].approvedBy + "</td>";
-    appendRaw += "<td><i class='fa fa-eye' aria-hidden='true'></i></td></tr>";
+    appendRaw +=
+      "<td><i onclick='showVisit(" +
+      visits[i].id +
+      ")' class='fa fa-eye' aria-hidden='true'></i></td></tr>";
     jQuery(".visits-table").append(appendRaw);
   }
 };
 
 var showEmpty = () => {
   jQuery(".visits-table").empty();
+};
+
+var showVisit = (visitId) => {
+  window.location = "visit.php?q=" + visitId;
 };

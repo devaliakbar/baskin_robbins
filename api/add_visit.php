@@ -240,5 +240,6 @@ foreach ($tvDetailsList as $tvDetails) {
 }
 
 mysqli_commit($conn);
+$response["id"] = $visitedId;
 $response["success"] = true;
 echo json_encode($response);

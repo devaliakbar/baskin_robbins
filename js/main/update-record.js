@@ -22,17 +22,24 @@ var loadPrevious = async (id) => {
 
   $("#comment").val(visit.visitDetails.comment);
   $("#verified_by").val(visit.visitDetails.verifiedBy);
-  $("#verified_date").val(visit.visitDetails.verifiedDate);
+  $("#verified_date").val(format2Date(visit.visitDetails.verifiedDate));
   $("#checked_by").val(visit.visitDetails.checkedBy);
-  $("#checked_date").val(visit.visitDetails.checkedDate);
+  $("#checked_date").val(format2Date(visit.visitDetails.checkedDate));
   $("#approved_by").val(visit.visitDetails.approvedBy);
-  $("#approved_date").val(visit.visitDetails.approvedDate);
+  $("#approved_date").val(format2Date(visit.visitDetails.approvedDate));
 
-  dvrDetails = visit.visitDetails.dvrDetailsList;
-  networkCabelDetails = visit.visitDetails.networkCabelDetailsList;
-  cameraDetails = visit.visitDetails.cameraDetailsList;
-  tvDetails = visit.visitDetails.tvDetailsList;
-
+  if (visit.visitDetails.dvrDetailsList != undefined) {
+    dvrDetails = visit.visitDetails.dvrDetailsList;
+  }
+  if (visit.visitDetails.networkCabelDetailsList != undefined) {
+    networkCabelDetails = visit.visitDetails.networkCabelDetailsList;
+  }
+  if (visit.visitDetails.cameraDetailsList != undefined) {
+    cameraDetails = visit.visitDetails.cameraDetailsList;
+  }
+  if (visit.visitDetails.tvDetailsList != undefined) {
+    tvDetails = visit.visitDetails.tvDetailsList;
+  }
   fillDvrTable();
   fillNetworkCabelTable();
   fillCameraTable();

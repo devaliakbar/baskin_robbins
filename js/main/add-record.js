@@ -86,7 +86,12 @@ var saveVisit = async () => {
     return alert("Failed To Save");
   }
   alert("Success");
-  window.location = "index.php";
+
+  if (query == null) {
+    query = addVisitStatus.id;
+  }
+
+  window.location = "visit.php?q=" + query;
 };
 
 var addDvr = () => {
