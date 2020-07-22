@@ -13,6 +13,7 @@ $user = Middleware::verifyToken();
 $response = array();
 $response["success"] = false;
 $response["status"] = "INVALID";
+$response["page"] = -1;
 
 if (!isset($_GET['page'])) {
     $response["status"] = "PAGE";
@@ -24,6 +25,8 @@ if (!is_numeric($_GET['page'])) {
     echo json_encode($response);
     die();
 }
+
+$response["page"] = $_GET['page'];
 
 //GETTING ALL VISITS
 $GetVisitQuery = "SELECT
@@ -64,6 +67,8 @@ if (isset($_GET['parlor'])) {
     $GetVisitQuery = $GetVisitQuery . " AND " . VisitedDetails::$COLUMN_PARLOUR . " = '" . $_GET['parlor'] . "'";
 }
 
+$GetVisitQuery = $GetVisitQuery . " ORDER BY " . VisitedDetails::$ID . " DESC";
+
 ///////////SETTING PAGNATION///////////////
 $page = $_GET['page'];
 $limit = 15;
@@ -74,7 +79,6 @@ $GetVisitQuery = $GetVisitQuery . " LIMIT " . $skip . " , " . $limit;
 $GetVisitresult = mysqli_query($conn, $GetVisitQuery);
 if (mysqli_num_rows($GetVisitresult) > 0) {
     $response["success"] = true;
-    $response["page"] = $page;
     $temp = array();
     $cursorArray = array();
 

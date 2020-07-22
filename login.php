@@ -1,11 +1,13 @@
-<script src="js/main/common.js"></script>
-<script>
-if(getCookie("token") != ""){
-    location.replace("index.php");
+<?php
+if (isset($_COOKIE['token'])) {
+    if ($_COOKIE['token'] != '') {
+        header("Location: index.php");
+        exit();
+    }
 }
-</script>
 
-<?php include 'header.php';?>
+include 'header.php';
+?>
 
 <main class="login">
     <div class="container">
@@ -43,4 +45,5 @@ if(getCookie("token") != ""){
 </main>
 
 <?php include 'footer.php';?>
+<script src="js/main/common.js"></script>
 <script src="js/main/login.js"></script>

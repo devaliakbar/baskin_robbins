@@ -7,30 +7,35 @@ $(document).ready(function () {
   fetchVisits();
 
   $("#from_date").change(async function () {
+    page = 0;
     setUpFilterAndGetVisits();
   });
 
   $("#to_date").change(async function () {
+    page = 0;
     setUpFilterAndGetVisits();
   });
 
   $("#region").change(async function () {
     await getLocations();
+    page = 0;
     setUpFilterAndGetVisits();
   });
 
   $("#location").change(async function () {
     await getParlors();
+    page = 0;
     setUpFilterAndGetVisits();
   });
 
   $("#parlor").change(function () {
+    page = 0;
     setUpFilterAndGetVisits();
   });
 });
 
 var setUpFilterAndGetVisits = () => {
-  var filter = "?page=1";
+  var filter = "?page=" + (+page + 1);
   var fromDate = $("#from_date").val().trim();
   if (fromDate != "") {
     filter += "&from_date=" + formatDate(fromDate);
@@ -65,19 +70,27 @@ var fetchVisits = async (filter = "?page=1") => {
     return;
   }
 
+  if (visits.page != +page + 1) {
+    return;
+  }
+
   if (!visits.success) {
     if (visits.status == "EMPTY") {
+      if (page > 0) {
+        return;
+      }
       return showEmpty();
     }
     return alert("FAILED");
   }
   page = visits.page;
-  console.log(page);
+  if (page == 1) {
+    jQuery(".visits-table").empty();
+  }
   fillVisitTable(visits.visits);
 };
 
 var fillVisitTable = (visits) => {
-  jQuery(".visits-table").empty();
   for (var i = 0; i < visits.length; i++) {
     var appendRaw = " <tr>";
     appendRaw += "<td>" + visits[i].date + "</td>";

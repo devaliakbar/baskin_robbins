@@ -1,10 +1,16 @@
-<script src="js/main/common.js"></script>
-<script>
-if(getCookie("token") == ""){
-    location.replace("login.php");
+<?php
+if (isset($_COOKIE['token'])) {
+    if ($_COOKIE['token'] == '') {
+        header("Location: login.php");
+        exit();
+    }
+} else {
+    header("Location: login.php");
+    exit();
 }
-</script>
-<?php include 'header.php';?>
+
+include 'header.php';
+?>
 
 <!-- Right side header -->
 <div class="header">
@@ -148,7 +154,7 @@ if(getCookie("token") == ""){
                 <div class="col-12">
                     <div class="footer-pager-panel">
                         <div class="nav-btns">
-                            <a href="#" onclick="fetchAllVisits()" class="btn btn-trans">Load More</a>
+                            <a href="#" onclick="setUpFilterAndGetVisits()" class="btn btn-trans">Load More</a>
                         </div>
                     </div>
                 </div>
@@ -161,4 +167,5 @@ if(getCookie("token") == ""){
 
 
 <?php include 'footer.php';?>
+<script src="js/main/common.js"></script>
 <script src="js/main/home.js"></script>
