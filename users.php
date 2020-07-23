@@ -1,4 +1,17 @@
-<?php include 'header.php'; ?>
+<?php
+if (isset($_COOKIE['token'])) {
+    if ($_COOKIE['token'] == '') {
+        header("Location: login.php");
+        exit();
+    }
+} else {
+    header("Location: login.php");
+    exit();
+}
+
+include 'header.php';
+
+?>
 
 <!-- Right side header -->
 <div class="header">
@@ -45,20 +58,13 @@
                                         <th>
                                             <div class="wrap">Previlage</div>
                                         </th>
+                                        <th>
+                                            <div class="wrap"></div>
+                                        </th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="wrap">Abin</div>
-                                        </td>
-                                        <td>
-                                            <div class="wrap">Goodwill</div>
-                                        </td>
-                                        <td>
-                                            <div class="wrap">Admin</div>
-                                        </td>
-                                    </tr>
+                                <tbody class="user-table">
+
                                 </tbody>
                             </table>
 
@@ -77,7 +83,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Add Expense</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Add User</h5>
             </div>
             <div class="modal-body">
 
@@ -85,28 +91,28 @@
                     <div class="row">
 
                         <div class="frm-con-tag input-group col-12">
-                            <label for="Name">Name</label>
-                            <input class="frm-con effect-3" type="text" id="Name" required="">
+                            <label for="name">Name</label>
+                            <input class="frm-con effect-3" type="text" id="name" required="">
                             <span class="focus-border"></span>
                         </div>
 
                         <div class="frm-con-tag input-group col-5">
-                            <label for="Username">Username</label>
-                            <input class="frm-con effect-3" type="text" id="Username" required="">
+                            <label for="username">Username</label>
+                            <input class="frm-con effect-3" type="text" id="username" required="">
                             <span class="focus-border"></span>
                         </div>
 
                         <div class="frm-con-tag input-group col-5 offset-2">
-                            <label for="Password">Password</label>
-                            <input class="frm-con effect-3" type="text" id="Password" required="">
+                            <label for="password">Password</label>
+                            <input class="frm-con effect-3" type="text" id="password" required="">
                             <span class="focus-border"></span>
                         </div>
 
                         <div class=" input-group col-12">
-                            <label for="Previllage" class="mr-5">Previllage</label>
-                            <label for="all" class="mr-3"><input type="radio" id="all" value="all" name="mode" class="mr-2"> All</label>
-                            <label for="Edit" class="mr-3"><input type="radio" id="Edit" value="Edit" name="mode" class="mr-2"> Edit</label>
-                            <label for="View" class="mr-3"><input type="radio" id="View" value="View" name="mode" class="mr-2"> View</label>
+                            <label for="Previllage" class="mr-5">Privilege</label>
+                            <label for="all" class="mr-3"><input type="radio" id="all" value="0" name="mode" class="mr-2" checked="checked"> All</label>
+                            <label for="Edit" class="mr-3"><input type="radio" id="Edit" value="1" name="mode" class="mr-2">Only Edit</label>
+                            <label for="View" class="mr-3"><input type="radio" id="View" value="2" name="mode" class="mr-2">Only View</label>
 
                         </div>
                     </div>
@@ -115,11 +121,58 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-trans mr-0" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-trans ml-0">Save changes</button>
+                <button onclick="addUser()" type="button" class="btn btn-trans ml-0">Save changes</button>
             </div>
         </div>
     </div>
 </div>
 
 
-<?php include 'footer.php'; ?>
+<div class="modal fade" id="userModify" tabindex="-1" role="dialog" aria-labelledby="userModifyTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userModifyTitle">Modify</h5>
+            </div>
+            <div class="modal-body">
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="frm-con-tag input-group col-12">
+                            <label for="mname">Name</label>
+                            <input class="frm-con effect-3" type="text" id="mname" required="" disabled>
+                            <span class="focus-border"></span>
+                        </div>
+
+                        <div class="frm-con-tag input-group col-5">
+                            <label for="musername">Username</label>
+                            <input class="frm-con effect-3" type="text" id="musername" required="" disabled>
+                            <span class="focus-border"></span>
+                        </div>
+
+
+                        <div class=" input-group col-12">
+                            <label for="Previllage" class="mr-5">Privilege</label>
+                            <label for="mall" class="mr-3"><input type="radio" id="mall" value="0" name="mmode" class="mr-2" > All</label>
+                            <label for="mEdit" class="mr-3"><input type="radio" id="mEdit" value="1" name="mmode" class="mr-2">Only Edit</label>
+                            <label for="mView" class="mr-3"><input type="radio" id="mView" value="2" name="mmode" class="mr-2">Only View</label>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-trans mr-0" data-dismiss="modal">Cancel</button>
+                <button onclick="changePassword()" type="button" class="btn btn-trans ml-0">Change Password</button>
+                <button onclick="savePrivilege()" type="button" class="btn btn-trans ml-0">Save Privilege</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<?php include 'footer.php';?>
+<script src="js/main/common.js"></script>
+<script src="js/main/user.js"></script>
