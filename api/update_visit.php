@@ -68,8 +68,7 @@ SET
 " . VisitedDetails::$COLUMN_CHECKED_BY . " = '" . $body->passForSafeSql($checkedBy) . "' ,
 " . VisitedDetails::$COLUMN_CHECKED_DATE . " = '" . $body->passForSafeSql($checkedDate) . "' ,
 " . VisitedDetails::$COLUMN_APPROVED_BY . " = '" . $body->passForSafeSql($approvedBy) . "' ,
-" . VisitedDetails::$COLUMN_APPROVED_DATE . " = '" . $body->passForSafeSql($approvedDate) . "' ,
-" . VisitedDetails::$COLUMN_DOCUMENT_PATH . " = '" . $documentPath . "'
+" . VisitedDetails::$COLUMN_APPROVED_DATE . " = '" . $body->passForSafeSql($approvedDate) . "'
 WHERE
 " . VisitedDetails::$ID . " = '" . $body->passForSafeSql($id) . "'";
 

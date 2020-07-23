@@ -5,6 +5,8 @@ var cameraDetails = [];
 var tvDetails = [];
 
 $(document).ready(async function () {
+  $("#attachment").hide();
+
   const urlParams = new URLSearchParams(window.location.search);
   query = urlParams.get("q");
 
@@ -58,7 +60,7 @@ var saveVisit = async () => {
     checkedDate: checkedDate,
     approvedBy: approvedBy,
     approvedDate: approvedDate,
-    documentPath: "Josepeee",
+    documentPath: "",
     cameraDetailsList: cameraDetails,
     dvrDetailsList: dvrDetails,
     networkCabelDetailsList: networkCabelDetails,
@@ -85,13 +87,17 @@ var saveVisit = async () => {
   if (!addVisitStatus.success) {
     return alert("Failed To Save");
   }
-  alert("Success");
 
   if (query == null) {
     query = addVisitStatus.id;
   }
 
-  window.location = "visit.php?q=" + query;
+  if ($("#inputfile").get(0).files.length === 0) {
+    alert("Success");
+    window.location = "visit.php?q=" + query;
+  } else {
+    uploadAttachment(query);
+  }
 };
 
 var addDvr = () => {
@@ -329,4 +335,26 @@ var fillTVTable = () => {
 var removeTVRow = (index) => {
   tvDetails.splice(index, 1);
   fillTVTable();
+};
+
+var uploadAttachment = async (visitId) => {
+  var file_data = $("#inputfile").prop("files")[0];
+  var form_data = new FormData();
+  form_data.append("document", file_data);
+  $.ajax({
+    url: "api/upload_document.php?id=" + visitId,
+    headers: {
+      token: getCookie("token"),
+    },
+    type: "POST",
+    data: form_data,
+    contentType: false,
+    cache: false,
+    processData: false,
+    success: function (data) {
+      // console.log(data);
+      alert("Success");
+      window.location = "visit.php?q=" + query;
+    },
+  });
 };

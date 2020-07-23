@@ -28,7 +28,7 @@ if ($fileName == "") {
     die();
 }
 
-$filePath = "../uploads/" . $fileName;
+$filePath = "../" . $fileName;
 
 if (!file_exists($filePath)) {
     $response["status"] = "NOT_EXIST";

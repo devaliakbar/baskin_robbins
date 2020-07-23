@@ -5,6 +5,8 @@ var cameraDetails = [];
 var tvDetails = [];
 
 $(document).ready(async function () {
+  $("#attachment").hide();
+
   const urlParams = new URLSearchParams(window.location.search);
   query = urlParams.get("q");
 
@@ -67,6 +69,11 @@ var loadPrevious = async (id) => {
   fillTVTable();
 
   isInputValued();
+
+  if (visit.visitDetails.documentPath != "") {
+    $("#attachment").attr("href", visit.visitDetails.documentPath);
+    $("#attachment").show();
+  }
 };
 
 var fillTVTable = () => {
@@ -177,6 +184,14 @@ var deleteVisit = async () => {
 
   if (!deleteResponce.success) {
     return alert("Failed To Delete");
+  }
+
+  var documentPath = $("#attachment").attr("href");
+
+  if (documentPath != "#" || documentPath != "") {
+    await getResponce("api/delete_document.php", "POST", {
+      fileName: documentPath,
+    });
   }
 
   alert("Successfully deleted");

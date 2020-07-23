@@ -201,6 +201,8 @@ include 'header.php';
                                                 </div>
                                             </div>
 
+                                            <a id="attachment" href="#" target="_blank">Download Attachment</a>
+
                                         </div>
                                     </div>
 

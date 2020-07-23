@@ -46,4 +46,9 @@ var loadPrevious = async (id) => {
   fillTVTable();
 
   isInputValued();
+
+  if (visit.visitDetails.documentPath != "") {
+    $("#attachment").attr("href", visit.visitDetails.documentPath);
+    $("#attachment").show();
+  }
 };
