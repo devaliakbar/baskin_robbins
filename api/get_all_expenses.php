@@ -10,15 +10,42 @@ $response = array();
 $response["success"] = false;
 $response["status"] = "INVALID";
 
+if (!isset($_GET['page'])) {
+    $response["status"] = "PAGE";
+    echo json_encode($response);
+    die();
+}
+if (!is_numeric($_GET['page'])) {
+    $response["status"] = "PAGE_NO";
+    echo json_encode($response);
+    die();
+}
+
+$response["page"] = $_GET['page'];
+
 $Query = "SELECT * FROM " . Expense::$TABLE_NAME . " WHERE 1";
 
-if (isset($_GET['date'])) {
-    $Query = $Query . " AND " . Expense::$COLUMN_DATE . " = '" . $_GET['date'] . "'";
+if (isset($_GET['from_date'])) {
+
+    if (isset($_GET['to_date'])) {
+        $Query = $Query . " AND " . Expense::$COLUMN_DATE . " BETWEEN '" . $_GET['from_date'] . "' AND '" . $_GET['to_date'] . "'";
+    } else {
+        $Query = $Query . " AND " . Expense::$COLUMN_DATE . " = '" . $_GET['from_date'] . "'";
+    }
 }
 
 if (isset($_GET['name'])) {
     $Query = $Query . " AND " . Expense::$COLUMN_NAME . " LIKE '" . $_GET['name'] . "%'";
 }
+
+$Query = $Query . " ORDER BY " . Expense::$ID . " DESC";
+
+///////////SETTING PAGNATION///////////////
+$page = $_GET['page'];
+$limit = 15;
+$skip = $limit * ($page - 1);
+$Query = $Query . " LIMIT " . $skip . " , " . $limit;
+///////////////////////////////////////////
 
 $result = mysqli_query($conn, $Query);
 

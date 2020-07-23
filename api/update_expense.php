@@ -27,7 +27,7 @@ $name = $body->getValue('name');
 $amount = $body->getValue('amount');
 
 //IF THESE VARIABLES ARE EMPTY KILL THE REQUEST
-if ($id == "" || $date == "" || $name == "" || $amount == "") {
+if ($id == "" || $date == "" || $amount == "") {
     $response["status"] = "FIELD";
     echo json_encode($response);
     die();

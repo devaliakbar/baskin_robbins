@@ -32,7 +32,7 @@
                 <li class=" nav-item"><a class="nav-link active" href="index.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="add-record.php"><i class="fas fa-clipboard"></i> Add new record</a></li>
-                <li class="nav-item"><a class="nav-link" href="Expense.php"><i class="fas fa-comment-dollar"></i> Expense</a>
+                <li class="nav-item"><a class="nav-link" href="expense.php"><i class="fas fa-comment-dollar"></i> Expense</a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="users.php"><i class="fas fa-users"></i> Users</a>
                 </li>
