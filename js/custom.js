@@ -108,3 +108,13 @@ $(".select-mail-or-phone input").change(function () {
     }
   }
 });
+
+function isInputValued(){
+  $(".frm-con-tag select,.frm-con-tag input, .frm-con-tag textarea").each(function(){
+    if ($(this).val() != "") {
+      $(this).closest(".frm-con-tag").addClass("valued");
+    } else {
+      $(this).closest(".frm-con-tag").removeClass("valued");
+    }
+  });
+}

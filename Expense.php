@@ -204,24 +204,30 @@
 
                 <div class="container">
                     <div class="row">
-                    <div class="date-wrap col-5 frm-con-tag">
-                    <div class="input-group">
-                        <input type="text" class="form-control frm-con endDate" placeholder="Date">
-                        <span class="focus-border"></span>
-                    </div>
-                </div>
+                        <div class="date-wrap col-5 frm-con-tag">
+                            <div class="input-group">
+                                <input type="text" class="form-control frm-con endDate" placeholder="Date">
+                                <span class="focus-border"></span>
+                            </div>
+                        </div>
 
-                <div class="frm-con-tag input-group col-5 offset-2">
-                    <label for="three_Network">Name</label>
-                    <input class="frm-con effect-3" type="text" id="three_Network" required="">
-                    <span class="focus-border"></span>
-                </div>
+                        <div class="frm-con-tag input-group col-5 offset-2">
+                            <label for="three_Network">Name</label>
+                            <input class="frm-con effect-3" type="text" id="three_Network" required="">
+                            <span class="focus-border"></span>
+                        </div>
 
-                <div class="frm-con-tag input-group col-12">
-                    <label for="Description">Description</label>
-                    <input class="frm-con effect-3" type="text" id="Description" required="">
-                    <span class="focus-border"></span>
-                </div>
+                        <div class="frm-con-tag input-group col-12">
+                            <label for="Description">Description</label>
+                            <input class="frm-con effect-3" type="text" id="Description" required="">
+                            <span class="focus-border"></span>
+                        </div>
+
+                        <div class="frm-con-tag input-group col-5">
+                            <label for="amount">Amount</label>
+                            <input class="frm-con effect-3" type="number" id="amount" required="">
+                            <span class="focus-border"></span>
+                        </div>
                     </div>
                 </div>
 

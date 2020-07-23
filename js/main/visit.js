@@ -65,6 +65,8 @@ var loadPrevious = async (id) => {
   fillNetworkCabelTable();
   fillCameraTable();
   fillTVTable();
+
+  isInputValued();
 };
 
 var fillTVTable = () => {
