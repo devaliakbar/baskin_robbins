@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ERROR | E_PARSE);
-include '../db/common.php';
+include '../db/db.php';
 
 require_once 'phpexcel/Classes/PHPExcel.php';
 
@@ -8,108 +8,7 @@ $objPHPExcel = new PHPExcel();
 
 $sheet = $objPHPExcel->getActiveSheet();
 
-//FIRST
-
 $objWorkSheet = $objPHPExcel->createSheet(0);
-
-$objWorkSheet->setTitle('Report');
-$objWorkSheet->getColumnDimension("A")->setAutoSize(true);
-$objWorkSheet->getColumnDimension("B")->setAutoSize(true);
-$objWorkSheet->getColumnDimension("C")->setAutoSize(true);
-$objWorkSheet->getColumnDimension("D")->setAutoSize(true);
-$objWorkSheet->getColumnDimension("E")->setAutoSize(true);
-$objWorkSheet->getColumnDimension("F")->setAutoSize(true);
-$objWorkSheet->getColumnDimension("G")->setAutoSize(true);
-$objWorkSheet->getColumnDimension("H")->setAutoSize(true);
-$objWorkSheet->getColumnDimension("I")->setAutoSize(true);
-$objWorkSheet->getColumnDimension("J")->setAutoSize(true);
-$objWorkSheet->getColumnDimension("K")->setAutoSize(true);
-$objWorkSheet->getColumnDimension("L")->setAutoSize(true);
-$objWorkSheet->getColumnDimension("M")->setAutoSize(true);
-$objWorkSheet->getStyle("A1:M1")->getFont()->setBold(true);
-
-$objWorkSheet->setCellValue('A1', 'SNo.');
-$objWorkSheet->setCellValue('B1', 'Name');
-$objWorkSheet->setCellValue('C1', 'Age');
-$objWorkSheet->setCellValue('D1', 'Sex');
-$objWorkSheet->setCellValue('E1', 'Address');
-$objWorkSheet->setCellValue('F1', 'Panchayat');
-$objWorkSheet->setCellValue('G1', 'Ward');
-$objWorkSheet->setCellValue('H1', 'Phone No.');
-$objWorkSheet->setCellValue('I1', 'Institution Name');
-$objWorkSheet->setCellValue('J1', 'Arrived From');
-$objWorkSheet->setCellValue('K1', 'Date of Arrival');
-$objWorkSheet->setCellValue('L1', 'Quarantine Started Date');
-$objWorkSheet->setCellValue('M1', 'Quarantine Started Date');
-
-$queryForFechingCameraCounts = "SELECT
-tb_camera_details._id
-FROM
-tb_visited_details
-INNER JOIN tb_camera_details ON tb_visited_details._id = tb_camera_details.col_visited_id";
-
-$queryForFechingDVRCounts = "SELECT
-tb_dvr_details._id
-FROM
-tb_visited_details
-INNER JOIN tb_dvr_details ON tb_visited_details._id = tb_dvr_details.col_visited_id";
-
-$queryForFechingTVCounts = "SELECT
-tv_details._id
-FROM
-tb_visited_details
-INNER JOIN tv_details ON tb_visited_details._id = tv_details.col_visited_id";
-
-$result = mysqli_query($conn, $queryForFechingRecords);
-if (mysqli_num_rows($result) > 0) {
-    $count = 2;
-    while ($row = mysqli_fetch_assoc($result)) {
-        $sex = "";
-
-        if ($row['sex'] == "0") {
-            $sex = "Female";
-        }
-
-        if ($row['sex'] == "1") {
-            $sex = "Male";
-        }
-
-        $startDate = $row['observation_started_date'];
-        if ($startDate == "0000-00-00") {
-            $startDate = "";
-        }
-
-        $endDate = $row['observation_end_date'];
-        if ($endDate == "0000-00-00") {
-            $endDate = "";
-        }
-
-        $arrivalDate = $row['arrival_date'];
-        if ($arrivalDate == "0000-00-00") {
-            $arrivalDate = "";
-        }
-
-        $objWorkSheet->setCellValue("A$count", $count - 1);
-        $objWorkSheet->setCellValue("B$count", $row['full_name']);
-        $objWorkSheet->setCellValue("C$count", $row['age']);
-        $objWorkSheet->setCellValue("D$count", $sex);
-        $objWorkSheet->setCellValue("E$count", $row['address']);
-        $objWorkSheet->setCellValue("F$count", $row['state_statutes_name']);
-        $objWorkSheet->setCellValue("G$count", $row['panchayat_ward_no']);
-        $objWorkSheet->setCellValue("H$count", $row['contact_number']);
-        $objWorkSheet->setCellValue("I$count", $row['phc_area']);
-        $objWorkSheet->setCellValue("J$count", $row["orgin_country"]);
-        $objWorkSheet->setCellValue("K$count", $arrivalDate);
-        $objWorkSheet->setCellValue("L$count", $startDate);
-        $objWorkSheet->setCellValue("M$count", $endDate);
-
-        $count++;
-
-    }
-}
-
-//SECOND
-$objWorkSheet = $objPHPExcel->createSheet(1);
 
 $objWorkSheet->setTitle('Summary');
 $objWorkSheet->getColumnDimension("A")->setAutoSize(true);
@@ -119,37 +18,113 @@ $objWorkSheet->getColumnDimension("D")->setAutoSize(true);
 $objWorkSheet->getColumnDimension("E")->setAutoSize(true);
 $objWorkSheet->getStyle("A1:E1")->getFont()->setBold(true);
 
-$objWorkSheet->setCellValue('A1', 'Male');
-$objWorkSheet->setCellValue('B1', 'Female');
-$objWorkSheet->setCellValue('C1', 'Above 60');
-$objWorkSheet->setCellValue('D1', 'Below 10');
-$objWorkSheet->setCellValue('E1', 'Antinatal');
+$objWorkSheet->setCellValue('A1', 'From Date');
+$objWorkSheet->setCellValue('B1', 'To Date');
+$objWorkSheet->setCellValue('C1', 'Region');
+$objWorkSheet->setCellValue('D1', 'Location');
+$objWorkSheet->setCellValue('E1', 'Parlor');
 
-$query = "SELECT _id FROM quarantine_info WHERE sex = 0;";
+$startDate = "";
+$endDate = "";
+$regionName = "";
+$location = "";
+$parlor = "";
+
+if (isset($_GET['from_date'])) {
+    $startDate = $_GET['from_date'];
+    if (isset($_GET['to_date'])) {
+        $endDate = $_GET['to_date'];
+    }
+}
+
+if (isset($_GET['region'])) {
+    $regionName = $_GET['region'];
+}
+
+if (isset($_GET['location'])) {
+    $location = $_GET['location'];
+}
+
+if (isset($_GET['parlor'])) {
+    $parlor = $_GET['parlor'];
+}
+
+$objWorkSheet->setCellValue('A2', $startDate);
+$objWorkSheet->setCellValue('B2', $endDate);
+$objWorkSheet->setCellValue('C2', $regionName);
+$objWorkSheet->setCellValue('D2', $location);
+$objWorkSheet->setCellValue('E2', $parlor);
+
+$query = "SELECT
+tb_dvr_details._id
+FROM
+tb_visited_details
+INNER JOIN tb_dvr_details ON tb_visited_details._id = tb_dvr_details.col_visited_id  WHERE 1";
+
+if ($startDate != "") {
+    if ($endDate != "") {
+        $query = $query . " AND tb_visited_details.col_date BETWEEN '" . $startDate . "' AND '" . $endDate . "'";
+    } else {
+        $query = $query . " AND tb_visited_details.col_date = '" . $startDate . "'";
+    }
+}
+
+if ($regionName != "") {
+    $query = $query . " AND tb_visited_details.col_region = '" . $regionName . "'";
+}
+
+if ($location != "") {
+    $query = $query . " AND tb_visited_details.col_location = '" . $location . "'";
+}
+
+if ($parlor != "") {
+    $query = $query . " AND tb_visited_details.col_parlour = '" . $parlor . "'";
+}
+
 $result = mysqli_query($conn, $query);
-$femaleCount = mysqli_num_rows($result);
+$hardDiskCount = mysqli_num_rows($result);
 
-$query = "SELECT _id FROM quarantine_info WHERE sex = 1;";
+$query = "SELECT
+tv_details._id
+FROM
+tb_visited_details
+INNER JOIN tv_details ON tb_visited_details._id = tv_details.col_visited_id WHERE 1";
+
+if ($startDate != "") {
+    if ($endDate != "") {
+        $query = $query . " AND tb_visited_details.col_date BETWEEN '" . $startDate . "' AND '" . $endDate . "'";
+    } else {
+        $query = $query . " AND tb_visited_details.col_date = '" . $startDate . "'";
+    }
+}
+
+if ($regionName != "") {
+    $query = $query . " AND tb_visited_details.col_region = '" . $regionName . "'";
+}
+
+if ($location != "") {
+    $query = $query . " AND tb_visited_details.col_location = '" . $location . "'";
+}
+
+if ($parlor != "") {
+    $query = $query . " AND tb_visited_details.col_parlour = '" . $parlor . "'";
+}
+
 $result = mysqli_query($conn, $query);
-$maleCount = mysqli_num_rows($result);
+$tvCount = mysqli_num_rows($result);
 
-$query = "SELECT _id FROM quarantine_info WHERE age > 60;";
-$result = mysqli_query($conn, $query);
-$above60 = mysqli_num_rows($result);
+$objWorkSheet->getStyle("A4:B4")->getFont()->setBold(true);
+$objWorkSheet->setCellValue('A4', "Hard Disk Count");
+$objWorkSheet->setCellValue('B4', "TV Count");
 
-$query = "SELECT _id FROM quarantine_info WHERE age < 10;";
-$result = mysqli_query($conn, $query);
-$lessThan10 = mysqli_num_rows($result);
+$objWorkSheet->setCellValue('A5', $hardDiskCount);
+$objWorkSheet->setCellValue('B5', $tvCount);
 
-$query = "SELECT _id FROM quarantine_info WHERE result = 'NAPos' AND age > 18 AND sex = 0;";
-$result = mysqli_query($conn, $query);
-$antinatalCount = mysqli_num_rows($result);
-
-$objWorkSheet->setCellValue('A2', $maleCount);
-$objWorkSheet->setCellValue('B2', $femaleCount);
-$objWorkSheet->setCellValue('C2', $above60);
-$objWorkSheet->setCellValue('D2', $lessThan10);
-$objWorkSheet->setCellValue('E2', $antinatalCount);
+$queryForFechingCameraCounts = "SELECT
+tb_camera_details._id
+FROM
+tb_visited_details
+INNER JOIN tb_camera_details ON tb_visited_details._id = tb_camera_details.col_visited_id";
 
 //FILE NAME
 $FILENAME = "report";

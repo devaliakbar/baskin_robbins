@@ -53,7 +53,7 @@ include 'header.php';
                         <div class="row w-100">
                             <div class="col-md-3">
                                 <div class="download-btn">
-                                    <button class="btn btn-trans">Get Report</button>
+                                    <button onclick="getReport()" class="btn btn-trans">Get Report</button>
                                 </div>
                             </div>
                             <div class="col-md-9 pr-0">

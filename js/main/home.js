@@ -116,3 +116,33 @@ var showEmpty = () => {
 var showVisit = (visitId) => {
   window.location = "visit.php?q=" + visitId;
 };
+
+var getReport = () => {
+  var filter = "";
+  var fromDate = $("#from_date").val().trim();
+  if (fromDate != "") {
+    filter += "&from_date=" + formatDate(fromDate);
+
+    var toDate = $("#to_date").val().trim();
+    if (toDate != "") {
+      filter += "&to_date=" + formatDate(toDate);
+    }
+  }
+
+  var region = $("#region").val().trim();
+  if (region != "") {
+    filter += "&region=" + region;
+
+    var location = $("#location").val().trim();
+    if (location != "") {
+      filter += "&location=" + location;
+
+      var parlor = $("#parlor").val().trim();
+      if (parlor != "") {
+        filter += "&parlor=" + parlor;
+      }
+    }
+  }
+
+  window.open("api/report/getReport.php?" + filter, "_blank");
+};
