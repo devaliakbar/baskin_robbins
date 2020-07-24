@@ -13,6 +13,35 @@ include 'header.php';
 
 ?>
 
+
+<!-- Left Panel -->
+<nav class="navbar navbar-light navbar-expand-md">
+    <a class="navbar-brand"><img src="images/logo.png" class="img-fluid"></a>
+
+    <a href="#" class="hidden-md"><img src="images/user.jpg" class="header-img"></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+
+        <ul class="navbar-nav">
+            <li class=" nav-item"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            </li>
+            <li class="nav-item active"><a class="nav-link" href="add-record.php"><i class="fas fa-clipboard"></i> Add new record</a></li>
+            <li class="nav-item"><a class="nav-link" href="expense.php"><i class="fas fa-comment-dollar"></i> Expense</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="users.php"><i class="fas fa-users"></i> Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="logOut()" href="#"><i class="fas fa-sign-out-alt"></i> Logout </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
 <!-- Right side header -->
 <div class="header">
     <h2 id="heading"></h2>
@@ -58,7 +87,7 @@ include 'header.php';
 
                             <div class="row">
 
-                            <div class="col">
+                                <div class="col">
                                     <div class="date-wrap ml-auto">
 
 
@@ -75,7 +104,7 @@ include 'header.php';
                                     <div class="frm-con-tag  mb-0">
                                         <label for="region">Select Region</label>
                                         <select id="region" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
-                                            <option value="" selected="" ></option>
+                                            <option value="" selected=""></option>
                                             <!-- <option value="1">Kochi</option>
                                             <option value="1">MM Radha</option>
                                             <option value="1">P Paul</option>
@@ -87,8 +116,8 @@ include 'header.php';
 
                                     <div class="frm-con-tag  mb-0">
                                         <label for="location">Select Location</label>
-                                        <select id="location" name="refrence" aria-required="true"  aria-invalid="false" class="frm-con effect-3" required="">
-                                            <option value="" selected="" ></option>
+                                        <select id="location" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
+                                            <option value="" selected=""></option>
                                             <!-- <option value="1">Anil Kumar</option>
                                             <option value="1">MM Radha</option>
                                             <option value="1">P Paul</option>
@@ -102,7 +131,7 @@ include 'header.php';
                                     <div class="frm-con-tag  mb-0">
                                         <label for="parlor">Select Parlor</label>
                                         <select id="parlor" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
-                                            <option value="" selected="" ></option>
+                                            <option value="" selected=""></option>
                                             <!-- <option value="1">Anil Kumar</option>
                                             <option value="1">MM Radha</option>
                                             <option value="1">P Paul</option>
@@ -175,7 +204,7 @@ include 'header.php';
 
                                                 <div class="date-wrap ml-auto frm-con-tag">
                                                     <div class="input-group">
-                                                        <input  id="checked_date" type="text" class="form-control frm-con endDate" placeholder="Date">
+                                                        <input id="checked_date" type="text" class="form-control frm-con endDate" placeholder="Date">
                                                         <span class="focus-border"></span>
                                                     </div>
 
@@ -200,9 +229,11 @@ include 'header.php';
                                                 </div>
                                             </div>
 
-<a id="attachment" href="#" target="_blank">Download Attachment</a>
-
-<input type='file' name='inputfile' id='inputfile'>
+                                            <a id="attachment" class="btn btn-trans mr-3" href="#" target="_blank">Download Attachment</a>
+                                            <div class="custom-file" style="width: 300px">
+                                                <label for="inputfile" class="custom-file-label">Choose file</label>
+                                                <input type='file' class="custom-file-input" name='inputfile' id='inputfile'>
+                                            </div>
 
                                         </div>
                                     </div>
@@ -233,7 +264,7 @@ include 'header.php';
                                     <div class="frm-con-tag  mb-0">
                                         <label for="record_availability">Recording Availability</label>
                                         <select name="refrence" aria-required="true" id="record_availability" aria-invalid="false" class="frm-con effect-3" required="">
-                                            <option value="" selected="" ></option>
+                                            <option value="" selected=""></option>
                                             <option value="Available">Available</option>
                                             <option value="Not Available">Not Available</option>
 
@@ -374,7 +405,7 @@ include 'header.php';
                                 <div class="col-md-12">
 
                                     <div class="table-wrapper">
-                                        <div class="table-responsive">
+                                        <div class="table-responsive one-line-field-top">
                                             <table class="table table2excel table2excel_with_colors">
                                                 <thead>
                                                     <tr>
@@ -393,7 +424,7 @@ include 'header.php';
                                                         </th>
 
                                                         <th>
-                                                        <div class="wrap"></div>
+                                                            <div class="wrap"></div>
                                                         </th>
 
                                                     </tr>
@@ -421,104 +452,89 @@ include 'header.php';
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     <div class="tab-pane fade" id="fifth" role="tabpanel" aria-labelledby="fifth-tab">
 
-<div class="top-inputs col-12 mt-4">
-    <div class="row">
+                        <div class="top-inputs col-12 mt-4">
+                            <div class="row">
 
 
-        <div class="frm-con-tag input-group col">
-            <label for="tv_point">Network Point</label>
-            <input class="frm-con effect-3" type="text" id="tv_point" required="">
-            <span class="focus-border"></span>
-        </div>
+                                <div class="frm-con-tag input-group col">
+                                    <label for="tv_point">Network Point</label>
+                                    <input class="frm-con effect-3" type="text" id="tv_point" required="">
+                                    <span class="focus-border"></span>
+                                </div>
 
-        <div class="frm-con-tag input-group col">
-            <div class="frm-con-tag  mb-0">
-                <label for="tv_status">Status</label>
-                <select name="refrence" aria-required="true" id="tv_status" aria-invalid="false" class="frm-con effect-3" required="">
-                    <option value="" selected></option>
-                    <option value="OK">OK</option>
-                    <option value="Not OK">Not OK</option>
+                                <div class="frm-con-tag input-group col">
+                                    <div class="frm-con-tag  mb-0">
+                                        <label for="tv_status">Status</label>
+                                        <select name="refrence" aria-required="true" id="tv_status" aria-invalid="false" class="frm-con effect-3" required="">
+                                            <option value="" selected></option>
+                                            <option value="OK">OK</option>
+                                            <option value="Not OK">Not OK</option>
 
-                </select>
-                <span class="focus-border"></span>
-            </div>
-        </div>
+                                        </select>
+                                        <span class="focus-border"></span>
+                                    </div>
+                                </div>
 
-        <div class="frm-con-tag input-group col">
-            <label for="tv_remark">Remark</label>
-            <input class="frm-con effect-3" type="text" id="tv_remark" required="">
-            <span class="focus-border"></span>
-        </div>
+                                <div class="frm-con-tag input-group col">
+                                    <label for="tv_remark">Remark</label>
+                                    <input class="frm-con effect-3" type="text" id="tv_remark" required="">
+                                    <span class="focus-border"></span>
+                                </div>
 
-        <div class="frm-con-tag input-group col">
-            <label for="tv_suggestions">Suggestion</label>
-            <input class="frm-con effect-3" type="text" id="tv_suggestions" required="">
-            <span class="focus-border"></span>
-        </div>
-        <div class="col">
-            <button onclick="addTV()" class="btn btn-trans btn-add">ADD</button>
-        </div>
+                                <div class="frm-con-tag input-group col">
+                                    <label for="tv_suggestions">Suggestion</label>
+                                    <input class="frm-con effect-3" type="text" id="tv_suggestions" required="">
+                                    <span class="focus-border"></span>
+                                </div>
+                                <div class="col">
+                                    <button onclick="addTV()" class="btn btn-trans btn-add">ADD</button>
+                                </div>
 
-    </div>
-</div>
-<div class="table-contents">
-    <div class="row">
-        <div class="col-md-12">
+                            </div>
+                        </div>
+                        <div class="table-contents">
+                            <div class="row">
+                                <div class="col-md-12">
 
-            <div class="table-wrapper">
-                <div class="table-responsive">
-                    <table class="table table2excel table2excel_with_colors">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <div class="wrap">Sn No.</div>
-                                </th>
-                                <th>
-                                    <div class="wrap">Network Point</div>
-                                </th>
-                                <th>
-                                    <div class="wrap">Status</div>
-                                </th>
-                                <th>
-                                    <div class="wrap">Remark</div>
-                                </th>
-                                <th>
-                                    <div class="wrap">Suggestions</div>
-                                </th>
+                                    <div class="table-wrapper one-line-field-top">
+                                        <div class="table-responsive one-line-field-top">
+                                            <table class="table table2excel table2excel_with_colors">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            <div class="wrap">Sn No.</div>
+                                                        </th>
+                                                        <th>
+                                                            <div class="wrap">Network Point</div>
+                                                        </th>
+                                                        <th>
+                                                            <div class="wrap">Status</div>
+                                                        </th>
+                                                        <th>
+                                                            <div class="wrap">Remark</div>
+                                                        </th>
+                                                        <th>
+                                                            <div class="wrap">Suggestions</div>
+                                                        </th>
 
-                                <th>
-                                <div class="wrap"></div>
-                                </th>
+                                                        <th>
+                                                            <div class="wrap"></div>
+                                                        </th>
 
-                            </tr>
-                        </thead>
-                        <tbody class="tv-table">
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="tv-table">
 
 
-                        </tbody>
-                    </table>
+                                                </tbody>
+                                            </table>
 
-                </div>
-            </div>
-        </div>
-        <!-- <div class="col-12">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-12">
             <div class="table-nav footer-pager-panel">
                 <span class="entries-count">
                     Showing 0 to 0 of 0 entries
@@ -529,9 +545,9 @@ include 'header.php';
                 </div>
             </div>
         </div> -->
-    </div>
-</div>
-</div>
+                            </div>
+                        </div>
+                    </div>
 
 
 
@@ -553,64 +569,61 @@ include 'header.php';
                         <div class="top-inputs col-12 mt-4">
                             <div class="row">
 
-                                <div class="frm-con-tag input-group col">
+                                <div class="frm-con-tag input-group col-md-3">
                                     <label for="camera_type">Type</label>
                                     <input class="frm-con effect-3" type="text" id="camera_type" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
-                                <div class="frm-con-tag input-group col">
+                                <div class="frm-con-tag input-group col-md-3">
                                     <label for="camera_brand">Brand</label>
                                     <input class="frm-con effect-3" type="text" id="camera_brand" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
-                                <div class="frm-con-tag input-group col">
+                                <div class="frm-con-tag input-group col-md-3">
                                     <label for="camera_count">Count</label>
                                     <input class="frm-con effect-3" type="number" id="camera_count" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
-                                <div class="frm-con-tag input-group col">
+                                <div class="frm-con-tag input-group col-md-3">
+
+                                    <label for="camera_status">Status</label>
+                                    <select name="refrence" aria-required="true" id="camera_status" aria-invalid="false" class="frm-con effect-3" required="">
+                                        <option value="" selected></option>
+                                        <option value="OK">OK</option>
+                                        <option value="Not OK">Not OK</option>
+
+                                    </select>
+                                    <span class="focus-border"></span>
 
 
-
-
-                                <label for="camera_status">Status</label>
-                                        <select name="refrence" aria-required="true" id="camera_status" aria-invalid="false" class="frm-con effect-3" required="">
-                                            <option value="" selected></option>
-                                            <option value="OK">OK</option>
-                                            <option value="Not OK">Not OK</option>
-
-                                        </select>
-                                        <span class="focus-border"></span>
-
-
-<!--
+                                    <!--
                                     <label for="camera_status">Status</label>
                                     <input class="frm-con effect-3" type="text" id="camera_status" required="">
                                     <span class="focus-border"></span> -->
                                 </div>
 
-                                <div class="frm-con-tag input-group col">
+                                <div class="frm-con-tag input-group col-md-3">
                                     <label for="camera_remark">Remark</label>
                                     <input class="frm-con effect-3" type="text" id="camera_remark" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
-                                <div class="frm-con-tag input-group col">
+                                <div class="frm-con-tag input-group col-md-3">
                                     <label for="camera_ip">IP Detail</label>
                                     <input class="frm-con effect-3" type="text" id="camera_ip" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
-                                <div class="frm-con-tag input-group col">
+                                <div class="frm-con-tag input-group col-md-3">
                                     <label for="camera_suggestion">Suggestion</label>
                                     <input class="frm-con effect-3" type="text" id="camera_suggestion" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-md-3 ">
                                     <button onclick="addCamera()" class="btn btn-trans btn-add">ADD</button>
                                 </div>
 
@@ -654,7 +667,7 @@ include 'header.php';
                                                         </th>
                                                     </tr>
                                                 </thead>
-                                                <tbody  class="camera-table">
+                                                <tbody class="camera-table">
                                                     <!-- <tr>
                                                         <td>1</td>
                                                         <td>2</td>
@@ -696,7 +709,7 @@ include 'header.php';
     <!-- end invite patient content -->
 </main>
 
-<?php include 'footer.php';?>
+<?php include 'footer.php'; ?>
 <script src="js/main/common.js"></script>
 <script src="js/main/add-record.js"></script>
 <script src="js/main/update-record.js"></script>

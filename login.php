@@ -9,6 +9,34 @@ if (isset($_COOKIE['token'])) {
 include 'header.php';
 ?>
 
+<!-- Left Panel -->
+<nav class="navbar navbar-light navbar-expand-md">
+    <a class="navbar-brand"><img src="images/logo.png" class="img-fluid"></a>
+
+    <a href="#" class="hidden-md"><img src="images/user.jpg" class="header-img"></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+
+        <ul class="navbar-nav">
+            <li class="nav-item "><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="add-record.php"><i class="fas fa-clipboard"></i> Add new record</a></li>
+            <li class="nav-item"><a class="nav-link" href="expense.php"><i class="fas fa-comment-dollar"></i> Expense</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="users.php"><i class="fas fa-users"></i> Users</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="users.php"><i class="fas fa-sign-out-alt"></i> Logout </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
 <main class="login">
     <div class="container">
         <div class="wrapper">

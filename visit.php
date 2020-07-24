@@ -13,11 +13,42 @@ include 'header.php';
 
 ?>
 
+<!-- Left Panel -->
+<nav class="navbar navbar-light navbar-expand-md">
+    <a class="navbar-brand"><img src="images/logo.png" class="img-fluid"></a>
+
+    <a href="#" class="hidden-md"><img src="images/user.jpg" class="header-img"></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+
+        <ul class="navbar-nav">
+            <li class="nav-item active"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="add-record.php"><i class="fas fa-clipboard"></i> Add new record</a></li>
+            <li class="nav-item"><a class="nav-link" href="expense.php"><i class="fas fa-comment-dollar"></i> Expense</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="users.php"><i class="fas fa-users"></i> Users</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" onclick="logOut()" href="#"><i class="fas fa-sign-out-alt"></i> Logout </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
 <!-- Right side header -->
 <div class="header">
     <h2 id="heading"></h2>
-    <a onclick="editVisit()" href="#" class="btn btn-trans header-img">Edit</a>
-    <a class="header-logout hidden-xs" onclick="deleteVisit()" href="#"><i class="fa fa-sign-out"></i><br>Delete</a>
+
+    <div class="header-img buttons">
+        <a onclick="editVisit()" href="#" class="btn btn-trans">Edit</a>
+        <a class="btn btn-trans" onclick="deleteVisit()" href="#">Delete</a>
+    </div>
 </div>
 <!-- End right side header -->
 
@@ -59,7 +90,7 @@ include 'header.php';
 
                             <div class="row">
 
-                            <div class="col">
+                                <div class="col">
                                     <div class="date-wrap ml-auto">
 
 
@@ -76,7 +107,7 @@ include 'header.php';
                                     <div class="frm-con-tag  mb-0">
                                         <label for="region">Select Region</label>
                                         <select id="region" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="" disabled>
-                                            <option value="" selected="" ></option>
+                                            <option value="" selected=""></option>
                                             <!-- <option value="1">Kochi</option>
                                             <option value="1">MM Radha</option>
                                             <option value="1">P Paul</option>
@@ -88,8 +119,8 @@ include 'header.php';
 
                                     <div class="frm-con-tag  mb-0">
                                         <label for="location">Select Location</label>
-                                        <select id="location" name="refrence" aria-required="true"  aria-invalid="false" class="frm-con effect-3" disabled>
-                                            <option value="" selected="" ></option>
+                                        <select id="location" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" disabled>
+                                            <option value="" selected=""></option>
                                             <!-- <option value="1">Anil Kumar</option>
                                             <option value="1">MM Radha</option>
                                             <option value="1">P Paul</option>
@@ -103,7 +134,7 @@ include 'header.php';
                                     <div class="frm-con-tag  mb-0">
                                         <label for="parlor">Select Parlor</label>
                                         <select id="parlor" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="" disabled>
-                                            <option value="" selected="" ></option>
+                                            <option value="" selected=""></option>
                                             <!-- <option value="1">Anil Kumar</option>
                                             <option value="1">MM Radha</option>
                                             <option value="1">P Paul</option>
@@ -176,7 +207,7 @@ include 'header.php';
 
                                                 <div class="date-wrap ml-auto frm-con-tag">
                                                     <div class="input-group">
-                                                        <input  id="checked_date" type="text" class="form-control frm-con endDate" placeholder="Date" disabled>
+                                                        <input id="checked_date" type="text" class="form-control frm-con endDate" placeholder="Date" disabled>
                                                         <span class="focus-border"></span>
                                                     </div>
 
@@ -201,7 +232,7 @@ include 'header.php';
                                                 </div>
                                             </div>
 
-                                            <a id="attachment" href="#" target="_blank">Download Attachment</a>
+                                            <a id="attachment" class="btn btn-trans" href="#" target="_blank">Download Attachment</a>
 
                                         </div>
                                     </div>
@@ -435,7 +466,7 @@ include 'header.php';
 
                     <div class="tab-pane fade" id="fifth" role="tabpanel" aria-labelledby="fifth-tab">
 
-<!-- <div class="top-inputs col-12 mt-4">
+                        <!-- <div class="top-inputs col-12 mt-4">
     <div class="row">
 
 
@@ -475,45 +506,45 @@ include 'header.php';
 
     </div>
 </div> -->
-<div class="table-contents">
-    <div class="row">
-        <div class="col-md-12">
+                        <div class="table-contents">
+                            <div class="row">
+                                <div class="col-md-12">
 
-            <div class="table-wrapper">
-                <div class="table-responsive">
-                    <table class="table table2excel table2excel_with_colors">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <div class="wrap">Sn No.</div>
-                                </th>
-                                <th>
-                                    <div class="wrap">Network Point</div>
-                                </th>
-                                <th>
-                                    <div class="wrap">Status</div>
-                                </th>
-                                <th>
-                                    <div class="wrap">Remark</div>
-                                </th>
-                                <th>
-                                    <div class="wrap">Suggestions</div>
-                                </th>
-
-
-
-                            </tr>
-                        </thead>
-                        <tbody class="tv-table">
+                                    <div class="table-wrapper">
+                                        <div class="table-responsive">
+                                            <table class="table table2excel table2excel_with_colors">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            <div class="wrap">Sn No.</div>
+                                                        </th>
+                                                        <th>
+                                                            <div class="wrap">Network Point</div>
+                                                        </th>
+                                                        <th>
+                                                            <div class="wrap">Status</div>
+                                                        </th>
+                                                        <th>
+                                                            <div class="wrap">Remark</div>
+                                                        </th>
+                                                        <th>
+                                                            <div class="wrap">Suggestions</div>
+                                                        </th>
 
 
-                        </tbody>
-                    </table>
 
-                </div>
-            </div>
-        </div>
-        <!-- <div class="col-12">
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="tv-table">
+
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-12">
             <div class="table-nav footer-pager-panel">
                 <span class="entries-count">
                     Showing 0 to 0 of 0 entries
@@ -524,9 +555,9 @@ include 'header.php';
                 </div>
             </div>
         </div> -->
-    </div>
-</div>
-</div>
+                            </div>
+                        </div>
+                    </div>
 
 
 
@@ -647,7 +678,7 @@ include 'header.php';
 
                                                     </tr>
                                                 </thead>
-                                                <tbody  class="camera-table">
+                                                <tbody class="camera-table">
                                                     <!-- <tr>
                                                         <td>1</td>
                                                         <td>2</td>
@@ -689,6 +720,6 @@ include 'header.php';
     <!-- end invite patient content -->
 </main>
 
-<?php include 'footer.php';?>
+<?php include 'footer.php'; ?>
 <script src="js/main/common.js"></script>
 <script src="js/main/visit.js"></script>

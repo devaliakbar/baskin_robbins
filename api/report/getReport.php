@@ -120,11 +120,46 @@ $objWorkSheet->setCellValue('B4', "TV Count");
 $objWorkSheet->setCellValue('A5', $hardDiskCount);
 $objWorkSheet->setCellValue('B5', $tvCount);
 
-$queryForFechingCameraCounts = "SELECT
-tb_camera_details._id
+$objWorkSheet->getStyle("A7:B7")->getFont()->setBold(true);
+$objWorkSheet->setCellValue('A7', "Camera Type");
+$objWorkSheet->setCellValue('B7', "Count");
+
+$query = "SELECT
+tb_camera_details.col_type,
+tb_camera_details.col_count
 FROM
 tb_visited_details
-INNER JOIN tb_camera_details ON tb_visited_details._id = tb_camera_details.col_visited_id";
+INNER JOIN tb_camera_details ON tb_visited_details._id = tb_camera_details.col_visited_id WHERE 1";
+
+if ($startDate != "") {
+    if ($endDate != "") {
+        $query = $query . " AND tb_visited_details.col_date BETWEEN '" . $startDate . "' AND '" . $endDate . "'";
+    } else {
+        $query = $query . " AND tb_visited_details.col_date = '" . $startDate . "'";
+    }
+}
+
+if ($regionName != "") {
+    $query = $query . " AND tb_visited_details.col_region = '" . $regionName . "'";
+}
+
+if ($location != "") {
+    $query = $query . " AND tb_visited_details.col_location = '" . $location . "'";
+}
+
+if ($parlor != "") {
+    $query = $query . " AND tb_visited_details.col_parlour = '" . $parlor . "'";
+}
+
+$result = mysqli_query($conn, $query);
+if (mysqli_num_rows($result) > 0) {
+    $currentRow = 8;
+    while ($row = mysqli_fetch_assoc($result)) {
+        $objWorkSheet->setCellValue('A' . $currentRow, $row['col_type']);
+        $objWorkSheet->setCellValue('B' . $currentRow, $row['col_count']);
+        $currentRow++;
+    }
+}
 
 //FILE NAME
 $FILENAME = "report";

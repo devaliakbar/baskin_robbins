@@ -101,6 +101,10 @@
 .table {
     margin: 0;
 
+    i{
+        cursor: pointer;
+    }
+
     thead {
         th {
             padding: 35px 0 20px;
