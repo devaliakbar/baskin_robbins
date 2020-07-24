@@ -17,7 +17,6 @@ include 'header.php';
 <div class="header">
     <h2 id="heading"></h2>
     <a onclick="saveVisit()" href="#" class="btn btn-trans header-img">Save</a>
-    <a class="header-logout hidden-xs" onclick="logOut()" href="#"><i class="fa fa-sign-out"></i><br>Logout</a>
 </div>
 <!-- End right side header -->
 

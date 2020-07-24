@@ -15,8 +15,7 @@ include 'header.php';
 <!-- Right side header -->
 <div class="header">
     <h2>Dashboard</h2>
-    <a href="#" class="hidden-xs"><img src="images/user.jpg" class="header-img"></a>
-    <a class="header-logout hidden-xs" onclick="logOut()" href="#"><i class="fa fa-sign-out"></i><br>Logout</a>
+    <a href="#" class="header-img">Admin</a>
 </div>
 <!-- End right side header -->
 
