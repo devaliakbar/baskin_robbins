@@ -28,11 +28,15 @@ include 'header.php';
         <ul class="navbar-nav">
             <li class="nav-item active"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
             </li>
+            <?php if ($_COOKIE['type'] == 0) {?>
             <li class="nav-item"><a class="nav-link" href="add-record.php"><i class="fas fa-clipboard"></i> Add new record</a></li>
+            <?php }?>
             <li class="nav-item"><a class="nav-link" href="expense.php"><i class="fas fa-comment-dollar"></i> Expense</a>
             </li>
+            <?php if ($_COOKIE['type'] == 0) {?>
             <li class="nav-item"><a class="nav-link" href="users.php"><i class="fas fa-users"></i> Users</a>
             </li>
+            <?php }?>
             <li class="nav-item ">
                 <a class="nav-link" onclick="logOut()" href="#"><i class="fas fa-sign-out-alt"></i> Logout </a>
             </li>
@@ -46,8 +50,12 @@ include 'header.php';
     <h2 id="heading"></h2>
 
     <div class="header-img buttons">
+    <?php if ($_COOKIE['type'] != 2) {?>
         <a onclick="editVisit()" href="#" class="btn btn-trans">Edit</a>
+        <?php }?>
+        <?php if ($_COOKIE['type'] == 0) {?>
         <a class="btn btn-trans" onclick="deleteVisit()" href="#">Delete</a>
+        <?php }?>
     </div>
 </div>
 <!-- End right side header -->
@@ -720,6 +728,6 @@ include 'header.php';
     <!-- end invite patient content -->
 </main>
 
-<?php include 'footer.php'; ?>
+<?php include 'footer.php';?>
 <script src="js/main/common.js"></script>
 <script src="js/main/visit.js"></script>

@@ -16,6 +16,10 @@ $(document).ready(async function () {
     $("#heading").html("Update Record");
     loadPrevious(query);
   } else {
+    if (getCookie("type") != "0") {
+      location.replace("index.php");
+    }
+
     $("#heading").html("Add Record");
   }
 

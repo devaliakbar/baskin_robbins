@@ -28,11 +28,15 @@ include 'header.php';
         <ul class="navbar-nav">
             <li class=" nav-item"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
             </li>
+            <?php if ($_COOKIE['type'] == 0) {?>
             <li class="nav-item"><a class="nav-link" href="add-record.php"><i class="fas fa-clipboard"></i> Add new record</a></li>
+            <?php }?>
             <li class="nav-item active"><a class="nav-link" href="expense.php"><i class="fas fa-comment-dollar"></i> Expense</a>
             </li>
+            <?php if ($_COOKIE['type'] == 0) {?>
             <li class="nav-item"><a class="nav-link" href="users.php"><i class="fas fa-users"></i> Users</a>
             </li>
+            <?php }?>
             <li class="nav-item">
                 <a class="nav-link" onclick="logOut()" href="#"><i class="fas fa-sign-out-alt"></i> Logout </a>
             </li>
@@ -44,8 +48,8 @@ include 'header.php';
 <!-- Right side header -->
 <div class="header">
     <h2>Expense</h2>
-    
-    <a class="header-img"><label for="Admin">Admin</label></a>
+
+    <a class="header-img"><label for="Admin"><?php echo $_COOKIE['name']; ?></label></a>
 </div>
 <!-- End right side header -->
 
@@ -82,9 +86,11 @@ include 'header.php';
 
                         <div class="btn-wrap mr-auto">
                             <!-- Button trigger modal -->
+                            <?php if ($_COOKIE['type'] == 0) {?>
                             <button onclick="clearAll()" type="button" class="btn btn-trans" data-toggle="modal" data-target="#exampleModalLong">
                                 Add Expense
                             </button>
+                            <?php }?>
                         </div>
                         <div class="search-wrap">
                             <form class="form-inline my-2 my-lg-0">

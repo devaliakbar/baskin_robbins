@@ -76,17 +76,24 @@ var fillExpenseTable = () => {
     appendRaw += "<td>" + expenses[i].name + "</td>";
     appendRaw += "<td>" + expenses[i].description + "</td>";
     appendRaw += "<td>" + expenses[i].amount + "</td>";
-    appendRaw +=
-      "<td><i onclick='editExpense(" +
-      expenses[i].id +
-      "," +
-      i +
-      ")' class='fa fa-edit' aria-hidden='true'></i></td>";
 
-    appendRaw +=
-      "<td><i onclick='deleteExpense(" +
-      expenses[i].id +
-      ")' class='fa fa-trash' aria-hidden='true'></i></td></tr>";
+    if (getCookie("type") != "2") {
+      appendRaw +=
+        "<td><i onclick='editExpense(" +
+        expenses[i].id +
+        "," +
+        i +
+        ")' class='fa fa-edit' aria-hidden='true'></i></td>";
+    }
+
+    if (getCookie("type") == "0") {
+      appendRaw +=
+        "<td><i onclick='deleteExpense(" +
+        expenses[i].id +
+        ")' class='fa fa-trash' aria-hidden='true'></i></td>";
+    }
+
+    appendRaw += "</tr>";
 
     jQuery(".expense-table").append(appendRaw);
   }

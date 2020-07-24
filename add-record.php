@@ -9,6 +9,10 @@ if (isset($_COOKIE['token'])) {
     exit();
 }
 
+if ($_COOKIE['type'] == 2) {
+    header("Location: index.php");
+}
+
 include 'header.php';
 
 ?>
@@ -29,11 +33,15 @@ include 'header.php';
         <ul class="navbar-nav">
             <li class=" nav-item"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
             </li>
+            <?php if ($_COOKIE['type'] == 0) {?>
             <li class="nav-item active"><a class="nav-link" href="add-record.php"><i class="fas fa-clipboard"></i> Add new record</a></li>
+            <?php }?>
             <li class="nav-item"><a class="nav-link" href="expense.php"><i class="fas fa-comment-dollar"></i> Expense</a>
             </li>
+            <?php if ($_COOKIE['type'] == 0) {?>
             <li class="nav-item"><a class="nav-link" href="users.php"><i class="fas fa-users"></i> Users</a>
             </li>
+            <?php }?>
             <li class="nav-item">
                 <a class="nav-link" onclick="logOut()" href="#"><i class="fas fa-sign-out-alt"></i> Logout </a>
             </li>
@@ -709,7 +717,7 @@ include 'header.php';
     <!-- end invite patient content -->
 </main>
 
-<?php include 'footer.php'; ?>
+<?php include 'footer.php';?>
 <script src="js/main/common.js"></script>
 <script src="js/main/add-record.js"></script>
 <script src="js/main/update-record.js"></script>

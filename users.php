@@ -9,6 +9,10 @@ if (isset($_COOKIE['token'])) {
     exit();
 }
 
+if ($_COOKIE['type'] != 0) {
+    header("Location: index.php");
+}
+
 include 'header.php';
 
 ?>
@@ -44,8 +48,8 @@ include 'header.php';
 <!-- Right side header -->
 <div class="header">
     <h2>Users</h2>
-    
-    <a class="header-img"><label for="">Admin</label></a>
+
+    <a class="header-img"><label for=""><?php echo $_COOKIE['name']; ?></label></a>
 </div>
 <!-- End right side header -->
 
