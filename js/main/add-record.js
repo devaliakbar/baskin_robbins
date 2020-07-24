@@ -224,8 +224,8 @@ var addCamera = () => {
   var ip = $("#camera_ip").val().trim();
   var suggestions = $("#camera_suggestion").val().trim();
 
-  if (type == "" || status == "") {
-    return alert("Please enter 'Network point' and 'status'");
+  if (type == "" || status == "" || count == "") {
+    return alert("Please enter 'Camera Types', 'status' and 'count'");
   }
 
   cameraDetails.push({
