@@ -43,7 +43,7 @@ include 'header.php';
 <!-- Right side header -->
 <div class="header">
     <h2>Dashboard</h2>
-    <a class="header-img"><label for="">Admin</label></a>
+    <a class="header-img"><label for=""><?php echo $_COOKIE['name']; ?></label></a>
 </div>
 <!-- End right side header -->
 

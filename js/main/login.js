@@ -19,6 +19,7 @@ var login = async (username, password) => {
       //SAVE TOKEN
       setCookie("token", jsonResponce["token"], 365);
       setCookie("type", jsonResponce["type"], 365);
+      setCookie("name", jsonResponce["name"], 365);
       location.replace("index.php");
     } else {
       alert("Invalid Username or Password");
