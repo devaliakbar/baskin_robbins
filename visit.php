@@ -223,100 +223,75 @@ include 'header.php';
                         </div>
                     </div>
 
-                    <div class="top-inputs col-12 mt-4 border-top-divider">
-                        <div class="row">
+                    <div class="row">
+                        <div class="top-inputs col-12 mt-4">
+                            <div class="row">
 
-                            <div class="col-12">
-                                <h4 class="mt-3">DVR Details</h4>
+                                <div class="col-12">
+                                    <h4 class="mt-3 border-top-divider pt-3">DVR Details</h4>
+                                </div>
+
+
                             </div>
 
+                            <div class="table-contents">
+                                <div class="row">
+                                    <div class="col-md-12">
 
-                        </div>
+                                        <div class="table-wrapper">
+                                            <div class="table-responsive">
+                                                <table class="table table2excel table2excel_with_colors">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                <div class="wrap">No.</div>
+                                                            </th>
+                                                            <th>
+                                                                <div class="wrap">No. of channels</div>
+                                                            </th>
+                                                            <th>
+                                                                <div class="wrap">Brand</div>
+                                                            </th>
+                                                            <th>
+                                                                <div class="wrap">Record Availability</div>
+                                                            </th>
+                                                            <th>
+                                                                <div class="wrap">HDD Capacity</div>
+                                                            </th>
+                                                            <th>
+                                                                <div class="wrap">Remark</div>
+                                                            </th>
+                                                            <th>
+                                                                <div class="wrap">Suggestions</div>
+                                                            </th>
+                                                            <th>
+                                                                <div class="wrap"></div>
+                                                            </th>
 
-                        <div class="table-contents">
-                            <div class="row">
-                                <div class="col-md-12">
-
-                                    <div class="table-wrapper">
-                                        <div class="table-responsive">
-                                            <table class="table table2excel table2excel_with_colors">
-                                                <thead>
-                                                    <tr>
-                                                        <th>
-                                                            <div class="wrap">No.</div>
-                                                        </th>
-                                                        <th>
-                                                            <div class="wrap">No. of channels</div>
-                                                        </th>
-                                                        <th>
-                                                            <div class="wrap">Brand</div>
-                                                        </th>
-                                                        <th>
-                                                            <div class="wrap">Record Availability</div>
-                                                        </th>
-                                                        <th>
-                                                            <div class="wrap">HDD Capacity</div>
-                                                        </th>
-                                                        <th>
-                                                            <div class="wrap">Remark</div>
-                                                        </th>
-                                                        <th>
-                                                            <div class="wrap">Suggestions</div>
-                                                        </th>
-                                                        <th>
-                                                            <div class="wrap"></div>
-                                                        </th>
-
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="dvr-table">
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="dvr-table">
 
 
-                                                </tbody>
-                                            </table>
+                                                    </tbody>
+                                                </table>
 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="top-inputs col-12 mt-4 border-top-divider">
-                            <div class="row">
+                            <div class="top-inputs col-12 mt-4 border-top-divider">
+                                <div class="row">
 
-                                <div class="col-12">
-                                    <h4 class="mt-3">Network Cabel Details</h4>
+                                    <div class="col-12">
+                                        <h4 class="mt-3">Network Cabel Details</h4>
+                                    </div>
+
+
+
                                 </div>
-
-                                <!-- <div class="frm-con-tag input-group col">
-            <label for="network_point">Network Point</label>
-            <input maxlength="50" class="frm-con effect-3" type="text" id="network_point" required="">
-            <span class="focus-border"></span>
-        </div>
-
-        <div class="frm-con-tag input-group col">
-            <div class="frm-con-tag  mb-0">
-                <select name="refrence" aria-required="true" id="network_status" aria-invalid="false" class="frm-con effect-3" required="">
-                    <option value="" selected></option>
-                    <option value="OK">OK</option>
-                    <option value="Not OK">Not OK</option>
-
-                </select>
-                <label for="network_status">Status</label>
-                <span class="focus-border"></span>
-            </div>
-        </div>
-
-        <div class="frm-con-tag input-group col">
-            <label for="network_suggestions">Suggestion</label>
-            <input maxlength="250" class="frm-con effect-3" type="text" id="network_suggestions" required="">
-            <span class="focus-border"></span>
-        </div>
-        <div class="col">
-            <button onclick="addNetworkCabel()" class="btn btn-trans btn-add">ADD</button>
-        </div>
-
-    </div> -->
                             </div>
                             <div class="table-contents">
                                 <div class="row">
@@ -507,9 +482,10 @@ include 'header.php';
                     </div>
                 </div>
             </div>
-
         </div>
-        <!-- end invite patient content -->
+
+    </div>
+    <!-- end invite patient content -->
 </main>
 
 <?php include 'footer.php'; ?>
