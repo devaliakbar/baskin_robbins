@@ -8,6 +8,11 @@ class VisitedDetails
     public static $COLUMN_REGION = "col_region";
     public static $COLUMN_LOCATION = "col_location";
     public static $COLUMN_PARLOUR = "col_parlour";
+
+    public static $COLUMN_PARLOR_CODE = "col_parlor_code";
+    public static $COLUMN_LAT = "col_lat";
+    public static $COLUMN_LON = "col_lon";
+
     public static $COLUMN_TIME = "col_time";
 
     public static $COLUMN_COMMENT = "col_comment";

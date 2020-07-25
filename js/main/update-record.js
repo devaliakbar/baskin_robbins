@@ -28,6 +28,10 @@ var loadPrevious = async (id) => {
   $("#approved_by").val(visit.visitDetails.approvedBy);
   $("#approved_date").val(format2Date(visit.visitDetails.approvedDate));
 
+  $("#parlour_code").val(visit.visitDetails.parlorCode);
+  $("#Latitude").val(visit.visitDetails.lat);
+  $("#Longitude").val(visit.visitDetails.lon);
+
   if (visit.visitDetails.dvrDetailsList != undefined) {
     dvrDetails = visit.visitDetails.dvrDetailsList;
   }

@@ -142,6 +142,11 @@ $VisitedDetailsTableCreateQuery = "CREATE TABLE IF NOT EXISTS " . VisitedDetails
     " . VisitedDetails::$COLUMN_REGION . " VARCHAR(50),
     " . VisitedDetails::$COLUMN_LOCATION . " VARCHAR(50),
     " . VisitedDetails::$COLUMN_PARLOUR . " VARCHAR(50),
+
+    " . VisitedDetails::$COLUMN_PARLOR_CODE . " VARCHAR(50),
+    " . VisitedDetails::$COLUMN_LAT . " VARCHAR(50),
+    " . VisitedDetails::$COLUMN_LON . " VARCHAR(50),
+
     " . VisitedDetails::$COLUMN_TIME . " VARCHAR(50),
     " . VisitedDetails::$COLUMN_COMMENT . " VARCHAR(250),
 

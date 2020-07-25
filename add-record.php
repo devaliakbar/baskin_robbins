@@ -33,22 +33,22 @@ include 'header.php';
         <ul class="navbar-nav">
             <li class=" nav-item"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
             </li>
-            <?php if ($_COOKIE['type'] == 0) { ?>
+            <?php if ($_COOKIE['type'] == 0) {?>
                 <li class="nav-item active"><a class="nav-link" href="add-record.php"><i class="fas fa-clipboard"></i> Add new record</a></li>
-            <?php } ?>
+            <?php }?>
 
 
-            <?php if ($_COOKIE['type'] != 2) { ?>
+            <?php if ($_COOKIE['type'] != 2) {?>
                 <li class="nav-item"><a class="nav-link" href="parlor.php"><i class="fas fa-igloo"></i> Parlor</a>
                 </li>
-            <?php } ?>
+            <?php }?>
 
             <li class="nav-item"><a class="nav-link" href="expense.php"><i class="fas fa-comment-dollar"></i> Expense</a>
             </li>
-            <?php if ($_COOKIE['type'] == 0) { ?>
+            <?php if ($_COOKIE['type'] == 0) {?>
                 <li class="nav-item"><a class="nav-link" href="users.php"><i class="fas fa-users"></i> Users</a>
                 </li>
-            <?php } ?>
+            <?php }?>
             <li class="nav-item">
                 <a class="nav-link" onclick="logOut()" href="#"><i class="fas fa-sign-out-alt"></i> Logout </a>
             </li>
@@ -129,7 +129,7 @@ include 'header.php';
 
                                 <div class="frm-con-tag  mb-0">
                                     <label for="parlour_code">Parlour Code</label>
-                                    <input maxlength="50" class="frm-con effect-3" type="text" id="parlour_code" required="">
+                                    <input maxlength="50" class="frm-con effect-3" type="text" id="parlour_code" required="" disabled>
                                     <span class="focus-border"></span>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@ include 'header.php';
 
                                 <div class="frm-con-tag  mb-0">
                                     <label for="Latitude">Latitude</label>
-                                    <input maxlength="50" class="frm-con effect-3" type="text" id="Latitude" required="">
+                                    <input maxlength="50" class="frm-con effect-3" type="text" id="Latitude" required="" disabled>
                                     <span class="focus-border"></span>
                                 </div>
                             </div>
@@ -145,7 +145,7 @@ include 'header.php';
 
                                 <div class="frm-con-tag  mb-0">
                                     <label for="Longitude">Longitude</label>
-                                    <input maxlength="50" class="frm-con effect-3" type="text" id="Longitude" required="">
+                                    <input maxlength="50" class="frm-con effect-3" type="text" id="Longitude" required="" disabled>
                                     <span class="focus-border"></span>
                                 </div>
                             </div>
@@ -691,7 +691,7 @@ include 'header.php';
     <!-- end invite patient content -->
 </main>
 
-<?php include 'footer.php'; ?>
+<?php include 'footer.php';?>
 <script src="js/main/common.js"></script>
 <script src="js/main/add-record.js"></script>
 <script src="js/main/update-record.js"></script>

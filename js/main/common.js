@@ -87,6 +87,11 @@ var getAllRegions = async () => {
 
 var fillRegion = (regions) => {
   $("#region").empty();
+
+  $("#parlour_code").val("");
+  $("#Latitude").val("");
+  $("#Longitude").val("");
+
   jQuery("#region").append("<option value='' selected=''></option>");
   for (var i = 0; i < regions.length; i++) {
     $("#region").append(
@@ -99,6 +104,7 @@ var fillRegion = (regions) => {
 
 var getLocations = async () => {
   $("#location").empty();
+
   jQuery("#location").append("<option value='' selected=''></option>");
   $("#parlor").empty();
   jQuery("#parlor").append("<option value='' selected=''></option>");
@@ -128,6 +134,10 @@ var getLocations = async () => {
 
 var fillLocation = (locations) => {
   $("#location").empty();
+  $("#parlour_code").val("");
+  $("#Latitude").val("");
+  $("#Longitude").val("");
+
   jQuery("#location").append("<option value='' selected=''></option>");
   for (var i = 0; i < locations.length; i++) {
     $("#location").append(
@@ -140,6 +150,11 @@ var fillLocation = (locations) => {
 
 var getParlors = async () => {
   $("#parlor").empty();
+
+  $("#parlour_code").val("");
+  $("#Latitude").val("");
+  $("#Longitude").val("");
+
   jQuery("#parlor").append("<option value='' selected=''></option>");
 
   var selectedRegion = $("#region").val();
@@ -174,6 +189,74 @@ var getParlors = async () => {
 };
 
 var fillParlors = (parlors) => {
+  $("#parlor").empty();
+
+  $("#parlour_code").val("");
+  $("#Latitude").val("");
+  $("#Longitude").val("");
+
+  jQuery("#parlor").append("<option value='' selected=''></option>");
+  for (var i = 0; i < parlors.length; i++) {
+    $("#parlor").append(
+      $("<option></option>").attr("value", parlors[i]).text(parlors[i])
+    );
+  }
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+var getParlorDetaiil = async () => {
+  var selectedRegion = $("#region").val();
+
+  $("#parlour_code").val("");
+  $("#Latitude").val("");
+  $("#Longitude").val("");
+
+  if (selectedRegion == "") {
+    return;
+  }
+
+  var selectedLocations = $("#location").val();
+  if (selectedLocations == "") {
+    return;
+  }
+
+  var selectedParlor = $("#parlor").val();
+  if (selectedParlor == "") {
+    return;
+  }
+
+  var parlors = await getResponce(
+    "api/get_parlor_details.php?region=" +
+      selectedRegion +
+      "&location=" +
+      selectedLocations +
+      "&parlor=" +
+      selectedParlor
+  );
+
+  if (parlors == undefined) {
+    return;
+  }
+
+  if (!parlors.success) {
+    if (parlors.status == "EMPTY") {
+      return;
+    }
+    return alert("Failed to get parlor details");
+  }
+
+  $("#parlour_code").val(parlors.parlor.parlorCode);
+  $("#Latitude").val(parlors.parlor.lat);
+  $("#Longitude").val(parlors.parlor.lon);
+
+  isInputValued();
+};
+
+var fillParlors = (parlors) => {
+  $("#parlour_code").val("");
+  $("#Latitude").val("");
+  $("#Longitude").val("");
   $("#parlor").empty();
   jQuery("#parlor").append("<option value='' selected=''></option>");
   for (var i = 0; i < parlors.length; i++) {

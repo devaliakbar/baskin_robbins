@@ -24,11 +24,18 @@ $(document).ready(async function () {
   }
 
   $("#region").change(function () {
+    $("#parlour_code").val("");
+    $("#Latitude").val("");
+    $("#Longitude").val("");
     getLocations();
   });
 
   $("#location").change(function () {
     getParlors();
+  });
+
+  $("#parlor").change(function () {
+    getParlorDetaiil();
   });
 });
 
@@ -57,6 +64,11 @@ var saveVisit = async () => {
     region: region,
     location: location,
     parlor: parlor,
+
+    parlorCode: $("#parlour_code").val().trim(),
+    lat: $("#Latitude").val().trim(),
+    lon: $("#Longitude").val().trim(),
+
     comment: comment,
     verifiedBy: verifiedBy,
     verifiedDate: verifiedDate,
