@@ -77,29 +77,29 @@ include 'header.php';
                             </button>
                             <?php }?>
                         </div>
-                        
+
                         <div class="col-sm-3">
                             <div class="frm-con-tag my-2 my-lg-0">
-                                <select id="choose_region" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
-                                    <option value="" selected="" disabled></option>
+                                <select id="region" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
+                                    <!-- <option value="" selected="" disabled></option>
                                     <option value="Kochi">Kochi</option>
                                             <option value="MM Radha">MM Radha</option>
                                             <option value="P Paul">P Paul</option>
-                                            <option value="Alexander">Alexander</option>
+                                            <option value="Alexander">Alexander</option> -->
                                 </select>
-                                <label for="choose_region">Select Region</label>
+                                <label for="region">Select Region</label>
                             </div>
                         </div>
                         <div class="col-sm-3">
                             <div class="frm-con-tag my-2 my-lg-0">
-                                <select id="choose_location" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
-                                    <option value="" selected="" disabled=""></option>
+                                <select id="location" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
+                                    <!-- <option value="" selected="" disabled=""></option>
                                     <option value="1">Anil Kumar</option>
                                             <option value="1">MM Radha</option>
                                             <option value="1">P Paul</option>
-                                            <option value="1">Alexander</option>
+                                            <option value="1">Alexander</option> --> -->
                                 </select>
-                                <label for="choose_location">Select Location</label>
+                                <label for="location">Select Location</label>
                             </div>
                         </div>
 
@@ -137,7 +137,7 @@ include 'header.php';
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody class="expense-table">
+                                <tbody class="parlor-table">
 
                                 </tbody>
                             </table>
@@ -172,38 +172,38 @@ include 'header.php';
                     <div class="row">
 
                     <div class="frm-con-tag input-group col-5">
-                            <label for="region">Region</label>
-                            <input maxlength="50" class="frm-con effect-3" type="text" id="region" required="">
+                            <label for="add_region">Region</label>
+                            <input maxlength="50" class="frm-con effect-3" type="text" id="add_region" required="">
                             <span class="focus-border"></span>
                         </div>
-                        
+
                         <div class="frm-con-tag input-group col-5 offset-2">
-                            <label for="Location">Location</label>
-                            <input maxlength="250" class="frm-con effect-3" type="text" id="Location" required="">
+                            <label for="add_location">Location</label>
+                            <input maxlength="250" class="frm-con effect-3" type="text" id="add_location" required="">
                             <span class="focus-border"></span>
                         </div>
 
                         <div class="frm-con-tag input-group col-4">
-                            <label for="Parlor">Parlor</label>
-                            <input maxlength="250" class="frm-con effect-3" type="text" id="Parlor" required="">
+                            <label for="add_parlor">Parlor</label>
+                            <input maxlength="250" class="frm-con effect-3" type="text" id="add_parlor" required="">
                             <span class="focus-border"></span>
                         </div>
-                    
+
                         <div class="frm-con-tag input-group col-4">
-                            <label for="ParlorCode">Parlor Code</label>
-                            <input maxlength="250" class="frm-con effect-3" type="text" id="ParlorCode" required="">
+                            <label for="add_parlorCode">Parlor Code</label>
+                            <input maxlength="250" class="frm-con effect-3" type="text" id="add_parlorCode" required="">
                             <span class="focus-border"></span>
                         </div>
-                        
+
                         <div class="frm-con-tag input-group col-2">
-                            <label for="Lat">Latitude</label>
-                            <input maxlength="250" class="frm-con effect-3" type="text" id="Lat" required="">
+                            <label for="add_lat">Latitude</label>
+                            <input maxlength="250" class="frm-con effect-3" type="number" id="add_lat" required="">
                             <span class="focus-border"></span>
                         </div>
-                        
+
                         <div class="frm-con-tag input-group col-2">
-                            <label for="Lon">Longitude</label>
-                            <input maxlength="250" class="frm-con effect-3" type="text" id="Lon" required="">
+                            <label for="add_lon">Longitude</label>
+                            <input maxlength="250" class="frm-con effect-3" type="number" id="add_lon" required="">
                             <span class="focus-border"></span>
                         </div>
 
@@ -213,7 +213,7 @@ include 'header.php';
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-trans mr-0" data-dismiss="modal">Cancel</button>
-                <button onclick="saveExpense()" type="button" class="btn btn-trans ml-0">Save</button>
+                <button onclick="saveParlor()" type="button" class="btn btn-trans ml-0">Save</button>
             </div>
         </div>
     </div>
@@ -222,53 +222,7 @@ include 'header.php';
 
 <?php include 'footer.php';?>
 <script src="js/main/common.js"></script>
+<script src="js/typehead.js"></script>
 <script src="js/main/parlor.js"></script>
 
-    <script src="js/typehead.js"></script>
 
-    <script>
-        
-//typehead
-var substringMatcher = function(strs) {
-  return function findMatches(q, cb) {
-    var matches, substringRegex;
-
-    // an array that will be populated with substring matches
-    matches = [];
-
-    // regex used to determine if a string contains the substring `q`
-    substrRegex = new RegExp(q, 'i');
-
-    // iterate through the pool of strings and for any string that
-    // contains the substring `q`, add it to the `matches` array
-    $.each(strs, function(i, str) {
-      if (substrRegex.test(str)) {
-        matches.push(str);
-      }
-    });
-
-    cb(matches);
-  };
-};
-
-var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-  'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
-  'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-  'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-  'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-  'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-  'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-  'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-];
-
-$('#region, #location').typeahead({
-  hint: true,
-  highlight: true,
-  minLength: 1
-},
-{
-  name: 'states',
-  source: substringMatcher(states)
-});
-    </script>

@@ -169,7 +169,10 @@ $TypeheadHelperTableCreateQuery = "CREATE TABLE IF NOT EXISTS " . TypeheadHelper
     " . TypeheadHelper::$ID . " BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
     " . TypeheadHelper::$COLUMN_REGION . " VARCHAR(50) ,
     " . TypeheadHelper::$COLUMN_LOCATION . " VARCHAR(50) ,
-    " . TypeheadHelper::$COLUMN_PARLOR . " VARCHAR(50)
+    " . TypeheadHelper::$COLUMN_PARLOR . " VARCHAR(50) ,
+    " . TypeheadHelper::$COLUMN_PARLOR_CODE . " VARCHAR(50) ,
+    " . TypeheadHelper::$COLUMN_LAT . " VARCHAR(50) ,
+    " . TypeheadHelper::$COLUMN_LON . " VARCHAR(50)
 )ENGINE = INNODB;";
 
 if (mysqli_query($conn, $TypeheadHelperTableCreateQuery)) {

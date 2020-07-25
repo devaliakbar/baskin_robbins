@@ -9,12 +9,12 @@ $(document).ready(function () {
     $("body").addClass("login-page");
   }
 });
-$('#inputfile').on('change',function(){
+$("#inputfile").on("change", function () {
   //get the file name
   var fileName = $(this).val();
   //replace the "Choose a file" label
-  $(this).siblings('.custom-file-label').html(fileName);
-})
+  $(this).siblings(".custom-file-label").html(fileName);
+});
 function updateNavbarClass(className) {
   $("nav")
     .removeClass(function (index, css) {
@@ -114,35 +114,14 @@ $(".select-mail-or-phone input").change(function () {
   }
 });
 
-function isInputValued(){
-  $(".frm-con-tag select,.frm-con-tag input, .frm-con-tag textarea").each(function(){
-    if ($(this).val() != "") {
-      $(this).closest(".frm-con-tag").addClass("valued");
-    } else {
-      $(this).closest(".frm-con-tag").removeClass("valued");
+function isInputValued() {
+  $(".frm-con-tag select,.frm-con-tag input, .frm-con-tag textarea").each(
+    function () {
+      if ($(this).val() != "") {
+        $(this).closest(".frm-con-tag").addClass("valued");
+      } else {
+        $(this).closest(".frm-con-tag").removeClass("valued");
+      }
     }
-  });
+  );
 }
-
-
-
-var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-  'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
-  'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-  'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-  'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-  'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-  'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-  'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-];
-
-$('#region, #location').typeahead({
-  hint: true,
-  highlight: true,
-  minLength: 1
-},
-{
-  name: 'states',
-  source: substringMatcher(states)
-});

@@ -1,88 +1,78 @@
-var page = 0;
-var expenses;
+var parlors;
 var id;
 
-$(document).ready(function () {
-  fetchExpenses();
-
-  $("#from_date").change(async function () {
-    page = 0;
-    setUpFilterAndGetExpenses();
+$(document).ready(async function () {
+  getAllRegions();
+  fetchParlors();
+  $("#region").change(function () {
+    getLocations();
+    setUpFilterAndFetch();
   });
 
-  $("#to_date").change(async function () {
-    page = 0;
-    setUpFilterAndGetExpenses();
-  });
-
-  $("#name").keyup(function () {
-    page = 0;
-    setUpFilterAndGetExpenses();
+  $("#location").change(function () {
+    setUpFilterAndFetch();
   });
 });
 
-var setUpFilterAndGetExpenses = () => {
-  var filter = "?page=" + (+page + 1);
-  var fromDate = $("#from_date").val().trim();
-  if (fromDate != "") {
-    filter += "&from_date=" + formatDate(fromDate);
+var setUpFilterAndFetch = () => {
+  var filter = "?page=1";
 
-    var toDate = $("#to_date").val().trim();
-    if (toDate != "") {
-      filter += "&to_date=" + formatDate(toDate);
+  var region = $("#region").val().trim();
+  if (region != "") {
+    filter += "&region=" + region;
+
+    var location = $("#location").val().trim();
+    if (location != "") {
+      filter += "&location=" + location;
     }
   }
-
-  var name = $("#name").val().trim();
-  if (name != "") {
-    filter += "&name=" + name;
-  }
-  fetchExpenses(filter);
+  fetchParlors(filter);
 };
 
-var fetchExpenses = async (filter = "?page=1") => {
-  var expenseResponce = await getResponce("api/get_all_expenses.php" + filter);
+var fetchParlors = async (filter = "") => {
+  if (filter == "") {
+    regionsList = [];
+    locationsList = [];
+  }
 
-  if (expenseResponce == undefined) {
+  var responce = await getResponce("api/get_all_parlors.php" + filter);
+
+  if (responce == undefined) {
     return;
   }
 
-  if (expenseResponce.page != +page + 1) {
-    return;
-  }
-
-  if (!expenseResponce.success) {
-    if (expenseResponce.status == "EMPTY") {
-      if (page > 0) {
-        return;
-      }
+  if (!responce.success) {
+    if (responce.status == "EMPTY") {
       return showEmpty();
     }
     return alert("FAILED");
   }
-  page = expenseResponce.page;
-  if (page == 1) {
-    jQuery(".expense-table").empty();
-  }
 
-  expenses = expenseResponce.expenses;
-  fillExpenseTable();
+  parlors = responce.parlors;
+  fillParlorTable(filter);
 };
 
-var fillExpenseTable = () => {
-  for (var i = 0; i < expenses.length; i++) {
+var fillParlorTable = (filter) => {
+  jQuery(".parlor-table").empty();
+
+  for (var i = 0; i < parlors.length; i++) {
+    if (filter == "") {
+      regionsList.push(parlors[i].region);
+      locationsList.push(parlors[i].location);
+    }
+
     var appendRaw = " <tr>";
-    appendRaw += "<td>" + expenses[i].date + "</td>";
-    appendRaw += "<td>" + expenses[i].name + "</td>";
-    appendRaw += "<td>" + expenses[i].description + "</td>";
-    appendRaw += "<td>" + expenses[i].amount + "</td>";
-    appendRaw += "<td>" + expenses[i].amount + "</td>";
-    appendRaw += "<td>" + expenses[i].amount + "</td>";
+    appendRaw += "<td>" + parlors[i].region + "</td>";
+    appendRaw += "<td>" + parlors[i].location + "</td>";
+    appendRaw += "<td>" + parlors[i].parlor + "</td>";
+    appendRaw += "<td>" + parlors[i].parlorCode + "</td>";
+    appendRaw += "<td>" + parlors[i].lat + "</td>";
+    appendRaw += "<td>" + parlors[i].lon + "</td>";
 
     if (getCookie("type") != "2") {
       appendRaw +=
-        "<td><i onclick='editExpense(" +
-        expenses[i].id +
+        "<td><i onclick='editParlor(" +
+        parlors[i].id +
         "," +
         i +
         ")' class='fa fa-edit' aria-hidden='true'></i></td>";
@@ -90,27 +80,63 @@ var fillExpenseTable = () => {
 
     if (getCookie("type") == "0") {
       appendRaw +=
-        "<td><i onclick='deleteExpense(" +
-        expenses[i].id +
+        "<td><i onclick='deleteParlor(" +
+        parlors[i].id +
         ")' class='fa fa-trash' aria-hidden='true'></i></td>";
     }
 
     appendRaw += "</tr>";
 
-    jQuery(".expense-table").append(appendRaw);
+    jQuery(".parlor-table").append(appendRaw);
+  }
+
+  if (filter == "") {
+    $("#add_location").typeahead(
+      {
+        hint: true,
+        highlight: true,
+        minLength: 1,
+      },
+      {
+        name: "locationsList",
+        source: substringMatcher(locationsList),
+      }
+    );
+
+    $("#add_region").typeahead(
+      {
+        hint: true,
+        highlight: true,
+        minLength: 1,
+      },
+      {
+        name: "regionsList",
+        source: substringMatcher(regionsList),
+      }
+    );
   }
 };
 
 var showEmpty = () => {
-  jQuery(".expense-table").empty();
+  jQuery(".parlor-table").empty();
 };
 
-var deleteExpense = async (idOfSelected) => {
+var clearAll = () => {
+  id = undefined;
+  $("#add_region").val("");
+  $("#add_location").val("");
+  $("#add_parlor").val("");
+  $("#add_parlorCode").val("");
+  $("#add_lat").val("");
+  $("#add_lon").val("");
+};
+
+var deleteParlor = async (idOfSelected) => {
   var confirmForDelete = confirm("Are you sure, do you want to delete ?");
   if (!confirmForDelete) {
     return;
   }
-  var deleteResponce = await getResponce("api/delete_expense.php", "POST", {
+  var deleteResponce = await getResponce("api/delete_parlor.php", "POST", {
     id: idOfSelected,
   });
 
@@ -125,64 +151,99 @@ var deleteExpense = async (idOfSelected) => {
   location.reload();
 };
 
-var editExpense = (idOfSelected, index) => {
+var editParlor = (idOfSelected, index) => {
   id = idOfSelected;
-
-  $("#date").val(format2Date(expenses[index].date));
-  $("#user_name").val(expenses[index].name);
-  $("#description").val(expenses[index].description);
-  $("#amount").val(expenses[index].amount);
-
+  $("#add_region").val(parlors[index].region);
+  $("#add_location").val(parlors[index].location);
+  $("#add_parlor").val(parlors[index].parlor);
+  $("#add_parlorCode").val(parlors[index].parlorCode);
+  $("#add_lat").val(parlors[index].lat);
+  $("#add_lon").val(parlors[index].lon);
   isInputValued();
-
   $("#exampleModalLong").modal("show");
 };
 
-var clearAll = () => {
-  id = undefined;
+var saveParlor = async () => {
+  var region = $("#add_region").val().trim();
+  var pLocation = $("#add_location").val().trim();
+  var parlor = $("#add_parlor").val().trim();
+  var parlorCode = $("#add_parlorCode").val().trim();
+  var lat = $("#add_lat").val().trim();
+  var lon = $("#add_lon").val().trim();
 
-  $("#date").val("");
-  $("#user_name").val("");
-  $("#description").val("");
-  $("#amount").val("");
-};
-
-var saveExpense = async () => {
-  var date = $("#date").val().trim();
-  var name = $("#user_name").val().trim();
-  var description = $("#description").val().trim();
-  var amount = $("#amount").val().trim();
-
-  if (amount == "" || amount <= 0 || date == "") {
-    return alert("Please enter 'amount' and 'date'");
+  if (
+    region == "" ||
+    pLocation == "" ||
+    parlor == "" ||
+    parlorCode == "" ||
+    lat == "" ||
+    lon == ""
+  ) {
+    return alert("Please enter every fields");
   }
 
-  var saveExpenseStatus;
+  var saveStatus;
 
   if (id == undefined) {
-    saveExpenseStatus = await getResponce("api/add_expense.php", "POST", {
-      date: date,
-      name: name,
-      description: description,
-      amount: amount,
+    saveStatus = await getResponce("api/add_parlor.php", "POST", {
+      region: region,
+      location: pLocation,
+      parlor: parlor,
+      parlorCode: parlorCode,
+      lat: lat,
+      lon: lon,
     });
   } else {
-    saveExpenseStatus = await getResponce("api/update_expense.php", "POST", {
+    saveStatus = await getResponce("api/update_parlor.php", "POST", {
       id: id,
-      date: date,
-      name: name,
-      description: description,
-      amount: amount,
+      region: region,
+      location: pLocation,
+      parlor: parlor,
+      parlorCode: parlorCode,
+      lat: lat,
+      lon: lon,
     });
   }
 
-  if (saveExpenseStatus == undefined) {
+  if (saveStatus == undefined) {
     return;
   }
 
-  if (!saveExpenseStatus.success) {
+  if (!saveStatus.success) {
     return alert("Failed To Save");
   }
   alert("Successfully saved");
   location.reload();
 };
+
+//TYPEHEAD
+var substringMatcher = function (strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+    matches = [];
+    substrRegex = new RegExp(q, "i");
+    $.each(strs, function (i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
+    cb(matches);
+  };
+};
+
+var substringMatcher2 = function (strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+    matches = [];
+    substrRegex = new RegExp(q, "i");
+    $.each(strs, function (i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
+    cb(matches);
+  };
+};
+
+var regionsList = [];
+var locationsList = [];
