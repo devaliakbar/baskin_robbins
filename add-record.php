@@ -33,15 +33,15 @@ include 'header.php';
         <ul class="navbar-nav">
             <li class=" nav-item"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
             </li>
-            <?php if ($_COOKIE['type'] == 0) { ?>
+            <?php if ($_COOKIE['type'] == 0) {?>
                 <li class="nav-item active"><a class="nav-link" href="add-record.php"><i class="fas fa-clipboard"></i> Add new record</a></li>
-            <?php } ?>
+            <?php }?>
             <li class="nav-item"><a class="nav-link" href="expense.php"><i class="fas fa-comment-dollar"></i> Expense</a>
             </li>
-            <?php if ($_COOKIE['type'] == 0) { ?>
+            <?php if ($_COOKIE['type'] == 0) {?>
                 <li class="nav-item"><a class="nav-link" href="users.php"><i class="fas fa-users"></i> Users</a>
                 </li>
-            <?php } ?>
+            <?php }?>
             <li class="nav-item">
                 <a class="nav-link" onclick="logOut()" href="#"><i class="fas fa-sign-out-alt"></i> Logout </a>
             </li>
@@ -112,7 +112,7 @@ include 'header.php';
                             </div>
 
                             <div class="row">
-                                
+
 
                             <div class="col">
 
@@ -162,7 +162,7 @@ include 'header.php';
                                     <div class="col-12 bottom-sec">
 
                                         <div class="frm-con-tag mt-5  mb-0">
-                                            <textarea name="" id="comment" class="w-100 frm-con"></textarea>
+                                            <textarea maxlength="250" name="" id="comment" class="w-100 frm-con"></textarea>
                                             <label for="comment">Comments</label>
                                             <span class="focus-border"></span>
                                         </div>
@@ -179,7 +179,7 @@ include 'header.php';
 
                                                 <div class="frm-con-tag input-group">
                                                     <label for="verified_by">Name</label>
-                                                    <input class="frm-con effect-3" type="text" id="verified_by" required="">
+                                                    <input maxlength="50" class="frm-con effect-3" type="text" id="verified_by" required="">
                                                     <span class="focus-border"></span>
                                                 </div>
 
@@ -197,7 +197,7 @@ include 'header.php';
 
                                                 <div class="frm-con-tag input-group">
                                                     <label for="checked_by">Name</label>
-                                                    <input class="frm-con effect-3" type="text" id="checked_by" required="">
+                                                    <input maxlength="50" class="frm-con effect-3" type="text" id="checked_by" required="">
                                                     <span class="focus-border"></span>
                                                 </div>
 
@@ -215,7 +215,7 @@ include 'header.php';
 
                                                 <div class="frm-con-tag input-group">
                                                     <label for="approved_by">Name</label>
-                                                    <input class="frm-con effect-3" type="text" id="approved_by" required="">
+                                                    <input maxlength="50" class="frm-con effect-3" type="text" id="approved_by" required="">
                                                     <span class="focus-border"></span>
                                                 </div>
 
@@ -251,13 +251,13 @@ include 'header.php';
 
                                 <div class="frm-con-tag input-group col">
                                     <label for="no_of_channels">No Of Channels</label>
-                                    <input class="frm-con effect-3" type="number" id="no_of_channels" required="">
+                                    <input maxlength="4" class="frm-con effect-3" type="number" id="no_of_channels" required="" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                     <span class="focus-border"></span>
                                 </div>
 
                                 <div class="frm-con-tag input-group col">
                                     <label for="dvr_brand">Brand</label>
-                                    <input class="frm-con effect-3" type="text" id="dvr_brand" required="">
+                                    <input maxlength="50" class="frm-con effect-3" type="text" id="dvr_brand" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
@@ -276,7 +276,7 @@ include 'header.php';
 
                                 <div class="frm-con-tag input-group col">
                                     <label for="hdd_capacity">HDD Capaciity</label>
-                                    <input class="frm-con effect-3" type="text" id="hdd_capacity" required="">
+                                    <input maxlength="50" class="frm-con effect-3" type="text" id="hdd_capacity" required="">
                                     <span class="focus-border"></span>
                                 </div>
                             </div>
@@ -284,7 +284,7 @@ include 'header.php';
 
                                 <div class="frm-con-tag input-group col">
                                     <label for="dvr_remark">Remark</label>
-                                    <input class="frm-con effect-3" type="text" id="dvr_remark" required="">
+                                    <input maxlength="250" class="frm-con effect-3" type="text" id="dvr_remark" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
@@ -297,7 +297,7 @@ include 'header.php';
 
                                 <div class="frm-con-tag input-group col">
                                     <label for="dvr_suggestion">Suggestion</label>
-                                    <input class="frm-con effect-3" type="text" id="dvr_suggestion" required="">
+                                    <input maxlength="250" class="frm-con effect-3" type="text" id="dvr_suggestion" required="">
                                     <span class="focus-border"></span>
                                 </div>
                                 <div class="col">
@@ -373,7 +373,7 @@ include 'header.php';
 
                                 <div class="frm-con-tag input-group col">
                                     <label for="network_point">Network Point</label>
-                                    <input class="frm-con effect-3" type="text" id="network_point" required="">
+                                    <input maxlength="50" class="frm-con effect-3" type="text" id="network_point" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
@@ -392,7 +392,7 @@ include 'header.php';
 
                                 <div class="frm-con-tag input-group col">
                                     <label for="network_suggestions">Suggestion</label>
-                                    <input class="frm-con effect-3" type="text" id="network_suggestions" required="">
+                                    <input maxlength="250" class="frm-con effect-3" type="text" id="network_suggestions" required="">
                                     <span class="focus-border"></span>
                                 </div>
                                 <div class="col">
@@ -461,7 +461,7 @@ include 'header.php';
 
                                 <div class="frm-con-tag input-group col">
                                     <label for="tv_point">Network Point</label>
-                                    <input class="frm-con effect-3" type="text" id="tv_point" required="">
+                                    <input maxlength="50" class="frm-con effect-3" type="text" id="tv_point" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
@@ -480,13 +480,13 @@ include 'header.php';
 
                                 <div class="frm-con-tag input-group col">
                                     <label for="tv_remark">Remark</label>
-                                    <input class="frm-con effect-3" type="text" id="tv_remark" required="">
+                                    <input maxlength="250" class="frm-con effect-3" type="text" id="tv_remark" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
                                 <div class="frm-con-tag input-group col">
                                     <label for="tv_suggestions">Suggestion</label>
-                                    <input class="frm-con effect-3" type="text" id="tv_suggestions" required="">
+                                    <input maxlength="250" class="frm-con effect-3" type="text" id="tv_suggestions" required="">
                                     <span class="focus-border"></span>
                                 </div>
                                 <div class="col">
@@ -572,19 +572,19 @@ include 'header.php';
 
                                 <div class="frm-con-tag input-group col-md-3">
                                     <label for="camera_type">Type</label>
-                                    <input class="frm-con effect-3" type="text" id="camera_type" required="">
+                                    <input maxlength="50" class="frm-con effect-3" type="text" id="camera_type" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
                                 <div class="frm-con-tag input-group col-md-3">
                                     <label for="camera_brand">Brand</label>
-                                    <input class="frm-con effect-3" type="text" id="camera_brand" required="">
+                                    <input maxlength="50" class="frm-con effect-3" type="text" id="camera_brand" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
                                 <div class="frm-con-tag input-group col-md-3">
                                     <label for="camera_count">Count</label>
-                                    <input class="frm-con effect-3" type="number" id="camera_count" required="">
+                                    <input maxlength="4" class="frm-con effect-3" type="number" id="camera_count" required="" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                     <span class="focus-border"></span>
                                 </div>
 
@@ -608,19 +608,19 @@ include 'header.php';
 
                                 <div class="frm-con-tag input-group col-md-3">
                                     <label for="camera_remark">Remark</label>
-                                    <input class="frm-con effect-3" type="text" id="camera_remark" required="">
+                                    <input maxlength="250" class="frm-con effect-3" type="text" id="camera_remark" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
                                 <div class="frm-con-tag input-group col-md-3">
                                     <label for="camera_ip">IP Detail</label>
-                                    <input class="frm-con effect-3" type="text" id="camera_ip" required="">
+                                    <input maxlength="250" class="frm-con effect-3" type="text" id="camera_ip" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
                                 <div class="frm-con-tag input-group col-md-3">
                                     <label for="camera_suggestion">Suggestion</label>
-                                    <input class="frm-con effect-3" type="text" id="camera_suggestion" required="">
+                                    <input maxlength="250" class="frm-con effect-3" type="text" id="camera_suggestion" required="">
                                     <span class="focus-border"></span>
                                 </div>
 
@@ -710,7 +710,7 @@ include 'header.php';
     <!-- end invite patient content -->
 </main>
 
-<?php include 'footer.php'; ?>
+<?php include 'footer.php';?>
 <script src="js/main/common.js"></script>
 <script src="js/main/add-record.js"></script>
 <script src="js/main/update-record.js"></script>

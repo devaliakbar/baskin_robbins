@@ -124,19 +124,19 @@ include 'header.php';
 
                         <div class="frm-con-tag input-group col-12">
                             <label for="name">Name</label>
-                            <input class="frm-con effect-3" type="text" id="name" required="">
+                            <input maxlength="50" class="frm-con effect-3" type="text" id="name" required="">
                             <span class="focus-border"></span>
                         </div>
 
                         <div class="frm-con-tag input-group col-5">
                             <label for="username">Username</label>
-                            <input class="frm-con effect-3" type="text" id="username" required="">
+                            <input maxlength="50" class="frm-con effect-3" type="text" id="username" required="">
                             <span class="focus-border"></span>
                         </div>
 
                         <div class="frm-con-tag input-group col-5 offset-2">
                             <label for="password">Password</label>
-                            <input class="frm-con effect-3" type="text" id="password" required="">
+                            <input maxlength="50" class="frm-con effect-3" type="text" id="password" required="">
                             <span class="focus-border"></span>
                         </div>
 
@@ -173,13 +173,13 @@ include 'header.php';
 
                         <div class="frm-con-tag input-group col-12">
                             <label for="mname">Name</label>
-                            <input class="frm-con effect-3" type="text" id="mname" required="" disabled>
+                            <input maxlength="50" class="frm-con effect-3" type="text" id="mname" required="" disabled>
                             <span class="focus-border"></span>
                         </div>
 
                         <div class="frm-con-tag input-group col-5">
                             <label for="musername">Username</label>
-                            <input class="frm-con effect-3" type="text" id="musername" required="" disabled>
+                            <input maxlength="50" class="frm-con effect-3" type="text" id="musername" required="" disabled>
                             <span class="focus-border"></span>
                         </div>
 

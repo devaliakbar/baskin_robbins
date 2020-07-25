@@ -1,11 +1,21 @@
-$("#login").click(function async() {
+$(document).ready(function () {
+  $(document).on("keypress", function (e) {
+    if (e.which == 13) {
+      performLogin();
+    }
+  });
+});
+
+$("#login").click(performLogin);
+
+async function performLogin() {
   var username = $("#username").val().trim();
   var password = $("#password").val().trim();
   if (username == "" || password == "") {
     return alert("Please enter username and password");
   }
   login(username, password);
-});
+}
 
 var login = async (username, password) => {
   const response = await fetch("api/login.php", {

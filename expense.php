@@ -169,19 +169,19 @@ include 'header.php';
 
                         <div class="frm-con-tag input-group col-5 offset-2">
                             <label for="user_name">Name</label>
-                            <input class="frm-con effect-3" type="text" id="user_name" required="">
+                            <input maxlength="50" class="frm-con effect-3" type="text" id="user_name" required="">
                             <span class="focus-border"></span>
                         </div>
 
                         <div class="frm-con-tag input-group col-12">
                             <label for="description">Description</label>
-                            <input class="frm-con effect-3" type="text" id="description" required="">
+                            <input maxlength="250" class="frm-con effect-3" type="text" id="description" required="">
                             <span class="focus-border"></span>
                         </div>
 
                         <div class="frm-con-tag input-group col-5">
                             <label for="amount">Amount</label>
-                            <input class="frm-con effect-3" type="number" id="amount" required="">
+                            <input maxlength="8" class="frm-con effect-3" type="number" id="amount" required="" id="no_of_channels" required="" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             <span class="focus-border"></span>
                         </div>
                     </div>

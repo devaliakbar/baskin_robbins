@@ -51,10 +51,10 @@ include 'header.php';
 
                             <h2 class="text-center mb-2">Log In</h2>
                             <div class="form-group">
-                                <input id="username" type="text" class="form-control" placeholder="Username" required="required">
+                                <input maxlength="50" id="username" type="text" class="form-control" placeholder="Username" required="required">
                             </div>
                             <div class="form-group">
-                                <input id="password" type="password" class="form-control" placeholder="Password" required="required">
+                                <input maxlength="50" id="password" type="password" class="form-control" placeholder="Password" required="required">
                             </div>
                             <div class="form-group">
                                 <button id="login" type="submit" class="btn btn-trans btn-block">Log in</button>
