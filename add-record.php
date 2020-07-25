@@ -33,15 +33,15 @@ include 'header.php';
         <ul class="navbar-nav">
             <li class=" nav-item"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
             </li>
-            <?php if ($_COOKIE['type'] == 0) {?>
-            <li class="nav-item active"><a class="nav-link" href="add-record.php"><i class="fas fa-clipboard"></i> Add new record</a></li>
-            <?php }?>
+            <?php if ($_COOKIE['type'] == 0) { ?>
+                <li class="nav-item active"><a class="nav-link" href="add-record.php"><i class="fas fa-clipboard"></i> Add new record</a></li>
+            <?php } ?>
             <li class="nav-item"><a class="nav-link" href="expense.php"><i class="fas fa-comment-dollar"></i> Expense</a>
             </li>
-            <?php if ($_COOKIE['type'] == 0) {?>
-            <li class="nav-item"><a class="nav-link" href="users.php"><i class="fas fa-users"></i> Users</a>
-            </li>
-            <?php }?>
+            <?php if ($_COOKIE['type'] == 0) { ?>
+                <li class="nav-item"><a class="nav-link" href="users.php"><i class="fas fa-users"></i> Users</a>
+                </li>
+            <?php } ?>
             <li class="nav-item">
                 <a class="nav-link" onclick="logOut()" href="#"><i class="fas fa-sign-out-alt"></i> Logout </a>
             </li>
@@ -99,8 +99,9 @@ include 'header.php';
                                     <div class="date-wrap ml-auto">
 
 
-                                        <div class="input-group">
-                                            <input id="date" type="text" class="form-control endDate frm-con" placeholder="Date">
+                                        <div class="frm-con-tag  mb-0">
+                                            <label for="date">Date</label>
+                                            <input id="date" type="text" class="form-control endDate frm-con">
                                         </div>
 
 
@@ -192,9 +193,10 @@ include 'header.php';
                                                     <span class="focus-border"></span>
                                                 </div>
 
-                                                <div class="date-wrap frm-con-tag">
-                                                    <div class="input-group">
-                                                        <input id="verified_date" type="text" class="form-control frm-con endDate" placeholder="Date">
+                                                <div class="date-wrap">
+                                                    <div class="frm-con-tag input-group">
+                                                        <label for="verified_date">Date</label>
+                                                        <input id="verified_date" type="text" class="form-control frm-con endDate" placeholder="">
                                                         <span class="focus-border"></span>
                                                     </div>
 
@@ -210,8 +212,9 @@ include 'header.php';
                                                     <span class="focus-border"></span>
                                                 </div>
 
-                                                <div class="date-wrap ml-auto frm-con-tag">
-                                                    <div class="input-group">
+                                                <div class="date-wrap ml-auto">
+                                                    <div class="frm-con-tag input-group">
+                                                        <label for="checked_date">Date</label>
                                                         <input id="checked_date" type="text" class="form-control frm-con endDate" placeholder="Date">
                                                         <span class="focus-border"></span>
                                                     </div>
@@ -229,7 +232,8 @@ include 'header.php';
                                                 </div>
 
                                                 <div class="date-wrap ml-auto">
-                                                    <div class="input-group">
+                                                    <div class="frm-con-tag input-group">
+                                                        <label for="approved_date">Date</label>
                                                         <input id="approved_date" type="text" class="form-control frm-con endDate" placeholder="Date">
                                                         <span class="focus-border"></span>
                                                     </div>
@@ -717,7 +721,7 @@ include 'header.php';
     <!-- end invite patient content -->
 </main>
 
-<?php include 'footer.php';?>
+<?php include 'footer.php'; ?>
 <script src="js/main/common.js"></script>
 <script src="js/main/add-record.js"></script>
 <script src="js/main/update-record.js"></script>

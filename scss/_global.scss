@@ -80,9 +80,14 @@
 
 .frm-con-tag{
 
+    label{
+        color: $blue-primary;
+    }
+
     &.valued textarea + label, &:focus-within textarea + label{
         top: -20px;
         left: 5px;
+        color: #000;
     }
 }
 
