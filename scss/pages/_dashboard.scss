@@ -1,15 +1,19 @@
 .dashboard-page{
     .table-responsive{
-        height: calc(100vh - 360px);
+        height: calc(100vh - 400px);
     }
 }
 
-.new-record{
-    .table-responsive{
-        height: calc(100vh - 432px);
-        
-        &.one-line-field-top{
-            height: calc(100vh - 361px);
-        }
+.new-record {
+
+    .table-responsive {
+        height: 100vh;
+        max-height: 500px;
+        border: 1px solid #000;
+    }
+
+    .date-wrap {
+        max-width: 105px;
+        float: left;
     }
 }

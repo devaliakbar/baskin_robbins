@@ -36,7 +36,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
     color: $dark-grey;
-    background: $lighter-grey;
+    background: #394d65;
     line-height: 1.857143;
     overflow: hidden;
 }
@@ -52,11 +52,13 @@ a:visited {
     text-decoration: none
 }
 
-
+h4{
+    font-weight: 900;
+}
 
 /* left panel */
 .navbar {
-    background-color: #fff;
+    background-color: $lighter-grey;
     z-index: 990;
     -webkit-transition: all .3s ease;
     transition: all .3s ease;
@@ -106,7 +108,7 @@ a:visited {
 
 /* right side header */
 .header {
-    background: #fff;
+    background: $lighter-grey;
     width: 100%;
     display: flex;
     padding: 12px 15px 10px 50px;
@@ -127,10 +129,10 @@ a:visited {
 
 .header h2 {
     font-size: 30px;
-    font-weight: 400;
     line-height: 60px;
     margin-bottom: 0px;
     color: #000;
+    font-weight: 900;
 }
 
 .header-img {
@@ -143,16 +145,17 @@ a:visited {
     align-items: center;
     color: #000;
 
-    &.buttons{
+    &.buttons {
         width: auto;
-        .btn{
+
+        .btn {
             display: flex;
             align-items: center;
         }
     }
-    
 
-    label{
+
+    label {
         border: 1px solid;
         padding: 0 5px;
     }
@@ -183,7 +186,7 @@ a:visited {
 
 /* all pages main frame */
 .main-content-frame {
-    background: #fff;
+    background: $lighter-grey;
     margin: 115px 30px 35px 2px;
     padding: 35px 20px;
     height: calc(100vh - 140px);
@@ -313,8 +316,12 @@ a:visited {
     }
 
     select {
-        color: #000 !important;
+        color: $blue-primary !important;
     }
+}
+
+.form-control {
+    background: transparent;
 }
 
 .form-control:disabled,
@@ -333,12 +340,14 @@ textarea:disabled {
     padding: 7px 10px 5px 10px;
     width: 100%;
     margin-bottom: 10px;
-    color: $dark-grey;
+    color: $blue-primary;
     font-weight: 300;
     opacity: 1;
+    background: transparent;
 
     &:focus {
         box-shadow: none !important;
+        background: transparent;
     }
 }
 
@@ -403,7 +412,8 @@ textarea:disabled {
 }
 
 select {
-    color: #b7b7b7 !important
+    color: #b7b7b7 !important;
+    background: transparent;
 }
 
 .datetimepicker {
@@ -476,7 +486,7 @@ select {
 .navbar .navbar-nav .nav-item.active .nav-link {
     border-color: $blue-primary !important;
     border-right: solid 6px;
-    color: $blue-primary ;
+    color: $blue-primary;
 }
 
 

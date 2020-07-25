@@ -9,7 +9,12 @@ $(document).ready(function () {
     $("body").addClass("login-page");
   }
 });
-
+$('#inputfile').on('change',function(){
+  //get the file name
+  var fileName = $(this).val();
+  //replace the "Choose a file" label
+  $(this).siblings('.custom-file-label').html(fileName);
+})
 function updateNavbarClass(className) {
   $("nav")
     .removeClass(function (index, css) {

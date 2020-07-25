@@ -7,7 +7,7 @@
     }
 
     .date-wrap {
-
+        
         display: flex;
         align-items: center;
 
@@ -78,19 +78,27 @@
     }
 }
 
-.frm-con-tag{
+.frm-con-tag {
 
-    label{
+    label {
         color: $blue-primary;
     }
 
-    &.valued textarea + label, &:focus-within textarea + label{
+    &.valued textarea+label,
+    &:focus-within textarea+label {
         top: -20px;
         left: 5px;
         color: #000;
     }
+
 }
 
+.date-wrap {
+    input::placeholder{
+        color: #005dab !important;
+        font-size: 15px;
+    }
+}
 .footer-pager-panel {
     padding: 0 15px;
     display: flex;
@@ -102,11 +110,15 @@
     }
 }
 
+.custom-file-label{
+    background: transparent;
+    border: 1px solid #000;
+}
 
 .table {
     margin: 0;
-
-    i{
+    color: #000;
+    i {
         cursor: pointer;
     }
 
@@ -229,9 +241,9 @@
     }
 }
 
-.new-record{
-    .nav-tabs{
-        .nav-link{
+.new-record {
+    .nav-tabs {
+        .nav-link {
             background: #b9b9b930;
             border: none;
             border-radius: 0;
@@ -240,10 +252,12 @@
             text-transform: uppercase;
             color: $dark-grey;
 
-            &:hover{
+            &:hover {
                 background: #b9b9b967;
             }
-            &.active,&.active:hover{
+
+            &.active,
+            &.active:hover {
                 background: $blue-primary;
                 color: #fff;
             }
@@ -251,17 +265,17 @@
     }
 }
 
-.col-half-offset{
-    margin-left:4.166666667%
+.col-half-offset {
+    margin-left: 4.166666667%
 }
 
-.modal.show{
+.modal.show {
     display: flex !important;
     align-items: center;
     justify-content: center;
-    .modal-dialog{
+
+    .modal-dialog {
         max-width: 1200px;
 
     }
 }
-

@@ -100,72 +100,62 @@ include 'header.php';
 
 
                                         <div class="frm-con-tag  mb-0">
-                                            <label for="date">Date</label>
-                                            <input id="date" type="text" class="form-control endDate frm-con">
+                                            <input id="date" type="text" class="form-control endDate frm-con" placeholder="Date">
                                         </div>
 
 
                                     </div>
                                 </div>
 
-                                <div class="col">
-
-                                    <div class="frm-con-tag  mb-0">
-                                        <label for="region">Select Region</label>
-                                        <select id="region" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
-                                            <option value="" selected=""></option>
-                                            <!-- <option value="1">Kochi</option>
-                                            <option value="1">MM Radha</option>
-                                            <option value="1">P Paul</option>
-                                            <option value="1">Alexander</option> -->
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col">
-
-                                    <div class="frm-con-tag  mb-0">
-                                        <label for="location">Select Location</label>
-                                        <select id="location" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
-                                            <option value="" selected=""></option>
-                                            <!-- <option value="1">Anil Kumar</option>
-                                            <option value="1">MM Radha</option>
-                                            <option value="1">P Paul</option>
-                                            <option value="1">Alexander</option> -->
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-
-                                    <div class="frm-con-tag  mb-0">
-                                        <label for="parlor">Select Parlor</label>
-                                        <select id="parlor" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
-                                            <option value="" selected=""></option>
-                                            <!-- <option value="1">Anil Kumar</option>
-                                            <option value="1">MM Radha</option>
-                                            <option value="1">P Paul</option>
-                                            <option value="1">Alexander</option> -->
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <!-- <div class="col">
-
-                                    <div class="frm-con-tag  mb-0">
-                                        <label for="choose_doctor">Visited Time</label>
-                                        <select name="refrence" aria-required="true" id="choose_doctor" aria-invalid="false" class="frm-con effect-3" required="">
-                                            <option value="" selected="" disabled=""></option>
-                                            <option value="1">Anil Kumar</option>
-                                            <option value="1">MM Radha</option>
-                                            <option value="1">P Paul</option>
-                                            <option value="1">Alexander</option>
-                                        </select>
-                                    </div>
-                                </div> -->
-
 
 
                             </div>
+
+                            <div class="row">
+                                
+
+                            <div class="col">
+
+<div class="frm-con-tag  mb-0">
+    <label for="region">Select Region</label>
+    <select id="region" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
+        <option value="" selected=""></option>
+        <!-- <option value="1">Kochi</option>
+        <option value="1">MM Radha</option>
+        <option value="1">P Paul</option>
+        <option value="1">Alexander</option> -->
+    </select>
+</div>
+</div>
+<div class="col">
+
+<div class="frm-con-tag  mb-0">
+    <label for="location">Select Location</label>
+    <select id="location" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
+        <option value="" selected=""></option>
+        <!-- <option value="1">Anil Kumar</option>
+        <option value="1">MM Radha</option>
+        <option value="1">P Paul</option>
+        <option value="1">Alexander</option> -->
+    </select>
+</div>
+</div>
+
+<div class="col">
+
+<div class="frm-con-tag  mb-0">
+    <label for="parlor">Select Parlor</label>
+    <select id="parlor" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
+        <option value="" selected=""></option>
+        <!-- <option value="1">Anil Kumar</option>
+        <option value="1">MM Radha</option>
+        <option value="1">P Paul</option>
+        <option value="1">Alexander</option> -->
+    </select>
+</div>
+</div>
+                            </div>
+
                             <div class="table-contents">
                                 <div class="row">
 
@@ -195,8 +185,7 @@ include 'header.php';
 
                                                 <div class="date-wrap">
                                                     <div class="frm-con-tag input-group">
-                                                        <label for="verified_date">Date</label>
-                                                        <input id="verified_date" type="text" class="form-control frm-con endDate" placeholder="">
+                                                        <input id="verified_date" type="text" class="form-control frm-con endDate" placeholder="Date">
                                                         <span class="focus-border"></span>
                                                     </div>
 
@@ -214,7 +203,6 @@ include 'header.php';
 
                                                 <div class="date-wrap ml-auto">
                                                     <div class="frm-con-tag input-group">
-                                                        <label for="checked_date">Date</label>
                                                         <input id="checked_date" type="text" class="form-control frm-con endDate" placeholder="Date">
                                                         <span class="focus-border"></span>
                                                     </div>
@@ -233,7 +221,6 @@ include 'header.php';
 
                                                 <div class="date-wrap ml-auto">
                                                     <div class="frm-con-tag input-group">
-                                                        <label for="approved_date">Date</label>
                                                         <input id="approved_date" type="text" class="form-control frm-con endDate" placeholder="Date">
                                                         <span class="focus-border"></span>
                                                     </div>
@@ -241,10 +228,12 @@ include 'header.php';
                                                 </div>
                                             </div>
 
-                                            <a id="attachment" class="btn btn-trans mr-3" href="#" target="_blank">Download Attachment</a>
-                                            <div class="custom-file" style="width: 300px">
-                                                <label for="inputfile" class="custom-file-label">Choose file</label>
-                                                <input type='file' class="custom-file-input" name='inputfile' id='inputfile'>
+                                            <div class="col-sm-4">
+                                                <a id="attachment" class="btn btn-trans mr-3" href="#" target="_blank">Download Attachment</a>
+                                                <div class="custom-file">
+                                                <label for=" inputfile" class="custom-file-label">Choose file</label>
+                                                    <input type='file' class="custom-file-input" name='inputfile' id='inputfile'>
+                                                </div>
                                             </div>
 
                                         </div>

@@ -81,7 +81,7 @@ include 'header.php';
 
                     </div>
 
-                    <div class="header-pager-panel pr-0">
+                    <div class="header-pager-panel pr-0 mb-3">
 
                         <div class="row w-100">
                             <div class="col-md-3">
@@ -142,7 +142,7 @@ include 'header.php';
                 </div>
                 <div class="col-md-12">
                     <div class="table-wrapper">
-                        <div class="table-responsive">
+                        <div class="table-responsive mb-3">
                             <table class="table table2excel table2excel_with_colors">
                                 <thead>
                                     <tr>
@@ -184,7 +184,7 @@ include 'header.php';
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="footer-pager-panel">
+                    <div class="footer-pager-panel px-0">
                         <div class="nav-btns">
                             <a href="#" onclick="setUpFilterAndGetVisits()" class="btn btn-trans">Load More</a>
                         </div>
