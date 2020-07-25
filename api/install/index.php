@@ -186,7 +186,7 @@ $ExpenseTableCreateQuery = "CREATE TABLE IF NOT EXISTS " . Expense::$TABLE_NAME 
     " . Expense::$COLUMN_DATE . " DATE ,
     " . Expense::$COLUMN_NAME . " VARCHAR(50) ,
     " . Expense::$COLUMN_AMOUNT . " DECIMAL ,
-    " . Expense::$COLUMN_DESCRIPTION . " VARCHAR(500)
+    " . Expense::$COLUMN_DESCRIPTION . " VARCHAR(250)
 )ENGINE = INNODB;";
 
 if (mysqli_query($conn, $ExpenseTableCreateQuery)) {
