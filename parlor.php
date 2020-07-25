@@ -80,24 +80,24 @@ include 'header.php';
                         
                         <div class="col-sm-3">
                             <div class="frm-con-tag my-2 my-lg-0">
-                                <select id="region" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
+                                <select id="choose_region" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
                                     <option value="" selected="" disabled></option>
-                                    <!-- <option value="Kochi">Kochi</option>
+                                    <option value="Kochi">Kochi</option>
                                             <option value="MM Radha">MM Radha</option>
                                             <option value="P Paul">P Paul</option>
-                                            <option value="Alexander">Alexander</option> -->
+                                            <option value="Alexander">Alexander</option>
                                 </select>
                                 <label for="choose_region">Select Region</label>
                             </div>
                         </div>
                         <div class="col-sm-3">
                             <div class="frm-con-tag my-2 my-lg-0">
-                                <select id="location" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
+                                <select id="choose_location" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
                                     <option value="" selected="" disabled=""></option>
-                                    <!-- <option value="1">Anil Kumar</option>
+                                    <option value="1">Anil Kumar</option>
                                             <option value="1">MM Radha</option>
                                             <option value="1">P Paul</option>
-                                            <option value="1">Alexander</option> -->
+                                            <option value="1">Alexander</option>
                                 </select>
                                 <label for="choose_location">Select Location</label>
                             </div>
@@ -164,36 +164,49 @@ include 'header.php';
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Add Expense</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Add Parlor</h5>
             </div>
             <div class="modal-body">
 
                 <div class="container">
                     <div class="row">
-                        <div class="date-wrap col-5 frm-con-tag">
-                            <div class="input-group">
-                                <input id="date" type="text" class="form-control frm-con endDate" placeholder="Date">
-                                <span class="focus-border"></span>
-                            </div>
-                        </div>
 
+                    <div class="frm-con-tag input-group col-5">
+                            <label for="region">Region</label>
+                            <input maxlength="50" class="frm-con effect-3" type="text" id="region" required="">
+                            <span class="focus-border"></span>
+                        </div>
+                        
                         <div class="frm-con-tag input-group col-5 offset-2">
-                            <label for="user_name">Name</label>
-                            <input maxlength="50" class="frm-con effect-3" type="text" id="user_name" required="">
+                            <label for="Location">Location</label>
+                            <input maxlength="250" class="frm-con effect-3" type="text" id="Location" required="">
                             <span class="focus-border"></span>
                         </div>
 
-                        <div class="frm-con-tag input-group col-12">
-                            <label for="description">Description</label>
-                            <input maxlength="250" class="frm-con effect-3" type="text" id="description" required="">
+                        <div class="frm-con-tag input-group col-4">
+                            <label for="Parlor">Parlor</label>
+                            <input maxlength="250" class="frm-con effect-3" type="text" id="Parlor" required="">
+                            <span class="focus-border"></span>
+                        </div>
+                    
+                        <div class="frm-con-tag input-group col-4">
+                            <label for="ParlorCode">Parlor Code</label>
+                            <input maxlength="250" class="frm-con effect-3" type="text" id="ParlorCode" required="">
+                            <span class="focus-border"></span>
+                        </div>
+                        
+                        <div class="frm-con-tag input-group col-2">
+                            <label for="Lat">Latitude</label>
+                            <input maxlength="250" class="frm-con effect-3" type="text" id="Lat" required="">
+                            <span class="focus-border"></span>
+                        </div>
+                        
+                        <div class="frm-con-tag input-group col-2">
+                            <label for="Lon">Longitude</label>
+                            <input maxlength="250" class="frm-con effect-3" type="text" id="Lon" required="">
                             <span class="focus-border"></span>
                         </div>
 
-                        <div class="frm-con-tag input-group col-5">
-                            <label for="amount">Amount</label>
-                            <input maxlength="8" class="frm-con effect-3" type="number" id="amount" required="" id="no_of_channels" required="" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                            <span class="focus-border"></span>
-                        </div>
                     </div>
                 </div>
 
@@ -210,3 +223,52 @@ include 'header.php';
 <?php include 'footer.php';?>
 <script src="js/main/common.js"></script>
 <script src="js/main/parlor.js"></script>
+
+    <script src="js/typehead.js"></script>
+
+    <script>
+        
+//typehead
+var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+
+    // an array that will be populated with substring matches
+    matches = [];
+
+    // regex used to determine if a string contains the substring `q`
+    substrRegex = new RegExp(q, 'i');
+
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
+
+    cb(matches);
+  };
+};
+
+var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+  'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
+  'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
+  'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
+  'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+  'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+  'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
+  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+  'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+];
+
+$('#region, #location').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1
+},
+{
+  name: 'states',
+  source: substringMatcher(states)
+});
+    </script>

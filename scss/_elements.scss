@@ -27,7 +27,7 @@ select {
     }
 
     &.btn-add{
-        min-width: 150px;
+        min-width: 125px;
     }
 }
 
@@ -35,4 +35,14 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
+}
+
+.tt-menu{
+    z-index: 99;
+    background: #fff;
+    width: 100%;
+    box-shadow: 0 0 2px grey;
+    padding: 5px;
+    font-size: 15px;
+    color: #000;
 }

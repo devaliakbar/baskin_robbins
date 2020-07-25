@@ -295,7 +295,7 @@ include 'header.php';
                                     <option value="Not Available">Not Available</option>
 
                                 </select>
-                                <label for="record_availability">Recording Availability</label>
+                                <label for="record_availability">Availability</label>
                                 <span class="focus-border"></span>
                             </div>
                         </div>
@@ -305,21 +305,12 @@ include 'header.php';
                             <input maxlength="50" class="frm-con effect-3" type="text" id="hdd_capacity" required="">
                             <span class="focus-border"></span>
                         </div>
-                    </div>
-                    <div class="row">
 
                         <div class="frm-con-tag input-group col">
                             <label for="dvr_remark">Remark</label>
                             <input maxlength="250" class="frm-con effect-3" type="text" id="dvr_remark" required="">
                             <span class="focus-border"></span>
                         </div>
-
-
-                        <!-- <div class="frm-con-tag input-group col">
-                                    <label for="two_ip">IP Detail</label>
-                                    <input class="frm-con effect-3" type="text" id="two_ip" required="">
-                                    <span class="focus-border"></span>
-                                </div> -->
 
                         <div class="frm-con-tag input-group col">
                             <label for="dvr_suggestion">Suggestion</label>
@@ -582,25 +573,25 @@ include 'header.php';
                             <h4 class="mt-3 pb-4 mb-1">Camera Details</h4>
                         </div>
 
-                        <div class="frm-con-tag input-group col-md-3">
+                        <div class="frm-con-tag input-group col">
                             <label for="camera_type">Type</label>
                             <input maxlength="50" class="frm-con effect-3" type="text" id="camera_type" required="">
                             <span class="focus-border"></span>
                         </div>
 
-                        <div class="frm-con-tag input-group col-md-3">
+                        <div class="frm-con-tag input-group col">
                             <label for="camera_brand">Brand</label>
                             <input maxlength="50" class="frm-con effect-3" type="text" id="camera_brand" required="">
                             <span class="focus-border"></span>
                         </div>
 
-                        <div class="frm-con-tag input-group col-md-3">
+                        <div class="frm-con-tag input-group col">
                             <label for="camera_count">Count</label>
                             <input maxlength="4" class="frm-con effect-3" type="number" id="camera_count" required="" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             <span class="focus-border"></span>
                         </div>
 
-                        <div class="frm-con-tag input-group col-md-3">
+                        <div class="frm-con-tag input-group col">
 
                             <select name="refrence" aria-required="true" id="camera_status" aria-invalid="false" class="frm-con effect-3" required="">
                                 <option value="" selected></option>
@@ -610,33 +601,27 @@ include 'header.php';
                             </select>
                             <label for="camera_status">Status</label>
                             <span class="focus-border"></span>
-
-
-                            <!--
-                                    <label for="camera_status">Status</label>
-                                    <input class="frm-con effect-3" type="text" id="camera_status" required="">
-                                    <span class="focus-border"></span> -->
                         </div>
 
-                        <div class="frm-con-tag input-group col-md-3">
+                        <div class="frm-con-tag input-group col">
                             <label for="camera_remark">Remark</label>
                             <input maxlength="250" class="frm-con effect-3" type="text" id="camera_remark" required="">
                             <span class="focus-border"></span>
                         </div>
 
-                        <div class="frm-con-tag input-group col-md-3">
+                        <div class="frm-con-tag input-group col">
                             <label for="camera_ip">IP Detail</label>
                             <input maxlength="250" class="frm-con effect-3" type="text" id="camera_ip" required="">
                             <span class="focus-border"></span>
                         </div>
 
-                        <div class="frm-con-tag input-group col-md-3">
+                        <div class="frm-con-tag input-group col">
                             <label for="camera_suggestion">Suggestion</label>
                             <input maxlength="250" class="frm-con effect-3" type="text" id="camera_suggestion" required="">
                             <span class="focus-border"></span>
                         </div>
 
-                        <div class="col-md-3 ">
+                        <div class="col">
                             <button onclick="addCamera()" class="btn btn-trans btn-add">ADD</button>
                         </div>
 
