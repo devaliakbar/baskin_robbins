@@ -1,6 +1,8 @@
 
 input {
-
+    &:focus{
+        background: transparent !important;
+    }
     @include placeholder {
         color: lighten($dark-grey, 30%) !important; 
     }

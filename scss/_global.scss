@@ -7,7 +7,7 @@
     }
 
     .date-wrap {
-        
+
         display: flex;
         align-items: center;
 
@@ -91,14 +91,18 @@
         color: #000;
     }
 
+    select {
+        margin-top: 5.5px;
+    }
 }
 
 .date-wrap {
-    input::placeholder{
+    input::placeholder {
         color: #005dab !important;
-        font-size: 15px;
+        font-size: 18px;
     }
 }
+
 .footer-pager-panel {
     padding: 0 15px;
     display: flex;
@@ -110,14 +114,21 @@
     }
 }
 
-.custom-file-label{
+.custom-file-label {
     background: transparent;
     border: 1px solid #000;
+    height: 45px;
+
+    &::after{
+        height: 43px;
+    }
 }
+
 
 .table {
     margin: 0;
     color: #000;
+
     i {
         cursor: pointer;
     }
@@ -170,6 +181,21 @@
             }
         }
     }
+}
+
+.custom-file-input {
+    height: 30px;
+}
+
+.border-top-divider {
+    border-top: 1px solid #000;
+}
+.comment-wrap {
+    height: calc(100% - 90px);
+}
+textarea#comment {
+    border: 1px solid #000 !important;
+    resize: none;
 }
 
 .profile_template_inList {

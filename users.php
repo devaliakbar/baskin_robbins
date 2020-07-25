@@ -33,6 +33,14 @@ include 'header.php';
             <li class="nav-item "><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
             </li>
             <li class="nav-item"><a class="nav-link" href="add-record.php"><i class="fas fa-clipboard"></i> Add new record</a></li>
+
+
+
+            <?php if ($_COOKIE['type'] != 2) { ?>
+                <li class="nav-item"><a class="nav-link" href="parlor.php"><i class="fas fa-igloo"></i> Parlor</a>
+                </li>
+            <?php } ?>
+
             <li class="nav-item"><a class="nav-link" href="expense.php"><i class="fas fa-comment-dollar"></i> Expense</a>
             </li>
             <li class="nav-item active"><a class="nav-link" href="users.php"><i class="fas fa-users"></i> Users</a>
