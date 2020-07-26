@@ -59,7 +59,7 @@ include 'header.php';
 
 <!-- Right side header -->
 <div class="header">
-    <h2 id="heading"></h2>
+    <h2>BASKIN ROBBINS PARLOUR</h2>
     <a onclick="saveVisit()" href="#" class="btn btn-trans header-img">Save</a>
 </div>
 <!-- End right side header -->
@@ -103,7 +103,7 @@ include 'header.php';
                                     <select id="region" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
                                         <option value="" selected=""></option>
                                     </select>
-                                    <label for="region">Select Region</label>
+                                    <label for="region">REGION</label>
                                 </div>
                             </div>
                             <div class="col">
@@ -112,7 +112,7 @@ include 'header.php';
                                     <select id="location" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
                                         <option value="" selected=""></option>
                                     </select>
-                                    <label for="location">Select Location</label>
+                                    <label for="location">LOCATION</label>
                                 </div>
                             </div>
 
@@ -122,7 +122,7 @@ include 'header.php';
                                     <select id="parlor" name="refrence" aria-required="true" aria-invalid="false" class="frm-con effect-3" required="">
                                         <option value="" selected=""></option>
                                     </select>
-                                    <label for="parlor">Select Parlor</label>
+                                    <label for="parlor">PARLOR</label>
                                 </div>
                             </div>
                             <div class="col">
@@ -159,7 +159,7 @@ include 'header.php';
                     <div class="row">
 
                         <div class="col-12">
-                            <h4 class="mt-3">Camera Details</h4>
+                            <h4 class="mt-3">CAMERA DETAILS</h4>
                         </div>
 
                         <div class="frm-con-tag input-group col">
@@ -184,8 +184,8 @@ include 'header.php';
 
                             <select name="refrence" aria-required="true" id="camera_status" aria-invalid="false" class="frm-con effect-3" required="">
                                 <option value="" selected></option>
-                                <option value="OK">OK</option>
-                                <option value="Not OK">Not OK</option>
+                                <option value="Functioning">Functioning</option>
+                                <option value="Not Functioning">Not Functioning</option>
 
                             </select>
                             <label for="camera_status">Status</label>
@@ -240,13 +240,13 @@ include 'header.php';
                                                     <div class="wrap">Status</div>
                                                 </th>
                                                 <th>
-                                                    <div class="wrap">Remark</div>
+                                                    <div class="wrap">Remarks</div>
                                                 </th>
                                                 <th>
                                                     <div class="wrap">IP Details</div>
                                                 </th>
                                                 <th>
-                                                    <div class="wrap">Suggestion</div>
+                                                    <div class="wrap">Suggestions</div>
                                                 </th>
                                                 <th>
                                                     <div class="wrap"></div>
@@ -291,7 +291,7 @@ include 'header.php';
                     <div class="row">
 
                         <div class="col-12">
-                            <h4 class="mt-3">DVR Details</h4>
+                            <h4 class="mt-3">DVR DETAILS</h4>
                         </div>
 
                         <div class="frm-con-tag input-group col">
@@ -310,17 +310,17 @@ include 'header.php';
                             <div class="frm-con-tag  mb-0">
                                 <select name="refrence" aria-required="true" id="record_availability" aria-invalid="false" class="frm-con effect-3" required="">
                                     <option value="" selected=""></option>
-                                    <option value="Available">Available</option>
-                                    <option value="Not Available">Not Available</option>
+                                    <option value="Functioning">Functioning</option>
+                                    <option value="Not Functioning">Not Functioning</option>
 
                                 </select>
-                                <label for="record_availability">Availability</label>
+                                <label for="record_availability">Recording Availability</label>
                                 <span class="focus-border"></span>
                             </div>
                         </div>
 
                         <div class="frm-con-tag input-group col">
-                            <label for="hdd_capacity">HDD Capaciity</label>
+                            <label for="hdd_capacity">HDD Capacity</label>
                             <input maxlength="50" class="frm-con effect-3" type="text" id="hdd_capacity" required="">
                             <span class="focus-border"></span>
                         </div>
@@ -367,7 +367,7 @@ include 'header.php';
                                                     <div class="wrap">HDD Capacity</div>
                                                 </th>
                                                 <th>
-                                                    <div class="wrap">Remark</div>
+                                                    <div class="wrap">Remarks</div>
                                                 </th>
                                                 <th>
                                                     <div class="wrap">Suggestions</div>
@@ -405,7 +405,7 @@ include 'header.php';
                     <div class="row">
 
                         <div class="col-12">
-                            <h4 class="mt-3">Network Cabel Details</h4>
+                            <h4 class="mt-3">NETWORK CABEL DETAILS</h4>
                         </div>
 
                         <div class="frm-con-tag input-group col">
@@ -418,8 +418,8 @@ include 'header.php';
                             <div class="frm-con-tag  mb-0">
                                 <select name="refrence" aria-required="true" id="network_status" aria-invalid="false" class="frm-con effect-3" required="">
                                     <option value="" selected></option>
-                                    <option value="OK">OK</option>
-                                    <option value="Not OK">Not OK</option>
+                                    <option value="Functioning">Functioning</option>
+                                    <option value="Not Functioning">Not Functioning</option>
 
                                 </select>
                                 <label for="network_status">Status</label>
@@ -493,7 +493,7 @@ include 'header.php';
                     <div class="row">
 
                         <div class="col-12">
-                            <h4 class="mt-3">TV Details</h4>
+                            <h4 class="mt-3">TV DETAILS</h4>
                         </div>
 
                         <div class="frm-con-tag input-group col">
@@ -506,8 +506,8 @@ include 'header.php';
                             <div class="frm-con-tag  mb-0">
                                 <select name="refrence" aria-required="true" id="tv_status" aria-invalid="false" class="frm-con effect-3" required="">
                                     <option value="" selected></option>
-                                    <option value="OK">OK</option>
-                                    <option value="Not OK">Not OK</option>
+                                    <option value="Functioning">Functioning</option>
+                                    <option value="Not Functioning">Not Functioning</option>
 
                                 </select>
                                 <label for="tv_status">Status</label>
@@ -551,7 +551,7 @@ include 'header.php';
                                                     <div class="wrap">Status</div>
                                                 </th>
                                                 <th>
-                                                    <div class="wrap">Remark</div>
+                                                    <div class="wrap">Remarks</div>
                                                 </th>
                                                 <th>
                                                     <div class="wrap">Suggestions</div>
@@ -594,7 +594,7 @@ include 'header.php';
                         <div class="row">
 
                             <div class="col-md-4">
-                                <h4 class="mt-4 pb-4 mb-3">Comments</h4>
+                                <h4 class="mt-4 pb-4 mb-3">COMMENTS</h4>
                                 <div class="frm-con-tag mb-0 comment-wrap">
                                     <textarea maxlength="250" name="" id="comment" class="w-100 frm-con h-100"></textarea>
                                     <span class="focus-border"></span>
@@ -606,7 +606,7 @@ include 'header.php';
                             <div class="col-md-8">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h4 class="mt-4 pb-4 mb-3">Survey status verification</h4>
+                                        <h4 class="mt-4 pb-4 mb-3">SURVEY STATUS VERIFICATION</h4>
                                     </div>
                                     <div class="col-md-4">
 

@@ -179,31 +179,31 @@ include 'header.php';
 
                         <div class="frm-con-tag input-group col-5 offset-2">
                             <label for="add_location">Location</label>
-                            <input maxlength="250" class="frm-con effect-3" type="text" id="add_location" required="">
+                            <input maxlength="50" class="frm-con effect-3" type="text" id="add_location" required="">
                             <span class="focus-border"></span>
                         </div>
 
                         <div class="frm-con-tag input-group col-4">
                             <label for="add_parlor">Parlor</label>
-                            <input maxlength="250" class="frm-con effect-3" type="text" id="add_parlor" required="">
+                            <input maxlength="50" class="frm-con effect-3" type="text" id="add_parlor" required="">
                             <span class="focus-border"></span>
                         </div>
 
                         <div class="frm-con-tag input-group col-4">
                             <label for="add_parlorCode">Parlor Code</label>
-                            <input maxlength="250" class="frm-con effect-3" type="text" id="add_parlorCode" required="">
+                            <input maxlength="50" class="frm-con effect-3" type="text" id="add_parlorCode" required="">
                             <span class="focus-border"></span>
                         </div>
 
                         <div class="frm-con-tag input-group col-2">
                             <label for="add_lat">Latitude</label>
-                            <input maxlength="250" class="frm-con effect-3" type="number" id="add_lat" required="">
+                            <input maxlength="50" class="frm-con effect-3" type="number" id="add_lat" required="" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             <span class="focus-border"></span>
                         </div>
 
                         <div class="frm-con-tag input-group col-2">
                             <label for="add_lon">Longitude</label>
-                            <input maxlength="250" class="frm-con effect-3" type="number" id="add_lon" required="">
+                            <input maxlength="50" class="frm-con effect-3" type="number" id="add_lon" required="" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             <span class="focus-border"></span>
                         </div>
 
