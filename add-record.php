@@ -33,22 +33,22 @@ include 'header.php';
         <ul class="navbar-nav">
             <li class=" nav-item"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
             </li>
-            <?php if ($_COOKIE['type'] == 0) {?>
+            <?php if ($_COOKIE['type'] == 0) { ?>
                 <li class="nav-item active"><a class="nav-link" href="add-record.php"><i class="fas fa-clipboard"></i> Add new record</a></li>
-            <?php }?>
+            <?php } ?>
 
 
-            <?php if ($_COOKIE['type'] != 2) {?>
+            <?php if ($_COOKIE['type'] != 2) { ?>
                 <li class="nav-item"><a class="nav-link" href="parlor.php"><i class="fas fa-igloo"></i> Parlor</a>
                 </li>
-            <?php }?>
+            <?php } ?>
 
             <li class="nav-item"><a class="nav-link" href="expense.php"><i class="fas fa-comment-dollar"></i> Expense</a>
             </li>
-            <?php if ($_COOKIE['type'] == 0) {?>
+            <?php if ($_COOKIE['type'] == 0) { ?>
                 <li class="nav-item"><a class="nav-link" href="users.php"><i class="fas fa-users"></i> Users</a>
                 </li>
-            <?php }?>
+            <?php } ?>
             <li class="nav-item">
                 <a class="nav-link" onclick="logOut()" href="#"><i class="fas fa-sign-out-alt"></i> Logout </a>
             </li>
@@ -58,7 +58,7 @@ include 'header.php';
 </nav>
 
 <!-- Right side header -->
-<div class="header">
+<div class="header text-center record-only new-record">
     <h2>BASKIN ROBBINS PARLOUR</h2>
     <a onclick="saveVisit()" href="#" class="btn btn-trans header-img">Save</a>
 </div>
@@ -66,19 +66,21 @@ include 'header.php';
 
 <div class="clearfix"></div>
 
-<main class="main-content-frame new-record">
+<main class="main-content-frame record-only new-record">
     <!-- Requested Appointments -->
     <div class="container-fluid ">
         <div class="row">
 
             <div class="tab-content">
 
+
+                <h4 id="heading"></h4>
                 <div class="topmost">
                     <div class="col-md-12">
 
                         <div class="row">
 
-                            <div class="col">
+                            <div class="col-auto ml-auto">
                                 <div class="date-wrap ml-auto mb-3">
 
 
@@ -155,11 +157,11 @@ include 'header.php';
                     </div>
                 </div>
 
-                <div class="top-inputs col-12 mt-2 ">
+                <div class="top-inputs  mt-2 ">
                     <div class="row">
 
                         <div class="col-12">
-                            <h4 class="mt-3">CAMERA DETAILS</h4>
+                            <h4 class="">CAMERA DETAILS</h4>
                         </div>
 
                         <div class="frm-con-tag input-group col">
@@ -210,7 +212,7 @@ include 'header.php';
                             <span class="focus-border"></span>
                         </div>
 
-                        <div class="col">
+                        <div class="col text-right">
                             <button onclick="addCamera()" class="btn btn-trans btn-add">ADD</button>
                         </div>
 
@@ -287,7 +289,7 @@ include 'header.php';
                     </div>
                 </div>
 
-                <div class="top-inputs col-12 mt-4 border-top-divider">
+                <div class="top-inputs  mt-4 border-top-divider">
                     <div class="row">
 
                         <div class="col-12">
@@ -336,7 +338,7 @@ include 'header.php';
                             <input maxlength="250" class="frm-con effect-3" type="text" id="dvr_suggestion" required="">
                             <span class="focus-border"></span>
                         </div>
-                        <div class="col">
+                        <div class="col text-right">
                             <button onclick="addDvr()" class="btn btn-trans btn-add">ADD</button>
                         </div>
                     </div>
@@ -401,7 +403,7 @@ include 'header.php';
                     </div>
                 </div>
 
-                <div class="top-inputs col-12 mt-4 border-top-divider">
+                <div class="top-inputs  mt-4 border-top-divider">
                     <div class="row">
 
                         <div class="col-12">
@@ -432,7 +434,7 @@ include 'header.php';
                             <input maxlength="250" class="frm-con effect-3" type="text" id="network_suggestions" required="">
                             <span class="focus-border"></span>
                         </div>
-                        <div class="col">
+                        <div class="col text-right">
                             <button onclick="addNetworkCabel()" class="btn btn-trans btn-add">ADD</button>
                         </div>
 
@@ -489,7 +491,7 @@ include 'header.php';
                     </div>
                 </div>
 
-                <div class="top-inputs col-12 mt-4  border-top-divider">
+                <div class="top-inputs  mt-4  border-top-divider">
                     <div class="row">
 
                         <div class="col-12">
@@ -526,7 +528,7 @@ include 'header.php';
                             <input maxlength="250" class="frm-con effect-3" type="text" id="tv_suggestions" required="">
                             <span class="focus-border"></span>
                         </div>
-                        <div class="col">
+                        <div class="col text-right">
                             <button onclick="addTV()" class="btn btn-trans btn-add">ADD</button>
                         </div>
 
@@ -593,87 +595,94 @@ include 'header.php';
 
                         <div class="row">
 
-                            <div class="col-md-4">
-                                <h4 class="mt-4 pb-4 mb-3">COMMENTS</h4>
-                                <div class="frm-con-tag mb-0 comment-wrap">
+                            <div class="col-md-12 d-flex">
+                                <h4 class="mt-4 pb-4 mr-4 pt-2">COMMENTS</h4>
+                                <div class="frm-con-tag mt-4 mb-0 comment-wrap">
                                     <textarea maxlength="250" name="" id="comment" class="w-100 frm-con h-100"></textarea>
                                     <span class="focus-border"></span>
                                 </div>
 
+
+
                             </div>
 
 
-                            <div class="col-md-8">
+                            <div class="col-md-12 survey-wrap">
                                 <div class="row">
-                                    <div class="col-12">
+                                    <div class="col-12 d-flex">
                                         <h4 class="mt-4 pb-4 mb-3">SURVEY STATUS VERIFICATION</h4>
-                                    </div>
-                                    <div class="col-md-4">
 
-                                        <h6>Verified By</h6>
 
-                                        <div class="frm-con-tag input-group">
-                                            <label for="verified_by">Name</label>
-                                            <input maxlength="50" class="frm-con effect-3" type="text" id="verified_by" required="">
-                                            <span class="focus-border"></span>
+                                        <div class="ml-auto">
+                                            <a id="attachment" class="btn btn-trans mr-3" href="#" target="_blank">Download Attachment</a>
                                         </div>
+                                    </div>
 
-                                        <div class="date-wrap">
+                                    <div class="col d-flex">
+
+                                        <h6 class=" d-flex align-items-center">Verified By</h6>
+
+                                        <div class="wrap d-flex align-items-center">
                                             <div class="frm-con-tag input-group">
-                                                <input id="verified_date" type="text" class="form-control frm-con endDate" placeholder="Date">
+                                                <label for="verified_by">Name</label>
+                                                <input maxlength="50" class="frm-con effect-3" type="text" id="verified_by" required="">
                                                 <span class="focus-border"></span>
                                             </div>
 
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-4">
-                                        <h6>Checked By</h6>
-
-                                        <div class="frm-con-tag input-group">
-                                            <label for="checked_by">Name</label>
-                                            <input maxlength="50" class="frm-con effect-3" type="text" id="checked_by" required="">
-                                            <span class="focus-border"></span>
-                                        </div>
-
-                                        <div class="date-wrap ml-auto">
-                                            <div class="frm-con-tag input-group">
-                                                <input id="checked_date" type="text" class="form-control frm-con endDate" placeholder="Date">
-                                                <span class="focus-border"></span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-4">
-                                        <h6>Approved By</h6>
-
-                                        <div class="frm-con-tag input-group">
-                                            <label for="approved_by">Name</label>
-                                            <input maxlength="50" class="frm-con effect-3" type="text" id="approved_by" required="">
-                                            <span class="focus-border"></span>
-                                        </div>
-
-                                        <div class="date-wrap ml-auto">
-                                            <div class="frm-con-tag input-group">
-                                                <input id="approved_date" type="text" class="form-control frm-con endDate" placeholder="Date">
-                                                <span class="focus-border"></span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="custom-file">
-                                                    <label for=" inputfile" class="custom-file-label">Choose file</label>
-                                                    <input type='file' class="custom-file-input" name='inputfile' id='inputfile'>
+                                            <div class="date-wrap">
+                                                <div class="frm-con-tag input-group">
+                                                    <input id="verified_date" type="text" class="form-control frm-con endDate" placeholder="Date">
+                                                    <span class="focus-border"></span>
                                                 </div>
                                             </div>
-                                            <div class="col-6">
-                                                <a id="attachment" class="btn btn-trans mr-3" href="#" target="_blank">Download Attachment</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col d-flex">
+                                        <h6 class=" d-flex align-items-center">Checked By</h6>
+
+                                        <div class="wrap d-flex align-items-center">
+                                            <div class="frm-con-tag input-group">
+                                                <label for="checked_by">Name</label>
+                                                <input maxlength="50" class="frm-con effect-3" type="text" id="checked_by" required="">
+                                                <span class="focus-border"></span>
                                             </div>
+
+                                            <div class="date-wrap ml-auto">
+                                                <div class="frm-con-tag input-group">
+                                                    <input id="checked_date" type="text" class="form-control frm-con endDate" placeholder="Date">
+                                                    <span class="focus-border"></span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col d-flex">
+                                        <h6 class=" d-flex align-items-center">Approved By</h6>
+
+                                        <div class="wrap d-flex align-items-center">
+                                            <div class="frm-con-tag input-group">
+                                                <label for="approved_by">Name</label>
+                                                <input maxlength="50" class="frm-con effect-3" type="text" id="approved_by" required="">
+                                                <span class="focus-border"></span>
+                                            </div>
+
+                                            <div class="date-wrap ml-auto">
+                                                <div class="frm-con-tag input-group">
+                                                    <input id="approved_date" type="text" class="form-control frm-con endDate" placeholder="Date">
+                                                    <span class="focus-border"></span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <div class="custom-file">
+                                            <label for=" inputfile" class="custom-file-label">Choose file</label>
+                                            <input type='file' class="custom-file-input" name='inputfile' id='inputfile'>
                                         </div>
                                     </div>
                                 </div>
@@ -691,7 +700,7 @@ include 'header.php';
     <!-- end invite patient content -->
 </main>
 
-<?php include 'footer.php';?>
+<?php include 'footer.php'; ?>
 <script src="js/main/common.js"></script>
 <script src="js/main/add-record.js"></script>
 <script src="js/main/update-record.js"></script>

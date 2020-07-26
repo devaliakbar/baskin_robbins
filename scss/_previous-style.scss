@@ -34,7 +34,7 @@
 
 body {
     font-family: 'Open Sans', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     color: $dark-grey;
     background: #394d65;
     line-height: 1.857143;
@@ -122,8 +122,9 @@ h4 {
         align-items: center;
         justify-content: center;
         font-size: 14px;
-        top: 10px;
-        right: 30px;
+        top: 10px;  
+        right: 42px;
+
     }
 }
 
@@ -147,7 +148,7 @@ h4 {
 
     &.buttons {
         width: auto;
-
+        right: 57px;
         .btn {
             display: flex;
             align-items: center;

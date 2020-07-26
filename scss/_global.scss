@@ -123,8 +123,6 @@
         height: 43px;
     }
 }
-
-
 .table {
     margin: 0;
     color: #000;
@@ -142,6 +140,7 @@
             border-width: 0 0 2px;
             text-align: center;
             vertical-align: middle;
+            background: rgba(128, 128, 128, 0.18);
 
             .wrap {
                 display: inline-block;
@@ -196,6 +195,7 @@
 textarea#comment {
     border: 1px solid #000 !important;
     resize: none;
+    min-height: 47px;
 }
 
 .profile_template_inList {
